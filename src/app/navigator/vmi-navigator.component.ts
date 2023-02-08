@@ -26,7 +26,7 @@ export class VmiNavigatorComponent implements OnInit {
         {
           label: this.translateService.instant('navigator.financial-aid'),
           icon: PrimeIcons.FILE,
-          routerLink: ['vmi/demand']
+          routerLink: ['request']
         }
       ];
     });

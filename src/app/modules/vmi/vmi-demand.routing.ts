@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      {path: 'demand', component: VmiFormComponent}
+      {path: '', component: VmiFormComponent}
     ]
   }];
 
