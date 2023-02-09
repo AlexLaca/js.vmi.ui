@@ -38,8 +38,8 @@ export class VmiFormComponent implements OnInit {
   public onOpenFamilyMemberDialog() {
     const ref = this.dialogService.open(FamilyMemberFormComponent, {
       position: 'center',
-      width: '80%',
-      height: '23%',
+      width: '90%',
+      height: '480px',
       header: 'Membru familie',
       showHeader: true,
       closeOnEscape: true
