@@ -7,6 +7,7 @@
       <th>Act de identitate</th>
       <th>Seria</th>
       <th>Numar</th>
+      <th></th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-person>
@@ -17,6 +18,15 @@
       <td>{{person.identityDocumentType}}</td>
       <td>{{person.documentSerial}}</td>
       <td>{{person.documentNumber}}</td>
+      <td>
+        <div>
+          <i class="pi pi-minus" (click)="onRemovePerson(person)"
+             style="font-size: 1rem; color:red"></i>
+        </div>
+
+<!--        <button pButton type="button" (click)="onRemovePerson(person)"-->
+<!--                 class="p-button-rounded h-1rem w-1rem"></button>-->
+      </td>
     </tr>
   </ng-template>
 </p-table>

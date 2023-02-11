@@ -24,4 +24,14 @@ export class ExtendedFamilyListComponent implements OnInit {
 
     });
   }
+
+  onRemovePerson(person: PersonModel) {
+    this.persons.forEach((p, i) => {
+      if (
+        p.pnc === person.pnc &&
+        p.lastName === person.lastName) {
+        this.persons.splice(i, 1);
+      }
+    })
+  }
 }
