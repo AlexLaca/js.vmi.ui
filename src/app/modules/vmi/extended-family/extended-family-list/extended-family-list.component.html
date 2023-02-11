@@ -18,14 +18,10 @@
       <td>{{person.identityDocumentType}}</td>
       <td>{{person.documentSerial}}</td>
       <td>{{person.documentNumber}}</td>
-      <td>
+      <td (click)="onRemovePerson(rowIndex)">
         <div>
-          <i class="pi pi-minus" (click)="onRemovePerson(rowIndex)"
-             style="font-size: 1rem; color:red"></i>
+          <i class="pi pi-minus" style="font-size: 1rem; color:red"></i>
         </div>
-
-<!--        <button pButton type="button" (click)="onRemovePerson(person)"-->
-<!--                 class="p-button-rounded h-1rem w-1rem"></button>-->
       </td>
     </tr>
   </ng-template>

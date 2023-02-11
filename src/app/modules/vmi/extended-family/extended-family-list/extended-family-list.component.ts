@@ -18,7 +18,6 @@ export class ExtendedFamilyListComponent implements OnInit {
     this.personObservable.asObservable().subscribe(value => {
 
       if (value) {
-        console.log("PERSON_OBSERVER FROM FAMILY -COMPONENT", value);
         this.persons.push(value);
       }
 

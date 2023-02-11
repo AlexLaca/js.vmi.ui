@@ -48,7 +48,6 @@ export class FamilyMemberFormComponent implements OnInit {
     this.familyMember.issuedBy = this.personFormGroup.controls['issuedBy'].value;
     this.familyMember.issuedDate = this.personFormGroup.controls['issuedDate'].value;
 
-    console.log("familyMEMBER", this.familyMember);
     this.dialogRef.close(this.familyMember);
   }
 }
