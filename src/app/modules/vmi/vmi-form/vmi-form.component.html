@@ -317,7 +317,7 @@
       </div>
     </p-card>
 
-    <p-divider layout="horizontal" class="md:p-0 md:m-0 ">
+    <p-divider layout="horizontal">
       <div class="inline-flex align-items-center">
         <i class="pi pi-users mr-2"></i>
         <b>Membrii familiei</b>
@@ -346,7 +346,15 @@
             <button pButton type="button" (click)="onOpenFamilyMemberDialog()"
                     icon="pi pi-plus" class="p-button-rounded h-2rem w-2rem"></button>
           </div>
+        </div>
 
+        <div class="col-12" *ngIf="applicantStatusValue == APPLICANT_STATUS_VALUE_REPRESENTATIVE">
+          <p-divider layout="horizontal"></p-divider>
+          <div class="flex justify-content-center flex-wrap card-container">
+            <vmi-extended-family-list [personObservable] = personObservable
+              class="flex align-items-center justify-content-center ">
+            </vmi-extended-family-list>
+          </div>
         </div>
       </div>
     </p-card>

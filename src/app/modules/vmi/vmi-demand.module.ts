@@ -11,6 +11,7 @@ import {CommonModule} from '@angular/common';
 import {FamilyMemberFormComponent} from './extended-family/extended-family-form/family-member-form.component';
 import {ExtendedFamilyListComponent} from './extended-family/extended-family-list/extended-family-list.component';
 import {DynamicDialogModule} from 'primeng/dynamicdialog';
+import {TableModule} from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {DynamicDialogModule} from 'primeng/dynamicdialog';
     CheckboxModule,
     RadioButtonModule,
     ButtonModule,
+    TableModule,
     DynamicDialogModule
 
   ],

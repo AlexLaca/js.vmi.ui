@@ -1,1 +1,22 @@
-<p>extended-family-list works!</p>
+<p-table [value]="persons" [tableStyle]="{'min-width': '50rem'}">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Nume</th>
+      <th>Prenume</th>
+      <th>CNP</th>
+      <th>Act de identitate</th>
+      <th>Seria</th>
+      <th>Numar</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-person>
+    <tr>
+      <td>{{person.lastName}}</td>
+      <td>{{person.firstName}}</td>
+      <td>{{person.pnc}}</td>
+      <td>{{person.identityDocumentType}}</td>
+      <td>{{person.documentSerial}}</td>
+      <td>{{person.documentNumber}}</td>
+    </tr>
+  </ng-template>
+</p-table>
