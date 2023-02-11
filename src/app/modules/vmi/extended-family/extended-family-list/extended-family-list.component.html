@@ -10,7 +10,7 @@
       <th></th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-person>
+  <ng-template pTemplate="body" let-person let-rowIndex="rowIndex">
     <tr>
       <td>{{person.lastName}}</td>
       <td>{{person.firstName}}</td>
@@ -20,7 +20,7 @@
       <td>{{person.documentNumber}}</td>
       <td>
         <div>
-          <i class="pi pi-minus" (click)="onRemovePerson(person)"
+          <i class="pi pi-minus" (click)="onRemovePerson(rowIndex)"
              style="font-size: 1rem; color:red"></i>
         </div>
 
