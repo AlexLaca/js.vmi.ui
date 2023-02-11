@@ -1,6 +1,7 @@
 {
   "navigator": {
     "home": "Home",
-    "financial-aid": "Ajutor financiar"
+    "financial-aid": "Ajutor financiar",
+    "request-list": "Cereri"
   }
 }

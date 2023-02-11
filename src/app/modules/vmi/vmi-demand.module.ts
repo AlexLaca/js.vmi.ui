@@ -12,12 +12,16 @@ import {FamilyMemberFormComponent} from './extended-family/extended-family-form/
 import {ExtendedFamilyListComponent} from './extended-family/extended-family-list/extended-family-list.component';
 import {DynamicDialogModule} from 'primeng/dynamicdialog';
 import {TableModule} from 'primeng/table';
+import { VmiListComponent } from './vmi-list/vmi-list.component';
+import { VmiDetailComponent } from './vmi-detail/vmi-detail.component';
 
 @NgModule({
   declarations: [
     VmiFormComponent,
+    VmiListComponent,
     FamilyMemberFormComponent,
-    ExtendedFamilyListComponent
+    ExtendedFamilyListComponent,
+    VmiDetailComponent,
   ],
   imports: [
     SharedModule,

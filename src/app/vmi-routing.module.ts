@@ -6,7 +6,7 @@ import {LandingPageComponent} from './landing-page/landing-page.component';
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
   {
-    path: 'request',
+    path: 'vmi',
     loadChildren: () => import('./modules/vmi/vmi-demand.module').then(m => m.VmiDemandModule)
   }
 ];

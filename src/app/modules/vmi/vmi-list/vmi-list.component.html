@@ -1,0 +1,96 @@
+<p-card>
+  <div class="grid">
+    <div class="col-3 md:py-0 " >
+      <div class="field grid md:mb-0">
+        <label class="md:col-2 md:mb-0 " for="a"> Serie</label>
+        <div class="md:col-4">
+          <input pInputText
+                 id="a"
+                 type="text"
+                 class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                              border-round-xs border-bluegray-200 a outline-none focus:border-primary">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-2 md:py-0">
+      <div class="field grid md:mb-0">
+        <label class="md:col-3 md:mb-0 " for="b"> Stare</label>
+        <div class="md:col-4">
+          <input pInputText
+                 id="b"
+                 type="text"
+                 class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                              border-round-xs border-bluegray-200 a outline-none focus:border-primary w-8rem">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-2 md:py-0">
+      <div class="field grid md:mb-0">
+        <label class="md:col-3 md:mb-0 " for="c"> CNP</label>
+        <div class="md:col-4">
+          <input pInputText
+                 id="c"
+                 type="text"
+                 class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                              border-round-xs border-bluegray-200 a outline-none focus:border-primary w-8rem">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-2 md:py-0">
+      <div class="field grid md:mb-0">
+        <label class="md:col-3 md:mb-0 " for="d"> Data</label>
+        <div class="md:col-4">
+          <input pInputText
+                 id="d"
+                 type="text"
+                 class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                              border-round-xs border-bluegray-200 a outline-none focus:border-primary  w-8rem">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-2 md:py-0 flex align-content-center flex-wrap card-container" >
+      <div class="flex align-items-center justify-content-center">
+        <button pButton type="button"  class="p-button-sm p-button-primiry h-2rem " label="Cauta" icon="pi pi-search"></button>
+      </div>
+
+    </div>
+  </div>
+</p-card>
+
+<p-card>
+  <p-table
+    [value]="demands"
+    [paginator]="true" [rows]="10"
+    [showCurrentPageReport]="true"
+    [tableStyle]="{'min-width': '50rem'}"
+    currentPageReportTemplate=" {first} pana la {last} din {totalRecords} cereri" [rowsPerPageOptions]="[10,25,50]">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Serie</th>
+        <th>Stare</th>
+        <th>Solicitant</th>
+        <th>Judet</th>
+        <th>Data</th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-demand>
+      <tr>
+        <td>{{demand.serial}}</td>
+        <td>{{demand.status}}</td>
+        <td>{{demand.applicant}}</td>
+        <td>{{demand.insCounty}}</td>
+        <td>{{demand.insDate}}</td>
+        <td (click)="onView(demand.serial)">
+          <div>
+            <i class="pi pi-eye" style="font-size: 1rem; color:#3B82F6"></i>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>
