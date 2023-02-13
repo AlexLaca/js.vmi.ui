@@ -51,5 +51,9 @@ export class FamilyMemberFormComponent implements OnInit {
 
     this.dialogRef.close(this.familyMember);
   }
+
+  public onQuit() {
+    this.dialogRef.close(null);
+  }
 }
 

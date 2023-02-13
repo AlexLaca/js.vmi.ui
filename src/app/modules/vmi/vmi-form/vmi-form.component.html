@@ -1,5 +1,5 @@
 <p-card>
-    <div class="col-12 mb-2">
+    <div class="col-12">
       <p-divider layout="horizontal" class="md:p-0 md:m-0">
         <div class="inline-flex align-items-center">
           <i class="pi pi-file-import mr-2"></i>
@@ -68,8 +68,8 @@
             </div>
 
             <div class="col-12" *ngIf="applicantStatusValue == APPLICANT_STATUS_VALUE_REPRESENTATIVE">
-              <p-divider layout="horizontal"></p-divider>
-              <vmi-extended-family-list [personObservable]=personObservable></vmi-extended-family-list>
+              <vmi-extended-family-list [personObservable]=personObservable>
+              </vmi-extended-family-list>
             </div>
           </div>
         </p-card>
@@ -101,10 +101,12 @@
       <div class="col-12 mb-0">
         <div class="flex justify-content-center flex-wrap card-container">
           <div class="flex align-items-center justify-content-center  font-bold text-gray-900 border-round m-2">
-            <button pButton type="button" label="Renunta" class="p-button-sm p-button-secondary h-2rem"></button>
+            <button pButton type="button" label="Renunta" class="p-button-sm p-button-secondary h-2rem"
+                    icon="pi pi-times"></button>
           </div>
           <div class="flex align-items-center justify-content-center font-bold text-gray-900 border-round m-2">
-            <button pButton type="button" label="Salveaza" class="p-button-sm p-button-primiry h-2rem"></button>
+            <button pButton type="button" label="Salveaza" class="p-button-sm p-button-primiry h-2rem"
+                    icon="pi pi-save"></button>
           </div>
         </div>
       </div>

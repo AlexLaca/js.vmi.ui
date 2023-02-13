@@ -51,7 +51,7 @@ export class VmiFormComponent implements OnInit {
             header: 'Membru familie',
             showHeader: true,
             closeOnEscape: true,
-
+            closable:false
 
         });
 
@@ -61,8 +61,6 @@ export class VmiFormComponent implements OnInit {
             this.personObservable.next(familyMember);
             console.log("FAMILY-MEMBER-AFTER", familyMember);
           }
-
         });
     }
-
 }
