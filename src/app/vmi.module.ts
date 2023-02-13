@@ -1,5 +1,4 @@
 import {NgModule} from '@angular/core';
-
 import {VmiRoutingModule} from './vmi-routing.module';
 import {VmiComponent} from './vmi.component';
 import {CoreModule} from "./@core/core.module";
@@ -22,7 +21,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   declarations: [
     VmiComponent,
     VmiNavigatorComponent,
-    LandingPageComponent
+    LandingPageComponent,
   ],
   imports: [
     TranslateModule.forRoot({

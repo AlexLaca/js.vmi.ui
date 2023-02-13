@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {DemandModel} from '../models/demand.model';
+import {DemandModel} from '../../../@shared/models/demand.model';
 import {Router} from '@angular/router';
 
 @Component({

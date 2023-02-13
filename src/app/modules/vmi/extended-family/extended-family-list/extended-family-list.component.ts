@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {PersonModel} from '../../models/person.model';
+import {BasePersonModel} from '../../../../@shared/models/base-person.model';
 import {BehaviorSubject} from 'rxjs';
 
 
@@ -10,9 +10,9 @@ import {BehaviorSubject} from 'rxjs';
 })
 export class ExtendedFamilyListComponent implements OnInit {
 
-  @Input() public personObservable: BehaviorSubject<PersonModel | null>;
+  @Input() public personObservable: BehaviorSubject<BasePersonModel | null>;
 
-  public persons: Array<PersonModel> = [];
+  public persons: Array<BasePersonModel> = [];
 
   ngOnInit(): void {
     this.personObservable.asObservable().subscribe(value => {

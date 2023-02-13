@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import {PersonModel} from '../models/person.model';
+import {BasePersonModel} from '../../../@shared/models/base-person.model';
 import {FormGroup} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {DialogService, DynamicDialogConfig, DynamicDialogRef} from 'primeng/dynamicdialog';
@@ -20,12 +20,12 @@ export class VmiFormComponent implements OnInit {
     public APPLICANT_STATUS_VALUE_SINGLE: string = 'single';
     public APPLICANT_STATUS_VALUE_REPRESENTATIVE: string = 'representative';
 
-    public person: PersonModel = new PersonModel();
+    public person: BasePersonModel = new BasePersonModel();
     public formGroup: FormGroup;
     public homeAddressCheckbox: boolean = true;
     public applicantStatusValue: string = this.APPLICANT_STATUS_VALUE_SINGLE;
 
-    public personObservable: BehaviorSubject<PersonModel | null> = new BehaviorSubject<PersonModel | null>(null);
+    public personObservable: BehaviorSubject<BasePersonModel | null> = new BehaviorSubject<BasePersonModel | null>(null);
 
 
     constructor(
@@ -47,7 +47,7 @@ export class VmiFormComponent implements OnInit {
         this.dialogRef = this.dialogService.open(FamilyMemberFormComponent, {
             position: 'center',
             width: '90%',
-            height: '480px',
+            height: '440px',
             header: 'Membru familie',
             showHeader: true,
             closeOnEscape: true,
@@ -55,7 +55,7 @@ export class VmiFormComponent implements OnInit {
 
         });
 
-        this.dialogRef.onClose.subscribe((familyMember: PersonModel) => {
+        this.dialogRef.onClose.subscribe((familyMember: BasePersonModel) => {
           if (familyMember) {
             console.log("FAMILY-MEMBER-BEFORE", familyMember);
             this.personObservable.next(familyMember);

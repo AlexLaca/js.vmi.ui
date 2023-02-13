@@ -1,0 +1,16 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="pncFromGroup">
+  <div class="field grid mb-0">
+    <label for="pnc" class="col-2 mb-0"> CNP</label>
+    <div class="p-inputgroup col-10 p-0 h-2rem">
+      <input pInputText
+             formControlName="pnc"
+             id="pnc"
+             type="text"
+             class="p-inputtext-sm text-base text-color surface-overlay border-1 border-solid
+                    border-round-xs border-bluegray-200 a outline-none focus:border-primary">
+      <button pButton type="submit" class="p-button-sm" label="Cauta" icon="pi pi-search"></button>
+    </div>
+  </div>
+</form>
+
+

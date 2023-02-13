@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DialogService, DynamicDialogConfig, DynamicDialogRef} from 'primeng/dynamicdialog';
 import {FormControl, FormGroup} from '@angular/forms';
-import {PersonModel} from '../../models/person.model';
+import {BasePersonModel} from '../../../../@shared/models/base-person.model';
 
 @Component({
   selector: 'vmi-extended-family-form',
@@ -11,7 +11,7 @@ import {PersonModel} from '../../models/person.model';
 export class FamilyMemberFormComponent implements OnInit {
 
   public personFormGroup: FormGroup;
-  public familyMember: PersonModel;
+  public familyMember: BasePersonModel;
 
   constructor(
     public dialogService: DialogService,
@@ -36,7 +36,7 @@ export class FamilyMemberFormComponent implements OnInit {
   }
 
   public onSubmit() {
-    this.familyMember = new PersonModel();
+    this.familyMember = new BasePersonModel();
 
     this.familyMember.lastName = this.personFormGroup.controls['lastName'].value;
     this.familyMember.firstName = this.personFormGroup.controls['firstName'].value;

@@ -1,167 +1,25 @@
-<div class="grid m-0">
+<p-card>
+  <div class="col-12">
+    <vmi-person-searcher></vmi-person-searcher>
+  </div>
+</p-card>
 
-  <div class="col-12 mb-0">
-    <p-card>
-      <div class="grid mb-0">
-        <div class="col-12 mb-0">
-          <div class="field grid mb-0">
-            <label class="col-6 mb-0" for="a"> CNP</label>
-            <div class="col-6 mb-0">
-              <div class="p-inputgroup h-2rem">
-                <input pInputText
-                       id="a"
-                       type="text"
-                       class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                              border-round-xs border-bluegray-200 a outline-none focus:border-primary ">
-                <button pButton type="button" class="p-button-sm" label="Cauta" icon="pi pi-search"></button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </p-card>
+<form (ngSubmit)="onSubmit()" [formGroup]="personFormGroup">
+  <div class="col-12">
+    <vmi-person-detail></vmi-person-detail>
   </div>
 
-  <form (ngSubmit)="onSubmit()" [formGroup]="personFormGroup">
-    <div class="grid m-0">
-      <div class="col-4">
-        <p-divider layout="horizontal" class="md:p-0 md:m-0">
-          <div class="inline-flex align-items-center">
-            <i class="pi pi-user mr-2"></i>
-            <b>Membru familie</b>
-          </div>
-        </p-divider>
-
-        <p-card>
-          <div class="field grid">
-            <label class="col-6" for="lastName">Nume </label>
-            <div class="col-6">
-              <input pInputText
-                     formControlName="lastName"
-                     id="lastName"
-                     type="text"
-                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid border-round-xs
-                            border-bluegray-200 a outline-none focus:border-primary w-full">
-            </div>
-
-            <label class="col-6" for="firstName">Prenume </label>
-            <div class="col-6">
-              <input pInputText
-                     formControlName="firstName"
-                     id="firstName"
-                     type="text"
-                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                          border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-            </div>
-
-            <label class="col-6" for="pnc">CNP </label>
-            <div class="col-6">
-              <input pInputText
-                     formControlName="pnc"
-                     id="pnc"
-                     type="text"
-                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                          border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-            </div>
-          </div>
-        </p-card>
+  <div class="col-12">
+    <div class="flex justify-content-center flex-wrap card-container">
+      <div class="flex align-items-center justify-content-center  font-bold text-gray-900 border-round m-2">
+        <button pButton type="button" label="Renunta" class="p-button-sm p-button-danger h-2rem"></button>
       </div>
-
-      <div class="col-8 ">
-
-        <p-divider layout="horizontal" class="md:p-0 md:m-0 ">
-          <div class="inline-flex align-items-center">
-            <i class="pi pi-credit-card mr-2"></i>
-            <b>Act de identitate</b>
-          </div>
-        </p-divider>
-
-
-        <p-card>
-          <div class="grid py-1">
-            <div class="col-6 mb-0">
-              <div class="field grid mb-0">
-                <label class="col-6" for="identityDocument">Act identitate </label>
-                <div class="col-6">
-                  <input pInputText
-                         formControlName="identityDocumentType"
-                         id="identityDocument"
-                         type="text"
-                         class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-                </div>
-
-                <label class="col-6" for="serial">Seria </label>
-                <div class="col-6">
-                  <input pInputText
-                         formControlName="documentSerial"
-                         id="serial"
-                         type="text"
-                         class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-                </div>
-
-                <label class="col-6" for="nr">Nr </label>
-                <div class="col-6">
-                  <input pInputText
-                         formControlName="documentNumber"
-                         id="nr"
-                         type="text"
-                         class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-                </div>
-              </div>
-            </div>
-
-            <div class="col-6 mb-0">
-              <div class="field grid mb-0">
-                <label class="col-6" for="validity">Valabil pana la </label>
-                <div class="col-6">
-                  <input pInputText
-                         formControlName="validUntil"
-                         id="validity"
-                         type="text"
-                         class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-                </div>
-
-                <label class="col-6" for="issuedBy">Eliberat de </label>
-                <div class="col-6">
-                  <input pInputText
-                         formControlName="issuedBy"
-                         id="issuedBy"
-                         type="text"
-                         class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-                </div>
-
-                <label class="col-6" for="issueDate">La data </label>
-                <div class="col-6">
-                  <input pInputText
-                         formControlName="issuedDate"
-                         id="issueDate"
-                         type="text"
-                         class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-                </div>
-              </div>
-            </div>
-          </div>
-        </p-card>
+      <div class="flex align-items-center justify-content-center font-bold text-gray-900 border-round m-2">
+        <button pButton type="submit" label="Adauga" class="p-button-sm p-button-primiry h-2rem"></button>
       </div>
     </div>
-
-    <div class="col-12 mb-0">
-      <div class="flex justify-content-center flex-wrap card-container">
-        <div class="flex align-items-center justify-content-center  font-bold text-gray-900 border-round m-2">
-          <button pButton type="button" label="Renunta" class="p-button-sm p-button-danger h-2rem"></button>
-        </div>
-        <div class="flex align-items-center justify-content-center font-bold text-gray-900 border-round m-2">
-          <button pButton type="submit" label="Adauga" class="p-button-sm p-button-primiry h-2rem"></button>
-        </div>
-      </div>
-    </div>
-  </form>
+  </div>
+</form>
 
 
-</div>
+

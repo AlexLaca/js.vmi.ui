@@ -1,5 +1,5 @@
 <p-card>
-  <div class="col-12">
+  <div class="col-12 mb-2">
     <p-divider layout="horizontal" class="md:p-0 md:m-0">
       <div class="inline-flex align-items-center">
         <i class="pi pi-file-import mr-2"></i>
@@ -8,381 +8,100 @@
     </p-divider>
 
     <p-card>
-      <div class="grid">
-        <div class="col-12 md:py-0">
-          <div class="field grid md:mb-0">
-            <label class="md:col-4 md:mb-0 " for="a"> CNP</label>
-            <div class="md:col-4">
-              <div class="p-inputgroup h-2rem">
-                <input pInputText
-                       id="a"
-                       type="text"
-                       class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                              border-round-xs border-bluegray-200 a outline-none focus:border-primary ">
-                <button pButton type="button" class="p-button-sm" label="Cauta" icon="pi pi-search"></button>
-              </div>
-            </div>
-          </div>
+        <div class="col-12 mb-2">
+          <vmi-person-searcher></vmi-person-searcher>
         </div>
-      </div>
     </p-card>
   </div>
 
   <form>
-    <div class="grid p-0 m-0">
-      <div class="col-4">
-        <p-divider layout="horizontal" class="md:p-0 md:m-0">
-          <div class="inline-flex align-items-center">
-            <i class="pi pi-user mr-2"></i>
-            <b>Solicitant</b>
-          </div>
-        </p-divider>
-
-        <p-card>
-          <div class="field grid p-0">
-            <label class="md:col-6 md:m-0" for="lastName">Nume </label>
-            <div class="md:col-6">
-              <input pInputText
-                     id="lastName"
-                     type="text"
-                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid border-round-xs
-                            border-bluegray-200 a outline-none focus:border-primary w-full">
-            </div>
-
-            <label class="md:col-6 md:mb-0" for="firstName">Prenume </label>
-            <div class="md:col-6">
-              <input pInputText
-                     id="firstName"
-                     type="text"
-                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                          border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-            </div>
-
-            <label class="md:col-6 md:mb-0" for="pnc">CNP </label>
-            <div class="md:col-6">
-              <input pInputText
-                     id="pnc"
-                     type="text"
-                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                          border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-            </div>
-          </div>
-        </p-card>
-
-
-      </div>
-
-      <div class="col-8 mb-0">
-
-        <p-divider layout="horizontal" class="md:p-0 md:m-0 ">
-          <div class="inline-flex align-items-center">
-            <i class="pi pi-credit-card mr-2"></i>
-            <b>Act de identitate</b>
-          </div>
-        </p-divider>
-
-        <p-card>
-          <div class="grid">
-            <div class="col-6 py-1">
-              <div class="field grid">
-                <label class="md:col-6 md:mb-0" for="identityDocument">Act identitate </label>
-                <div class="md:col-6">
-                  <input pInputText
-                         id="identityDocument"
-                         type="text"
-                         class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-                </div>
-
-                <label class="md:col-6 md:mb-0" for="serial">Seria </label>
-                <div class="md:col-6">
-                  <input pInputText
-                         id="serial"
-                         type="text"
-                         class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-                </div>
-
-                <label class="md:col-6 md:mb-0" for="nr">Nr </label>
-                <div class="md:col-6">
-                  <input pInputText
-                         id="nr"
-                         type="text"
-                         class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-                </div>
-              </div>
-            </div>
-
-            <div class="col-6 py-1">
-              <div class="field grid md:mb-0">
-                <label class="md:col-6 md:mb-0" for="validity">Valabil pana la </label>
-                <div class="md:col-6">
-                  <input pInputText
-                         id="validity"
-                         type="text"
-                         class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-                </div>
-
-                <label class="md:col-6 md:mb-0" for="issuedBy">Eliberat de </label>
-                <div class="md:col-6">
-                  <input pInputText
-                         id="issuedBy"
-                         type="text"
-                         class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-                </div>
-
-                <label class="md:col-6 md:mb-0" for="issueDate">La data </label>
-                <div class="md:col-6">
-                  <input pInputText
-                         id="issueDate"
-                         type="text"
-                         class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-                </div>
-              </div>
-            </div>
-          </div>
-        </p-card>
-      </div>
+    <div class="col-12 mb-2">
+      <vmi-person-detail></vmi-person-detail>
     </div>
 
-
-    <p-divider layout="horizontal" class="md:p-0 md:m-0 ">
-      <div class="inline-flex align-items-center">
-        <i class="pi pi-home mr-2"></i>
-        <b>Adresa corespondenta</b>
-      </div>
-    </p-divider>
-
-    <p-card>
-      <div class="grid">
-        <div class="col-12 md:py-0">
-          <div class="field grid md:mb-0">
-            <label class="md:col-2 md:mb-0 mr-2">Adresa domiciliu </label>
-            <p-checkbox name="groupname1" [(ngModel)]="homeAddressCheckbox" [binary]="true"></p-checkbox>
-          </div>
+    <div class="col-12 mb-2">
+      <p-divider layout="horizontal" class="md:p-0 md:m-0 ">
+        <div class="inline-flex align-items-center">
+          <i class="pi pi-home mr-2"></i>
+          <b>Adresa corespondenta</b>
         </div>
-        <div class="col-4 md:py-0">
-          <div class="field grid md:mb-0">
-            <label class="md:col-6 md:mb-0" for="siruta">Siruta </label>
-            <div class="md:col-6">
-              <input pInputText
-                     id="siruta"
-                     type="text"
-                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                            border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+      </p-divider>
+
+      <p-card>
+        <vmi-address></vmi-address>
+      </p-card>
+    </div>
+
+    <div class="col-12 mb-2">
+      <p-divider layout="horizontal">
+        <div class="inline-flex align-items-center">
+          <i class="pi pi-users mr-2"></i>
+          <b>Membrii familiei</b>
+        </div>
+      </p-divider>
+
+      <p-card>
+        <div class="grid">
+          <div class="col-4 md:py-0">
+            <div class="field grid md:mb-0">
+              <label class="md:col-8 md:mb-0 mr-2">Persoana singura</label>
+              <p-radioButton name="groupname" value={{APPLICANT_STATUS_VALUE_SINGLE}}
+                             [(ngModel)]="applicantStatusValue"></p-radioButton>
+            </div>
+          </div>
+          <div class="col-4 md:py-0">
+            <div class="field grid md:mb-0">
+              <label class="md:col-8 md:mb-0 mr-2">Reprezentant al familiei </label>
+              <p-radioButton name="groupname" value={{APPLICANT_STATUS_VALUE_REPRESENTATIVE}}
+                             [(ngModel)]="applicantStatusValue"></p-radioButton>
+            </div>
+          </div>
+          <div class="col-4 md:py-0">
+            <div *ngIf="applicantStatusValue == APPLICANT_STATUS_VALUE_REPRESENTATIVE" class="field grid md:mb-0">
+              <label class="md:col-8 md:mb-0 mr-2">Adauga membru</label>
+              <button pButton type="button" (click)="onOpenFamilyMemberDialog()"
+                      icon="pi pi-plus" class="p-button-rounded h-2rem w-2rem"></button>
+            </div>
+          </div>
+
+          <div class="col-12" *ngIf="applicantStatusValue == APPLICANT_STATUS_VALUE_REPRESENTATIVE">
+            <p-divider layout="horizontal"></p-divider>
+            <div class="flex justify-content-center flex-wrap card-container">
+              <vmi-extended-family-list [personObservable] = personObservable
+                                        class="flex align-items-center justify-content-center ">
+              </vmi-extended-family-list>
             </div>
           </div>
         </div>
-        <div class="col-4 md:py-0">
-          <div class="field grid md:mb-0">
-            <label class="md:col-6 md:mb-0" for="county">Judet </label>
-            <div class="md:col-6">
-              <input pInputText
-                     id="county"
-                     type="text"
-                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                            border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-            </div>
-          </div>
+      </p-card>
+    </div>
+
+    <div class="col-12 mb-2">
+      <p-divider layout="horizontal" class="md:p-0 md:m-0 ">
+        <div class="inline-flex align-items-center">
+          <i class="pi pi-money-bill mr-2"></i>
+          <b>Venit total al persoanei singure/familiei realizat în luna anterioara in lei </b>
         </div>
+      </p-divider>
 
-        <div class="col-4 md:py-0">
-          <div class="field grid md:mb-0">
-            <label class="md:col-6 md:mb-0" for="city">Oras/Comuna </label>
-            <div class="md:col-6">
-              <input pInputText
-                     id="city"
-                     type="text"
-                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                            border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-            </div>
-          </div>
-        </div>
-
-        <div class="col-4 md:py-0">
-          <div class="field grid md:mb-0">
-            <label class="md:col-6 md:mb-0" for="village">Sat </label>
-            <div class="md:col-6">
-              <input pInputText
-                     id="village"
-                     type="text"
-                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                            border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-            </div>
-          </div>
-        </div>
-
-        <div class="col-4 md:py-0">
-          <div class="field grid md:mb-0">
-            <label class="md:col-6 md:mb-0" for="street">Strada </label>
-            <div class="md:col-6">
-              <input pInputText
-                     id="street"
-                     type="text"
-                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                            border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-            </div>
-          </div>
-        </div>
-
-        <div class="col-4 md:py-0">
-          <div class="field grid md:mb-0">
-            <label class="md:col-6 md:mb-0" for="streetNr">Nr </label>
-            <div class="md:col-6">
-              <input pInputText
-                     id="streetNr"
-                     type="text"
-                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                            border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-            </div>
-          </div>
-        </div>
-
-        <div class="col-4 md:py-0">
-          <div class="field grid md:mb-0">
-            <div class="col-6">
-              <div class="field grid md:mb-0">
-                <label class="md:col-6 md:mb-0" for="block">Bl. </label>
-                <div class="md:col-6">
-                  <input pInputText
-                         id="block"
-                         type="text"
-                         class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-                </div>
-              </div>
-            </div>
-
-            <div class="col-6 md:py-0">
-              <div class="field grid md:mb-0">
-                <label class="md:col-6 md:mb-0" for="stairs">Sc. </label>
-                <div class="md:col-6">
-                  <input pInputText
-                         id="stairs"
-                         type="text"
-                         class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-4 md:py-0">
-          <div class="field grid md:mb-0">
-            <div class="col-6">
-              <div class="field grid md:mb-0">
-                <label class="md:col-6 md:mb-0" for="floor">Et. </label>
-                <div class="md:col-6">
-                  <input pInputText
-                         id="floor"
-                         type="text"
-                         class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-                </div>
-              </div>
-            </div>
-
-            <div class="col-6 md:py-0">
-              <div class="field grid md:mb-0">
-                <label class="md:col-6 md:mb-0" for="apartment">Ap. </label>
-                <div class="md:col-6">
-                  <input pInputText
-                         id="apartment"
-                         type="text"
-                         class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-4 md:py-0">
-          <div class="field grid md:mb-0">
-            <label class="md:col-6 md:mb-0" for="sector">Sector</label>
-            <div class="md:col-6">
-              <input pInputText
-                     id="sector"
-                     type="text"
-                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                            border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-            </div>
-          </div>
-        </div>
-      </div>
-    </p-card>
-
-    <p-divider layout="horizontal">
-      <div class="inline-flex align-items-center">
-        <i class="pi pi-users mr-2"></i>
-        <b>Membrii familiei</b>
-      </div>
-    </p-divider>
-
-    <p-card>
-      <div class="grid">
-        <div class="col-4 md:py-0">
-          <div class="field grid md:mb-0">
-            <label class="md:col-8 md:mb-0 mr-2">Persoana singura</label>
-            <p-radioButton name="groupname" value={{APPLICANT_STATUS_VALUE_SINGLE}}
-                           [(ngModel)]="applicantStatusValue"></p-radioButton>
-          </div>
-        </div>
-        <div class="col-4 md:py-0">
-          <div class="field grid md:mb-0">
-            <label class="md:col-8 md:mb-0 mr-2">Reprezentant al familiei </label>
-            <p-radioButton name="groupname" value={{APPLICANT_STATUS_VALUE_REPRESENTATIVE}}
-                           [(ngModel)]="applicantStatusValue"></p-radioButton>
-          </div>
-        </div>
-        <div class="col-4 md:py-0">
-          <div *ngIf="applicantStatusValue == APPLICANT_STATUS_VALUE_REPRESENTATIVE" class="field grid md:mb-0">
-            <label class="md:col-8 md:mb-0 mr-2">Adauga membru</label>
-            <button pButton type="button" (click)="onOpenFamilyMemberDialog()"
-                    icon="pi pi-plus" class="p-button-rounded h-2rem w-2rem"></button>
-          </div>
-        </div>
-
-        <div class="col-12" *ngIf="applicantStatusValue == APPLICANT_STATUS_VALUE_REPRESENTATIVE">
-          <p-divider layout="horizontal"></p-divider>
-          <div class="flex justify-content-center flex-wrap card-container">
-            <vmi-extended-family-list [personObservable] = personObservable
-              class="flex align-items-center justify-content-center ">
-            </vmi-extended-family-list>
-          </div>
-        </div>
-      </div>
-    </p-card>
-
-
-    <p-divider layout="horizontal" class="md:p-0 md:m-0 ">
-      <div class="inline-flex align-items-center">
-        <i class="pi pi-money-bill mr-2"></i>
-        <b>Venit total al persoanei singure/familiei realizat în luna anterioara in lei </b>
-      </div>
-    </p-divider>
-
-    <p-card>
-      <div class="grid">
-        <div class="col-4 md:py-0">
-          <div class="field grid md:mb-0">
-            <label class="md:col-6 md:mb-0" for="sector">Venit total</label>
-            <div class="md:col-6">
-              <input pInputTextselectedValue
-                     id="income"
-                     type="text"
-                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid border-round-xs
+      <p-card>
+        <div class="grid">
+          <div class="col-4 md:py-0">
+            <div class="field grid md:mb-0">
+              <label class="md:col-6 md:mb-0" for="income">Venit total</label>
+              <div class="md:col-6">
+                <input pInputTextselectedValue
+                       id="income"
+                       type="text"
+                       class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid border-round-xs
                             border-bluegray-200 a outline-none focus:border-primary w-full">
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </p-card>
+      </p-card>
+    </div>
+
     <div class="col-12 mb-0">
       <div class="flex justify-content-center flex-wrap card-container">
         <div class="flex align-items-center justify-content-center  font-bold text-gray-900 border-round m-2">
