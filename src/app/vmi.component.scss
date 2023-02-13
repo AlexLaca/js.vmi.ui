@@ -3,12 +3,20 @@
   padding: 0 0.5rem;
 }
 
+.p-card {
+  box-shadow: 0 2px 3px -1px rgb(0 0 0 / 12%),
+  0 0 1px 0 rgb(0 0 0 / 14%),
+  1px 0 3px 0 rgb(0 0 0 / 12%),
+  0 0 2px 0 rgb(0 0 0 / 12%);
+}
+
 .p-card .p-card-content {
   padding: 0 0;
 }
 
 .p-card .p-card-body {
   padding: 0.5rem;
+  //background-color: #D8DBE4 !important;
 }
 
 
@@ -27,5 +35,24 @@
 .p-datatable .p-datatable-tbody > tr > td {
   text-align: left;
   padding: 0.5rem 0.5rem;
+}
+
+.p-divider.p-divider-horizontal .p-divider-content {
+  color: dimgrey;
+  padding: 0 0.5rem;
+  //background-color: #D8DBE4 !important;
+}
+
+.p-dialog .p-dialog-header {
+  padding: 0.2rem;
+  background-color: #D8DBE4;
+}
+
+.p-dialog .p-dialog-header .p-dialog-title {
+  justify-items:center;
+  font-weight: 600;
+  font-size: 1.20rem;
+  margin-left: 0.9rem;
+  color: dimgrey;
 }
 
