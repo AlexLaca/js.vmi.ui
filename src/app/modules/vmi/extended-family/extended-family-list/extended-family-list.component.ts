@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {BasePersonModel} from '../../../../@shared/models/base-person.model';
 import {BehaviorSubject} from 'rxjs';
 
@@ -6,7 +6,8 @@ import {BehaviorSubject} from 'rxjs';
 @Component({
   selector: 'vmi-extended-family-list',
   templateUrl: './extended-family-list.component.html',
-  styleUrls: ['./extended-family-list.component.scss']
+  styleUrls: ['./extended-family-list.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ExtendedFamilyListComponent implements OnInit {
 

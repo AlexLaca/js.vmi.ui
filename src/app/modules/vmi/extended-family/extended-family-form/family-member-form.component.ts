@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {DialogService, DynamicDialogConfig, DynamicDialogRef} from 'primeng/dynamicdialog';
 import {FormControl, FormGroup} from '@angular/forms';
 import {BasePersonModel} from '../../../../@shared/models/base-person.model';
@@ -6,7 +6,8 @@ import {BasePersonModel} from '../../../../@shared/models/base-person.model';
 @Component({
   selector: 'vmi-extended-family-form',
   templateUrl: './family-member-form.component.html',
-  styleUrls: ['./family-member-form.component.scss']
+  styleUrls: ['./family-member-form.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class FamilyMemberFormComponent implements OnInit {
 

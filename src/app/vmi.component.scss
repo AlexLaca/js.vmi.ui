@@ -11,3 +11,21 @@
   padding: 0.5rem;
 }
 
+
+.p-datatable .p-datatable-header {
+  padding: 0;
+  border: none;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+  font-size: 15px;
+  border-bottom: 1px solid #C8C8C8;
+  color: #FFFFFF;
+  background-color: #3B82F6 !important;
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+  text-align: left;
+  padding: 0.5rem 0.5rem;
+}
+

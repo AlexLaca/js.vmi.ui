@@ -8,9 +8,9 @@
     </p-divider>
 
     <p-card>
-        <div class="col-12 mb-2">
-          <vmi-person-searcher></vmi-person-searcher>
-        </div>
+      <div class="col-12 mb-2">
+        <vmi-person-searcher></vmi-person-searcher>
+      </div>
     </p-card>
   </div>
 
@@ -66,11 +66,9 @@
 
           <div class="col-12" *ngIf="applicantStatusValue == APPLICANT_STATUS_VALUE_REPRESENTATIVE">
             <p-divider layout="horizontal"></p-divider>
-            <div class="flex justify-content-center flex-wrap card-container">
-              <vmi-extended-family-list [personObservable] = personObservable
-                                        class="flex align-items-center justify-content-center ">
-              </vmi-extended-family-list>
-            </div>
+            <vmi-extended-family-list [personObservable]=personObservable
+                                      class="flex align-items-center justify-content-center ">
+            </vmi-extended-family-list>
           </div>
         </div>
       </p-card>
