@@ -6,6 +6,7 @@ import {VmiDetailComponent} from './vmi-detail/vmi-detail.component';
 import {PersonSearcherComponent} from '../../@shared/components/person-searcher/person-searcher.component';
 import {PersonDetailComponent} from '../../@shared/components/person-detail/person-detail.component';
 import {AddressComponent} from '../../@shared/components/address/address.component';
+import {HouseholdComponent} from './household/household.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,8 @@ const routes: Routes = [
         children: [
           {path: '', component: PersonSearcherComponent},
           {path: 'applicant', component: PersonDetailComponent},
-          {path: 'address', component: AddressComponent}
+          {path: 'address', component: AddressComponent},
+          {path: 'household', component: HouseholdComponent}
         ]
       },
       {path: 'list', component: VmiListComponent},

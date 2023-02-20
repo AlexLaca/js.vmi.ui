@@ -27,6 +27,9 @@ import {MessageService} from 'primeng/api';
   providers: [
     MessageService
   ],
+  exports: [
+    ExtendedFamilyListComponent
+  ],
   entryComponents: [
     FamilyMemberFormComponent
   ]

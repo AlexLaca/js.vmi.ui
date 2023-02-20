@@ -1,0 +1,35 @@
+<p-card>
+  <div class="field grid mb-0">
+
+    <div class="col-4">
+      <div class="field grid mb-0 p-2">
+        <label class="col-8 mb-0 mr-2">Persoana singura</label>
+        <p-radioButton class="mb-0" name="groupname" value={{APPLICANT_STATUS_VALUE_SINGLE}}
+                       [(ngModel)]="applicantStatusValue"></p-radioButton>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="field grid mb-0 p-2">
+        <label class="col-8 mb-0 mr-2">Reprezentant al familiei </label>
+        <p-radioButton class="mb-0" name="groupname" value={{APPLICANT_STATUS_VALUE_REPRESENTATIVE}}
+                       [(ngModel)]="applicantStatusValue"></p-radioButton>
+      </div>
+    </div>
+
+    <div class="col-4" *ngIf="applicantStatusValue == APPLICANT_STATUS_VALUE_REPRESENTATIVE">
+      <div class="field grid mb-0">
+        <label class="col-8 mb-0">Adauga</label>
+        <button pButton type="button" (click)="onOpenFamilyMemberDialog()"
+                icon="pi pi-plus" class="p-button-rounded  h-2rem w-2rem"></button>
+      </div>
+    </div>
+
+    <div class="col-12" *ngIf="applicantStatusValue == APPLICANT_STATUS_VALUE_REPRESENTATIVE">
+
+      <vmi-extended-family-list [personObservable]=personObservable
+                                class="flex align-items-center justify-content-center ">
+      </vmi-extended-family-list>
+    </div>
+  </div>
+</p-card>

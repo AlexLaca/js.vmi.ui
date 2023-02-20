@@ -12,6 +12,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {SharedModule} from './@shared/shared-module';
 import {VmiDemandModule} from './modules/vmi/vmi-demand.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { HouseholdComponent } from './modules/vmi/household/household.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -22,6 +23,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     VmiComponent,
     VmiNavigatorComponent,
     LandingPageComponent,
+    HouseholdComponent,
   ],
   imports: [
     TranslateModule.forRoot({

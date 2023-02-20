@@ -1,36 +1,39 @@
-<p-toast></p-toast>
 <p-card>
-  <div class="col-12">
-    <p-steps
-      [model]="steps"
-      [readonly]="false"
-      [activeIndex]="activeStepIndex">
-    </p-steps>
-  </div>
+  <p-card>
+    <div class="col-12 p-0">
+      <p-steps
+        [model]="steps"
+        [readonly]="false"
+        [activeIndex]="activeStepIndex">
+      </p-steps>
+    </div>
+  </p-card>
 
-  <div class="col-12 mt-4">
+  <div class="col-12 mt-4 p-0">
     <router-outlet></router-outlet>
   </div>
 
-  <div class="col-12">
-    <div class="flex justify-content-between flex-wrap">
+  <div class="col-12 mt-4 p-0">
+    <p-card>
+      <div class="flex justify-content-between flex-wrap">
 
-      <div class="flex align-items-center justify-content-center  font-bold text-gray-900 border-round">
-        <button pButton type="button"
-                class="p-button-sm p-button-secondary h-2rem"
-                icon="pi pi-angle-left"
-                (click)="prevStep()">
-        </button>
-      </div>
+        <div class="flex align-items-center justify-content-center  font-bold text-gray-900 border-round">
+          <button pButton type="button"
+                  class="p-button-sm p-button-secondary h-2rem"
+                  icon="pi pi-angle-left"
+                  (click)="prevStep()">
+          </button>
+        </div>
 
-      <div class="flex align-items-center justify-content-center font-bold text-gray-900 border-round">
-        <button pButton type="button"
-                class="p-button-sm p-button-secondary h-2rem"
-                icon="pi pi-angle-right"
-                (click)="nextStep()">
-        </button>
+        <div class="flex align-items-center justify-content-center font-bold text-gray-900 border-round">
+          <button pButton type="button"
+                  class="p-button-sm p-button-secondary h-2rem"
+                  icon="pi pi-angle-right"
+                  (click)="nextStep()">
+          </button>
+        </div>
       </div>
-    </div>
+    </p-card>
   </div>
 </p-card>
 

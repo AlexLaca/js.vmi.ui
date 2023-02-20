@@ -17,8 +17,8 @@ export class VmiFormComponent implements OnInit {
 
   public steps: MenuItem[];
 
-  public subscriptionDS: Subscription = new Subscription();
   public activeStepIndex = 0;
+  public subscriptionDS: Subscription = new Subscription();
 
   constructor(
     private router: Router,
@@ -28,10 +28,10 @@ export class VmiFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.subscribeToDataStoreService()
-    this.subscribeToRouterEvents();
     this.initRoute();
     this.initSteps();
+    this.subscribeToRouterEvents();
+    this.subscribeToDataStoreService()
   }
 
   public onSubmit() {
@@ -41,15 +41,15 @@ export class VmiFormComponent implements OnInit {
   public nextStep() {
     switch (this.activeStepIndex) {
       case VmiFormSteps.SEARCH_APPLICANT_STEP : {
-        this.navigateTo(VmiFormSteps.APPLICANT_INFO_STEP, VmiFormPaths.APPLICANT);
+        this.navigateTo(VmiFormSteps.APPLICANT_INFO_STEP, VmiFormPaths.APPLICANT_PATH);
         break
       }
       case VmiFormSteps.APPLICANT_INFO_STEP : {
-        this.navigateTo(VmiFormSteps.ADDRESS_INFO_STEP, VmiFormPaths.ADDRESS);
+        this.navigateTo(VmiFormSteps.ADDRESS_INFO_STEP, VmiFormPaths.ADDRESS_PATH);
         break;
       }
       case VmiFormSteps.ADDRESS_INFO_STEP : {
-        this.navigateTo(VmiFormSteps.ADDRESS_INFO_STEP, VmiFormPaths.ADDRESS);
+        this.navigateTo(VmiFormSteps.ADDRESS_INFO_STEP, VmiFormPaths.ADDRESS_PATH);
         break;
       }
     }
@@ -61,11 +61,11 @@ export class VmiFormComponent implements OnInit {
         break
       }
       case VmiFormSteps.APPLICANT_INFO_STEP : {
-        this.navigateTo(VmiFormSteps.SEARCH_APPLICANT_STEP, VmiFormPaths.REQUEST);
+        this.navigateTo(VmiFormSteps.SEARCH_APPLICANT_STEP, VmiFormPaths.REQUEST_PATH);
         break;
       }
       case VmiFormSteps.ADDRESS_INFO_STEP : {
-        this.navigateTo(VmiFormSteps.APPLICANT_INFO_STEP, VmiFormPaths.APPLICANT);
+        this.navigateTo(VmiFormSteps.APPLICANT_INFO_STEP, VmiFormPaths.APPLICANT_PATH);
         break;
       }
     }
@@ -86,22 +86,20 @@ export class VmiFormComponent implements OnInit {
     this.router.events.subscribe((eventRouter) => {
       if (eventRouter instanceof NavigationEnd) {
         switch (eventRouter.url) {
-          case VmiFormPaths.REQUEST : {
+          case VmiFormPaths.REQUEST_PATH : {
             this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.SEARCH_APPLICANT_STEP);
-            this.dataStoreService.refreshDataOnAllObservers();
             break;
           }
-          case VmiFormPaths.APPLICANT : {
+          case VmiFormPaths.APPLICANT_PATH : {
             this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.APPLICANT_INFO_STEP);
-            this.dataStoreService.refreshDataOnAllObservers();
             break;
           }
-          case VmiFormPaths.ADDRESS : {
+          case VmiFormPaths.ADDRESS_PATH : {
             this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.ADDRESS_INFO_STEP);
-            this.dataStoreService.refreshDataOnAllObservers();
             break;
           }
         }
+        this.dataStoreService.refreshDataOnAllObservers();
       }
     });
   }
@@ -112,21 +110,28 @@ export class VmiFormComponent implements OnInit {
         id: VmiFormSteps.SEARCH_APPLICANT_STEP.toString(),
         label: 'Initializare crere',
         command: () => {
-          this.navigateTo(VmiFormSteps.SEARCH_APPLICANT_STEP, VmiFormPaths.REQUEST);
+          this.navigateTo(VmiFormSteps.SEARCH_APPLICANT_STEP, VmiFormPaths.REQUEST_PATH);
         }
       },
       {
         id: VmiFormSteps.APPLICANT_INFO_STEP.toString(),
         label: 'Solicitant',
         command: () => {
-          this.navigateTo(VmiFormSteps.APPLICANT_INFO_STEP, VmiFormPaths.APPLICANT);
+          this.navigateTo(VmiFormSteps.APPLICANT_INFO_STEP, VmiFormPaths.APPLICANT_PATH);
         }
       },
       {
         id: VmiFormSteps.ADDRESS_INFO_STEP.toString(),
-        label: 'Adresa corespondenta',
+        label: 'Adresa',
         command: () => {
-          this.navigateTo(VmiFormSteps.ADDRESS_INFO_STEP, VmiFormPaths.ADDRESS);
+          this.navigateTo(VmiFormSteps.ADDRESS_INFO_STEP, VmiFormPaths.ADDRESS_PATH);
+        }
+      },
+      {
+        id: VmiFormSteps.HOUSEHOLD_STEP.toString(),
+        label: 'Membrii',
+        command: () => {
+          this.navigateTo(VmiFormSteps.HOUSEHOLD_STEP, VmiFormPaths.HOUSEHOLD_PATH);
         }
       }
     ];
@@ -135,7 +140,7 @@ export class VmiFormComponent implements OnInit {
   private initRoute(): void {
     if (this.activeStepIndex === VmiFormSteps.SEARCH_APPLICANT_STEP &&
       this.dataStoreService.getDataDirectly(DataStoreObjects.VMI_ACTIVE_FORM_INDEX) !== VmiFormSteps.SEARCH_APPLICANT_STEP) {
-      this.router.navigateByUrl(VmiFormPaths.REQUEST);
+      this.router.navigateByUrl(VmiFormPaths.REQUEST_PATH);
     }
   }
 

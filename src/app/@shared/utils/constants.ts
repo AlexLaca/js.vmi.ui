@@ -10,10 +10,12 @@ export enum ActiveWorkflowIndex {
 export enum VmiFormSteps {
   SEARCH_APPLICANT_STEP = 0,
   APPLICANT_INFO_STEP = 1,
-  ADDRESS_INFO_STEP = 2
+  ADDRESS_INFO_STEP = 2,
+  HOUSEHOLD_STEP = 3,
 }
 export enum VmiFormPaths {
-  REQUEST = '/request',
-  APPLICANT = '/request/applicant',
-  ADDRESS = '/request/address',
+  REQUEST_PATH = '/request',
+  APPLICANT_PATH = '/request/applicant',
+  ADDRESS_PATH = '/request/address',
+  HOUSEHOLD_PATH = '/request/household',
 }

@@ -1,157 +1,160 @@
-<div class="grid">
-  <div class="col-12 md:py-0">
-    <div class="field grid md:mb-0">
-      <label class="md:col-2 md:mb-0 mr-2">Adresa domiciliu </label>
-      <p-checkbox name="groupname1" [(ngModel)]="homeAddressCheckbox" [binary]="true"></p-checkbox>
+<p-card>
+  <div class="grid">
+    <div class="col-12 md:py-0">
+      <div class="field grid md:mb-0">
+        <label class="md:col-2 md:mb-0 mr-2">Adresa domiciliu </label>
+        <p-checkbox name="groupname1" [(ngModel)]="homeAddressCheckbox" [binary]="true"></p-checkbox>
+      </div>
     </div>
-  </div>
-  <div class="col-4 md:py-0">
-    <div class="field grid md:mb-0">
-      <label class="md:col-6 md:mb-0" for="siruta">Siruta </label>
-      <div class="md:col-6">
-        <input pInputText
-               id="siruta"
-               type="text"
-               class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+    <div class="col-4 md:py-0">
+      <div class="field grid md:mb-0">
+        <label class="md:col-6 md:mb-0" for="siruta">Siruta </label>
+        <div class="md:col-6">
+          <input pInputText
+                 id="siruta"
+                 type="text"
+                 class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
                             border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-      </div>
-    </div>
-  </div>
-  <div class="col-4 md:py-0">
-    <div class="field grid md:mb-0">
-      <label class="md:col-6 md:mb-0" for="county">Judet </label>
-      <div class="md:col-6">
-        <input pInputText
-               id="county"
-               type="text"
-               class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                            border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-      </div>
-    </div>
-  </div>
-
-  <div class="col-4 md:py-0">
-    <div class="field grid md:mb-0">
-      <label class="md:col-6 md:mb-0" for="city">Oras/Comuna </label>
-      <div class="md:col-6">
-        <input pInputText
-               id="city"
-               type="text"
-               class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                            border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-      </div>
-    </div>
-  </div>
-
-  <div class="col-4 md:py-0">
-    <div class="field grid md:mb-0">
-      <label class="md:col-6 md:mb-0" for="village">Sat </label>
-      <div class="md:col-6">
-        <input pInputText
-               id="village"
-               type="text"
-               class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                            border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-      </div>
-    </div>
-  </div>
-
-  <div class="col-4 md:py-0">
-    <div class="field grid md:mb-0">
-      <label class="md:col-6 md:mb-0" for="street">Strada </label>
-      <div class="md:col-6">
-        <input pInputText
-               id="street"
-               type="text"
-               class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                            border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-      </div>
-    </div>
-  </div>
-
-  <div class="col-4 md:py-0">
-    <div class="field grid md:mb-0">
-      <label class="md:col-6 md:mb-0" for="streetNr">Nr </label>
-      <div class="md:col-6">
-        <input pInputText
-               id="streetNr"
-               type="text"
-               class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                            border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-      </div>
-    </div>
-  </div>
-
-  <div class="col-4 md:py-0">
-    <div class="field grid md:mb-0">
-      <div class="col-6">
-        <div class="field grid md:mb-0">
-          <label class="md:col-6 md:mb-0" for="block">Bl. </label>
-          <div class="md:col-6">
-            <input pInputText
-                   id="block"
-                   type="text"
-                   class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-          </div>
-        </div>
-      </div>
-
-      <div class="col-6 md:py-0">
-        <div class="field grid md:mb-0">
-          <label class="md:col-6 md:mb-0" for="stairs">Sc. </label>
-          <div class="md:col-6">
-            <input pInputText
-                   id="stairs"
-                   type="text"
-                   class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-          </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="col-4 md:py-0">
-    <div class="field grid md:mb-0">
-      <div class="col-6">
-        <div class="field grid md:mb-0">
-          <label class="md:col-6 md:mb-0" for="floor">Et. </label>
-          <div class="md:col-6">
-            <input pInputText
-                   id="floor"
-                   type="text"
-                   class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-          </div>
+    <div class="col-4 md:py-0">
+      <div class="field grid md:mb-0">
+        <label class="md:col-6 md:mb-0" for="county">Judet </label>
+        <div class="md:col-6">
+          <input pInputText
+                 id="county"
+                 type="text"
+                 class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                            border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
         </div>
       </div>
+    </div>
 
-      <div class="col-6 md:py-0">
-        <div class="field grid md:mb-0">
-          <label class="md:col-6 md:mb-0" for="apartment">Ap. </label>
-          <div class="md:col-6">
-            <input pInputText
-                   id="apartment"
-                   type="text"
-                   class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+    <div class="col-4 md:py-0">
+      <div class="field grid md:mb-0">
+        <label class="md:col-6 md:mb-0" for="city">Oras/Comuna </label>
+        <div class="md:col-6">
+          <input pInputText
+                 id="city"
+                 type="text"
+                 class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                            border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4 md:py-0">
+      <div class="field grid md:mb-0">
+        <label class="md:col-6 md:mb-0" for="village">Sat </label>
+        <div class="md:col-6">
+          <input pInputText
+                 id="village"
+                 type="text"
+                 class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                            border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4 md:py-0">
+      <div class="field grid md:mb-0">
+        <label class="md:col-6 md:mb-0" for="street">Strada </label>
+        <div class="md:col-6">
+          <input pInputText
+                 id="street"
+                 type="text"
+                 class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                            border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4 md:py-0">
+      <div class="field grid md:mb-0">
+        <label class="md:col-6 md:mb-0" for="streetNr">Nr </label>
+        <div class="md:col-6">
+          <input pInputText
+                 id="streetNr"
+                 type="text"
+                 class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                            border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4 md:py-0">
+      <div class="field grid md:mb-0">
+        <div class="col-6">
+          <div class="field grid md:mb-0">
+            <label class="md:col-6 md:mb-0" for="block">Bl. </label>
+            <div class="md:col-6">
+              <input pInputText
+                     id="block"
+                     type="text"
+                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
                                 border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 md:py-0">
+          <div class="field grid md:mb-0">
+            <label class="md:col-6 md:mb-0" for="stairs">Sc. </label>
+            <div class="md:col-6">
+              <input pInputText
+                     id="stairs"
+                     type="text"
+                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="col-4 md:py-0">
-    <div class="field grid md:mb-0">
-      <label class="md:col-6 md:mb-0" for="sector">Sector</label>
-      <div class="md:col-6">
-        <input pInputText
-               id="sector"
-               type="text"
-               class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+    <div class="col-4 md:py-0">
+      <div class="field grid md:mb-0">
+        <div class="col-6">
+          <div class="field grid md:mb-0">
+            <label class="md:col-6 md:mb-0" for="floor">Et. </label>
+            <div class="md:col-6">
+              <input pInputText
+                     id="floor"
+                     type="text"
+                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 md:py-0">
+          <div class="field grid md:mb-0">
+            <label class="md:col-6 md:mb-0" for="apartment">Ap. </label>
+            <div class="md:col-6">
+              <input pInputText
+                     id="apartment"
+                     type="text"
+                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4 md:py-0">
+      <div class="field grid md:mb-0">
+        <label class="md:col-6 md:mb-0" for="sector">Sector</label>
+        <div class="md:col-6">
+          <input pInputText
+                 id="sector"
+                 type="text"
+                 class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
                             border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+        </div>
       </div>
     </div>
   </div>
-</div>
+</p-card>
+
