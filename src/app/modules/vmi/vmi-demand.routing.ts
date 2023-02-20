@@ -3,12 +3,23 @@ import {RouterModule, Routes} from '@angular/router';
 import {VmiFormComponent} from './vmi-form/vmi-form.component';
 import {VmiListComponent} from './vmi-list/vmi-list.component';
 import {VmiDetailComponent} from './vmi-detail/vmi-detail.component';
+import {PersonSearcherComponent} from '../../@shared/components/person-searcher/person-searcher.component';
+import {PersonDetailComponent} from '../../@shared/components/person-detail/person-detail.component';
+import {AddressComponent} from '../../@shared/components/address/address.component';
 
 const routes: Routes = [
   {
     path: '',
     children: [
-      {path: 'request', component: VmiFormComponent},
+      {
+        path: 'request',
+        component: VmiFormComponent,
+        children: [
+          {path: '', component: PersonSearcherComponent},
+          {path: 'applicant', component: PersonDetailComponent},
+          {path: 'address', component: AddressComponent}
+        ]
+      },
       {path: 'list', component: VmiListComponent},
       {path: 'list/:serial', component: VmiDetailComponent},
     ]
@@ -18,4 +29,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class VmiDemandRouting {}
+export class VmiDemandRouting {
+}

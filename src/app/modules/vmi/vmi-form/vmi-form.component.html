@@ -1,115 +1,36 @@
+<p-toast></p-toast>
 <p-card>
-    <div class="col-12">
-      <p-divider layout="horizontal" class="md:p-0 md:m-0">
-        <div class="inline-flex align-items-center">
-          <i class="pi pi-file-import mr-2"></i>
-          <b>Initializare cerere</b>
-        </div>
-      </p-divider>
+  <div class="col-12">
+    <p-steps
+      [model]="steps"
+      [readonly]="false"
+      [activeIndex]="activeStepIndex">
+    </p-steps>
+  </div>
 
-      <p-card>
-        <div class="col-12">
-          <vmi-person-searcher></vmi-person-searcher>
-        </div>
-      </p-card>
+  <div class="col-12 mt-4">
+    <router-outlet></router-outlet>
+  </div>
+
+  <div class="col-12">
+    <div class="flex justify-content-between flex-wrap">
+
+      <div class="flex align-items-center justify-content-center  font-bold text-gray-900 border-round">
+        <button pButton type="button"
+                class="p-button-sm p-button-secondary h-2rem"
+                icon="pi pi-angle-left"
+                (click)="prevStep()">
+        </button>
+      </div>
+
+      <div class="flex align-items-center justify-content-center font-bold text-gray-900 border-round">
+        <button pButton type="button"
+                class="p-button-sm p-button-secondary h-2rem"
+                icon="pi pi-angle-right"
+                (click)="nextStep()">
+        </button>
+      </div>
     </div>
-
-    <form>
-      <div class="col-12">
-        <vmi-person-detail></vmi-person-detail>
-      </div>
-
-      <div class="col-12">
-        <p-divider layout="horizontal" class="md:p-0 md:m-0 ">
-          <div class="inline-flex align-items-center">
-            <i class="pi pi-home mr-2"></i>
-            <b>Adresa</b>
-          </div>
-        </p-divider>
-
-        <p-card>
-          <vmi-address></vmi-address>
-        </p-card>
-      </div>
-
-      <div class="col-12">
-        <p-divider layout="horizontal">
-          <div class="inline-flex align-items-center">
-            <i class="pi pi-users mr-2"></i>
-            <b>Membrii familiei</b>
-          </div>
-        </p-divider>
-
-        <p-card>
-          <div class="field grid mb-0">
-
-            <div class="col-4">
-              <div class="field grid mb-0 p-2">
-                <label class="col-8 mb-0 mr-2">Persoana singura</label>
-                <p-radioButton class="mb-0" name="groupname" value={{APPLICANT_STATUS_VALUE_SINGLE}}
-                               [(ngModel)]="applicantStatusValue"></p-radioButton>
-              </div>
-            </div>
-
-            <div class="col-4">
-              <div class="field grid mb-0 p-2">
-                <label class="col-8 mb-0 mr-2">Reprezentant al familiei </label>
-                <p-radioButton class="mb-0" name="groupname" value={{APPLICANT_STATUS_VALUE_REPRESENTATIVE}}
-                               [(ngModel)]="applicantStatusValue"></p-radioButton>
-              </div>
-            </div>
-
-            <div class="col-4" *ngIf="applicantStatusValue == APPLICANT_STATUS_VALUE_REPRESENTATIVE">
-              <div class="field grid mb-0">
-                <label class="col-8 mb-0">Adauga</label>
-                <button pButton type="button" (click)="onOpenFamilyMemberDialog()"
-                        icon="pi pi-plus" class="p-button-rounded  h-2rem w-2rem"></button>
-              </div>
-            </div>
-
-            <div class="col-12" *ngIf="applicantStatusValue == APPLICANT_STATUS_VALUE_REPRESENTATIVE">
-              <vmi-extended-family-list [personObservable]=personObservable>
-              </vmi-extended-family-list>
-            </div>
-          </div>
-        </p-card>
-      </div>
-
-      <div class="col-12 mb-2">
-        <p-divider layout="horizontal">
-          <div class="inline-flex align-items-center">
-            <i class="pi pi-money-bill mr-2"></i>
-            <b>Venit total al persoanei singure/familiei realizat în luna anterioara in lei </b>
-          </div>
-        </p-divider>
-
-        <p-card>
-          <div class="field grid col-4 mb-0 p-1">
-            <label class="col-6 mb-0" for="income">Venit total</label>
-            <div class="col-6 mb-0">
-              <input pInputTextselectedValue
-                     id="income"
-                     type="text"
-                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid border-round-xs
-                            border-bluegray-200 a outline-none focus:border-primary w-full">
-            </div>
-          </div>
-
-        </p-card>
-      </div>
-
-      <div class="col-12 mb-0">
-        <div class="flex justify-content-center flex-wrap card-container">
-          <div class="flex align-items-center justify-content-center  font-bold text-gray-900 border-round m-2">
-            <button pButton type="button" label="Renunta" class="p-button-sm p-button-secondary h-2rem"
-                    icon="pi pi-times"></button>
-          </div>
-          <div class="flex align-items-center justify-content-center font-bold text-gray-900 border-round m-2">
-            <button pButton type="button" label="Salveaza" class="p-button-sm p-button-primiry h-2rem"
-                    icon="pi pi-save"></button>
-          </div>
-        </div>
-      </div>
-    </form>
+  </div>
 </p-card>
 

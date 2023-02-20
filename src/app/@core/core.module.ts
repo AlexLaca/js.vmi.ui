@@ -6,6 +6,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
 import {ReactiveFormsModule} from '@angular/forms';
 import {TranslateModule} from '@ngx-translate/core';
+import {DataStoreService} from './data-store.service';
 
 @NgModule({
   exports: [
@@ -16,7 +17,7 @@ import {TranslateModule} from '@ngx-translate/core';
     ReactiveFormsModule,
     TranslateModule
   ],
-  providers: []
+  providers: [DataStoreService]
 })
 export class CoreModule extends CoreModuleLoader{
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

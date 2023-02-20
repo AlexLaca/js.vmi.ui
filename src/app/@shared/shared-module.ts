@@ -11,6 +11,8 @@ import {DividerModule} from 'primeng/divider';
 import {AddressComponent} from './components/address/address.component';
 import {CheckboxModule} from 'primeng/checkbox';
 import {RadioButtonModule} from 'primeng/radiobutton';
+import {MessagesModule} from 'primeng/messages';
+import {ToastModule} from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,6 @@ import {RadioButtonModule} from 'primeng/radiobutton';
     TableModule,
     CardModule,
     ButtonModule,
-
     CheckboxModule,
     RadioButtonModule,
   ],
@@ -46,6 +47,9 @@ import {RadioButtonModule} from 'primeng/radiobutton';
     AddressComponent,
     PersonSearcherComponent,
     PersonDetailComponent,
+
+    ToastModule,
+    MessagesModule
   ],
 })
 export class SharedModule {

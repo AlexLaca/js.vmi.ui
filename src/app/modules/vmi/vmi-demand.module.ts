@@ -7,6 +7,8 @@ import {ExtendedFamilyListComponent} from './extended-family/extended-family-lis
 import {DynamicDialogModule} from 'primeng/dynamicdialog';
 import {VmiListComponent} from './vmi-list/vmi-list.component';
 import {VmiDetailComponent} from './vmi-detail/vmi-detail.component';
+import {StepsModule} from 'primeng/steps';
+import {MessageService} from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -19,10 +21,12 @@ import {VmiDetailComponent} from './vmi-detail/vmi-detail.component';
   imports: [
     SharedModule,
     VmiDemandRouting,
-    DynamicDialogModule
-
+    DynamicDialogModule,
+    StepsModule
   ],
-  providers: [],
+  providers: [
+    MessageService
+  ],
   entryComponents: [
     FamilyMemberFormComponent
   ]
