@@ -50,7 +50,7 @@ export class VmiFormComponent implements OnInit {
         break;
       }
       case VmiFormSteps.HOUSEHOLD_STEP : {
-        // this.navigateTo(VmiFormSteps.ADDRESS_INFO_STEP, VmiFormPaths.ADDRESS_PATH);
+        this.navigateTo(VmiFormSteps.STATEMENT_STEP, VmiFormPaths.STATEMENT_PATH);
         break;
       }
     }
@@ -71,6 +71,10 @@ export class VmiFormComponent implements OnInit {
       }
       case VmiFormSteps.HOUSEHOLD_STEP : {
         this.navigateTo(VmiFormSteps.ADDRESS_INFO_STEP, VmiFormPaths.ADDRESS_PATH);
+        break;
+      }
+      case VmiFormSteps.STATEMENT_STEP : {
+        this.navigateTo(VmiFormSteps.HOUSEHOLD_STEP, VmiFormPaths.HOUSEHOLD_PATH);
         break;
       }
     }
@@ -107,6 +111,10 @@ export class VmiFormComponent implements OnInit {
             this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.HOUSEHOLD_STEP);
             break;
           }
+          case VmiFormPaths.STATEMENT_PATH : {
+            this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.STATEMENT_STEP);
+            break;
+          }
         }
         this.dataStoreService.refreshDataOnAllObservers();
       }
@@ -141,6 +149,13 @@ export class VmiFormComponent implements OnInit {
         label: 'Membrii',
         command: () => {
           this.navigateTo(VmiFormSteps.HOUSEHOLD_STEP, VmiFormPaths.HOUSEHOLD_PATH);
+        }
+      },
+      {
+        id: VmiFormSteps.HOUSEHOLD_STEP.toString(),
+        label: 'Declaratie',
+        command: () => {
+          this.navigateTo(VmiFormSteps.STATEMENT_STEP, VmiFormPaths.STATEMENT_PATH);
         }
       }
     ];

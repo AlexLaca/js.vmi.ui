@@ -7,6 +7,7 @@ import {PersonSearcherComponent} from '../../@shared/components/person-searcher/
 import {PersonDetailComponent} from '../../@shared/components/person-detail/person-detail.component';
 import {HouseholdComponent} from './household/household.component';
 import {AddressesComponent} from './addresses/addresses.component';
+import {StatementsComponent} from './statements/statements.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,8 @@ const routes: Routes = [
           {path: '', component: PersonSearcherComponent},
           {path: 'applicant', component: PersonDetailComponent},
           {path: 'address', component: AddressesComponent},
-          {path: 'household', component: HouseholdComponent}
+          {path: 'household', component: HouseholdComponent},
+          {path: 'statement', component: StatementsComponent}
         ]
       },
       {path: 'list', component: VmiListComponent},
