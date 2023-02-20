@@ -73,7 +73,7 @@ export class VmiFormComponent implements OnInit {
         break;
       }
       case VmiFormSteps.HOUSEHOLD_STEP : {
-        this.navigateTo(VmiFormSteps.ADDRESS_INFO_STEP, VmiFormPaths.HOUSEHOLD_PATH);
+        this.navigateTo(VmiFormSteps.ADDRESS_INFO_STEP, VmiFormPaths.ADDRESS_PATH);
         break;
       }
     }
