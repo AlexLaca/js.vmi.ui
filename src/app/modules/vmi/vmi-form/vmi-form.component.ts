@@ -1,9 +1,8 @@
-import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {DialogService, DynamicDialogConfig, DynamicDialogRef} from 'primeng/dynamicdialog';
 import {MenuItem, MessageService} from 'primeng/api';
-import {Router} from '@angular/router';
-import {ActiveWorkflowIndex, DataStoreObjects, VmiFormSteps} from '../../../@shared/utils/constants';
+import {NavigationEnd, Router} from '@angular/router';
+import {ActiveWorkflowIndex, DataStoreObjects, VmiFormPaths, VmiFormSteps} from '../../../@shared/utils/constants';
 import {DataStoreService} from '../../../@core/data-store.service';
 import {Subscription} from 'rxjs';
 
@@ -13,47 +12,26 @@ import {Subscription} from 'rxjs';
   templateUrl: './vmi-form.component.html',
   styleUrls: ['./vmi-form.component.scss'],
   encapsulation: ViewEncapsulation.None,
-
-  providers: [DialogService, DynamicDialogRef, DynamicDialogConfig]
 })
 export class VmiFormComponent implements OnInit {
 
   public steps: MenuItem[];
 
   public subscriptionDS: Subscription = new Subscription();
-
   public activeStepIndex = 0;
-  public msgs: any;
 
   constructor(
     private router: Router,
     private dataStoreService: DataStoreService,
     private messageService: MessageService,
     private translateService: TranslateService) {
-
-
   }
 
   ngOnInit(): void {
-    this.subscriptionDS = this.dataStoreService.getObservableForDataChange().subscribe((dataStoreObject: any) => {
-      if (!dataStoreObject.hasOwnProperty(DataStoreObjects.ACTIVE_WORKFLOW_INDEX)) {
-        this.dataStoreService.setData(DataStoreObjects.ACTIVE_WORKFLOW_INDEX, ActiveWorkflowIndex.VMI_REQUEST_FORM);
-      }
-      if (dataStoreObject.hasOwnProperty(DataStoreObjects.VMI_ACTIVE_FORM_INDEX)) {
-        this.activeStepIndex = dataStoreObject[DataStoreObjects.VMI_ACTIVE_FORM_INDEX];
-      }
-
-      console.log('OBJECT', dataStoreObject);
-
-      console.log('ACTIVE_WORKFLOF', dataStoreObject[DataStoreObjects.ACTIVE_WORKFLOW_INDEX]);
-      console.log('active_form_index', dataStoreObject[DataStoreObjects.VMI_ACTIVE_FORM_INDEX]);
-    });
-
+    this.subscribeToDataStoreService()
+    this.subscribeToRouterEvents();
     this.initRoute();
     this.initSteps();
-
-
-
   }
 
   public onSubmit() {
@@ -61,24 +39,18 @@ export class VmiFormComponent implements OnInit {
   }
 
   public nextStep() {
-
     switch (this.activeStepIndex) {
       case VmiFormSteps.SEARCH_APPLICANT_STEP : {
-        this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.APPLICANT_INFO_STEP);
-        this.dataStoreService.refreshDataOnAllObservers();
-        this.router.navigateByUrl('request/applicant');
+        this.navigateTo(VmiFormSteps.APPLICANT_INFO_STEP, VmiFormPaths.APPLICANT);
         break
       }
       case VmiFormSteps.APPLICANT_INFO_STEP : {
-        this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.ADDRESS_INFO_STEP);
-        this.dataStoreService.refreshDataOnAllObservers();
-        this.router.navigateByUrl('request/address');
+        this.navigateTo(VmiFormSteps.ADDRESS_INFO_STEP, VmiFormPaths.ADDRESS);
         break;
       }
       case VmiFormSteps.ADDRESS_INFO_STEP : {
-        this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.ADDRESS_INFO_STEP);
-        this.dataStoreService.refreshDataOnAllObservers();
-        this.router.navigateByUrl('request/address');
+        this.navigateTo(VmiFormSteps.ADDRESS_INFO_STEP, VmiFormPaths.ADDRESS);
+        break;
       }
     }
   }
@@ -89,17 +61,49 @@ export class VmiFormComponent implements OnInit {
         break
       }
       case VmiFormSteps.APPLICANT_INFO_STEP : {
-        this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.SEARCH_APPLICANT_STEP);
-        this.dataStoreService.refreshDataOnAllObservers();
-        this.router.navigateByUrl('request');
+        this.navigateTo(VmiFormSteps.SEARCH_APPLICANT_STEP, VmiFormPaths.REQUEST);
         break;
       }
       case VmiFormSteps.ADDRESS_INFO_STEP : {
-        this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.APPLICANT_INFO_STEP);
-        this.dataStoreService.refreshDataOnAllObservers();
-        this.router.navigateByUrl('request/applicant');
+        this.navigateTo(VmiFormSteps.APPLICANT_INFO_STEP, VmiFormPaths.APPLICANT);
+        break;
       }
     }
+  }
+
+  private subscribeToDataStoreService(): void {
+    this.subscriptionDS = this.dataStoreService.getObservableForDataChange().subscribe((dataStoreObject: any) => {
+      if (!dataStoreObject.hasOwnProperty(DataStoreObjects.ACTIVE_WORKFLOW_INDEX)) {
+        this.dataStoreService.setData(DataStoreObjects.ACTIVE_WORKFLOW_INDEX, ActiveWorkflowIndex.VMI_REQUEST_FORM);
+      }
+      if (dataStoreObject.hasOwnProperty(DataStoreObjects.VMI_ACTIVE_FORM_INDEX)) {
+        this.activeStepIndex = dataStoreObject[DataStoreObjects.VMI_ACTIVE_FORM_INDEX];
+      }
+    });
+  }
+
+  private subscribeToRouterEvents(): void {
+    this.router.events.subscribe((eventRouter) => {
+      if (eventRouter instanceof NavigationEnd) {
+        switch (eventRouter.url) {
+          case VmiFormPaths.REQUEST : {
+            this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.SEARCH_APPLICANT_STEP);
+            this.dataStoreService.refreshDataOnAllObservers();
+            break;
+          }
+          case VmiFormPaths.APPLICANT : {
+            this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.APPLICANT_INFO_STEP);
+            this.dataStoreService.refreshDataOnAllObservers();
+            break;
+          }
+          case VmiFormPaths.ADDRESS : {
+            this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.ADDRESS_INFO_STEP);
+            this.dataStoreService.refreshDataOnAllObservers();
+            break;
+          }
+        }
+      }
+    });
   }
 
   private initSteps(): void {
@@ -108,27 +112,21 @@ export class VmiFormComponent implements OnInit {
         id: VmiFormSteps.SEARCH_APPLICANT_STEP.toString(),
         label: 'Initializare crere',
         command: () => {
-          this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.SEARCH_APPLICANT_STEP);
-          this.dataStoreService.refreshDataOnAllObservers();
-          this.router.navigateByUrl('request');
+          this.navigateTo(VmiFormSteps.SEARCH_APPLICANT_STEP, VmiFormPaths.REQUEST);
         }
       },
       {
         id: VmiFormSteps.APPLICANT_INFO_STEP.toString(),
         label: 'Solicitant',
         command: () => {
-          this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.APPLICANT_INFO_STEP);
-          this.dataStoreService.refreshDataOnAllObservers();
-          this.router.navigateByUrl('request/applicant');
+          this.navigateTo(VmiFormSteps.APPLICANT_INFO_STEP, VmiFormPaths.APPLICANT);
         }
       },
       {
         id: VmiFormSteps.ADDRESS_INFO_STEP.toString(),
         label: 'Adresa corespondenta',
         command: () => {
-          this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.ADDRESS_INFO_STEP);
-          this.dataStoreService.refreshDataOnAllObservers();
-          this.router.navigateByUrl('request/address');
+          this.navigateTo(VmiFormSteps.ADDRESS_INFO_STEP, VmiFormPaths.ADDRESS);
         }
       }
     ];
@@ -137,7 +135,14 @@ export class VmiFormComponent implements OnInit {
   private initRoute(): void {
     if (this.activeStepIndex === VmiFormSteps.SEARCH_APPLICANT_STEP &&
       this.dataStoreService.getDataDirectly(DataStoreObjects.VMI_ACTIVE_FORM_INDEX) !== VmiFormSteps.SEARCH_APPLICANT_STEP) {
-      this.router.navigateByUrl('request');
+      this.router.navigateByUrl(VmiFormPaths.REQUEST);
     }
+  }
+
+  private navigateTo(index: number, url: string): void {
+    this.router.navigate([url]).then(() => {
+      this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, index);
+      this.dataStoreService.refreshDataOnAllObservers();
+    });
   }
 }

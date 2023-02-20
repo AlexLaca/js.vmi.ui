@@ -12,3 +12,8 @@ export enum VmiFormSteps {
   APPLICANT_INFO_STEP = 1,
   ADDRESS_INFO_STEP = 2
 }
+export enum VmiFormPaths {
+  REQUEST = '/request',
+  APPLICANT = '/request/applicant',
+  ADDRESS = '/request/address',
+}
