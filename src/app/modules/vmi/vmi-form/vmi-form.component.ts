@@ -49,7 +49,11 @@ export class VmiFormComponent implements OnInit {
         break;
       }
       case VmiFormSteps.ADDRESS_INFO_STEP : {
-        this.navigateTo(VmiFormSteps.ADDRESS_INFO_STEP, VmiFormPaths.ADDRESS_PATH);
+        this.navigateTo(VmiFormSteps.HOUSEHOLD_STEP, VmiFormPaths.HOUSEHOLD_PATH);
+        break;
+      }
+      case VmiFormSteps.HOUSEHOLD_STEP : {
+        // this.navigateTo(VmiFormSteps.ADDRESS_INFO_STEP, VmiFormPaths.ADDRESS_PATH);
         break;
       }
     }
@@ -66,6 +70,10 @@ export class VmiFormComponent implements OnInit {
       }
       case VmiFormSteps.ADDRESS_INFO_STEP : {
         this.navigateTo(VmiFormSteps.APPLICANT_INFO_STEP, VmiFormPaths.APPLICANT_PATH);
+        break;
+      }
+      case VmiFormSteps.HOUSEHOLD_STEP : {
+        this.navigateTo(VmiFormSteps.ADDRESS_INFO_STEP, VmiFormPaths.HOUSEHOLD_PATH);
         break;
       }
     }
@@ -96,6 +104,10 @@ export class VmiFormComponent implements OnInit {
           }
           case VmiFormPaths.ADDRESS_PATH : {
             this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.ADDRESS_INFO_STEP);
+            break;
+          }
+          case VmiFormPaths.HOUSEHOLD_PATH : {
+            this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.HOUSEHOLD_STEP);
             break;
           }
         }

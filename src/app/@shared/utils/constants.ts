@@ -17,5 +17,5 @@ export enum VmiFormPaths {
   REQUEST_PATH = '/request',
   APPLICANT_PATH = '/request/applicant',
   ADDRESS_PATH = '/request/address',
-  HOUSEHOLD_PATH = '/request/household',
+  HOUSEHOLD_PATH = '/request/household'
 }
