@@ -9,6 +9,8 @@ import {VmiListComponent} from './vmi-list/vmi-list.component';
 import {VmiDetailComponent} from './vmi-detail/vmi-detail.component';
 import {StepsModule} from 'primeng/steps';
 import {MessageService} from 'primeng/api';
+import { StatementsComponent } from './statements/statements.component';
+import { AddressesComponent } from './addresses/addresses.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import {MessageService} from 'primeng/api';
     FamilyMemberFormComponent,
     ExtendedFamilyListComponent,
     VmiDetailComponent,
+    StatementsComponent,
+    AddressesComponent,
   ],
   imports: [
     SharedModule,

@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
-import {MenuItem, MessageService} from 'primeng/api';
+import {MenuItem} from 'primeng/api';
 import {NavigationEnd, Router} from '@angular/router';
 import {ActiveWorkflowIndex, DataStoreObjects, VmiFormPaths, VmiFormSteps} from '../../../@shared/utils/constants';
 import {DataStoreService} from '../../../@core/data-store.service';
@@ -22,9 +21,7 @@ export class VmiFormComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private dataStoreService: DataStoreService,
-    private messageService: MessageService,
-    private translateService: TranslateService) {
+    private dataStoreService: DataStoreService) {
   }
 
   ngOnInit(): void {
