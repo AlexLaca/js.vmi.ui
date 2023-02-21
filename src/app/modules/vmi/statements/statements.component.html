@@ -1,7 +1,208 @@
 <p-card>
   <div class="grid">
-    <div class="col-12 md:py-0">
-      <p>Statements component works</p>
+    <div class="col-12">
+      <div class="field grid flex justify-content-between flex-wrap mb-0">
+
+        <div class="flex align-items-center justify-content-center">
+          <i class="pi pi-circle-fill mt-2 ml-1" style="color:#D8DBE4"></i>
+        </div>
+
+        <label class="col-9 mb-0 flex align-items-center justify-content-left" for="income">
+          Venitul total al persoanei singure/familiei realizat în luna anterioara in lei este de
+        </label>
+
+        <div class="col-2 mb-0 flex align-items-center justify-content-center">
+          <input pInputText
+                 id="income"
+                 type="text"
+                 class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid border-round-xs
+                            border-bluegray-200 a outline-none focus:border-primary w-full">
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-12">
+      <p-divider layout="horizontal" class="md:p-0 md:m-0"></p-divider>
+    </div>
+
+    <div class="col-12">
+      <div class="field grid flex justify-content-between flex-wrap mb-0">
+
+        <div class="flex align-items-center justify-content-center">
+          <i class="pi pi-circle-fill mt-2 ml-1" style="color:#D8DBE4"></i>
+        </div>
+
+        <label class="col-9 mb-0 flex align-items-center justify-content-left" for="income">
+          Eu și nici un alt membru al familiei mele, după caz, nu deținem nici unul dintre bunurile cuprinse în Lista
+          Bunurilor ce conduc la excluderea acordării venitului minim de incluziune.
+        </label>
+        <p-checkbox class="col-2 align-content-center align-items-center flex-wrap" name="groupname1"
+                    [binary]="true"></p-checkbox>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <p-divider layout="horizontal" class="md:p-0 md:m-0"></p-divider>
+    </div>
+
+    <div class="col-12">
+      <div class="field grid flex justify-content-between flex-wrap mb-0">
+
+        <div class="flex align-items-center justify-content-center">
+          <i class="pi pi-circle-fill mt-2 ml-1" style="color:#D8DBE4"></i>
+        </div>
+
+        <label class="col-9 mb-0 flex align-items-center justify-content-left" for="income">
+          Eu și nici un alt membru al familiei mele, după caz, nu beneficiem de această formă de ajutor și nici nu am
+          depus alte cereri în prezent.
+        </label>
+        <p-checkbox class="col-2 align-content-center align-items-center flex-wrap" name="groupname1"
+                    [binary]="true"></p-checkbox>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <p-divider layout="horizontal" class="md:p-0 md:m-0"></p-divider>
+    </div>
+
+    <div class="col-12">
+      <div class="field grid flex justify-content-between flex-wrap mb-0">
+
+        <div class="flex align-items-center justify-content-center">
+          <i class="pi pi-circle-fill mt-2 ml-1" style="color:#D8DBE4"></i>
+        </div>
+
+        <label class="col-9 mb-0 flex align-items-center justify-content-left" for="income">
+          Am fost informat despre drepturile și obligațiile prevăzute de lege, atât referitoare la mine
+        </label>
+        <p-checkbox class="col-2 align-content-center align-items-center flex-wrap" name="groupname1"
+                    [binary]="true"></p-checkbox>
+      </div>
+    </div>
+
+
+    <div class="col-12">
+      <p-divider layout="horizontal" class="md:p-0 md:m-0"></p-divider>
+    </div>
+
+    <div class="col-12">
+      <div class="field grid flex justify-content-between flex-wrap mb-0">
+
+        <div class="flex align-items-center justify-content-center">
+          <i class="pi pi-circle-fill mt-2 ml-1" style="color:#D8DBE4"></i>
+        </div>
+
+        <label class="col-9 mb-0 flex align-items-center justify-content-left" for="incomePerMounth">
+          Declar că la momentul de față nu locuim/locuim împreună cu alte persoane sau familii, iar venitul in lei/luna
+          rezultat din gospodărirea împreună este în suma de
+        </label>
+
+        <div class="col-2 mb-0 flex align-items-center justify-content-center">
+          <input pInputText
+                 id="incomePerMounth"
+                 type="text"
+                 class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid border-round-xs
+                            border-bluegray-200 a outline-none focus:border-primary w-full">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <p-divider layout="horizontal" class="md:p-0 md:m-0"></p-divider>
+    </div>
+
+    <div class="col-12">
+      <div class="field grid flex justify-content-between flex-wrap mb-0">
+
+        <div class="flex align-items-center justify-content-center">
+          <i class="pi pi-circle-fill mt-2 ml-1" style="color:#D8DBE4"></i>
+        </div>
+
+        <label class="col-9 mb-0 flex align-items-center justify-content-left" for="income">
+          Declar că la momentul de fața, dețin/nu dețin în proprietate locuința de domiciliu/reședință
+        </label>
+        <p-checkbox class="col-2 align-content-center align-items-center flex-wrap" name="groupname1"
+                    [binary]="true"></p-checkbox>
+      </div>
+    </div>
+
+
+    <div class="col-12">
+      <p-divider layout="horizontal" class="md:p-0 md:m-0"></p-divider>
+    </div>
+
+    <div class="col-12">
+      <div class="field grid flex justify-content-between flex-wrap mb-0">
+
+        <div class="flex align-items-center justify-content-center">
+          <i class="pi pi-circle-fill mt-2 ml-1" style="color:#D8DBE4"></i>
+        </div>
+
+        <label class="col-9 mb-0 flex align-items-center justify-content-left" for="income">
+          Declar ca încălzirea locuinței este realizată cu: energie termică/gaze naturale/combustibili solizi sau
+          petrolieri/energie electrică.
+        </label>
+        <p-checkbox class="col-2 align-content-center align-items-center flex-wrap" name="groupname1"
+                    [binary]="true"></p-checkbox>
+      </div>
+    </div>
+
+
+    <div class="col-12">
+      <p-divider layout="horizontal" class="md:p-0 md:m-0"></p-divider>
+    </div>
+
+    <div class="col-12">
+      <div class="field grid flex justify-content-between flex-wrap mb-0">
+
+        <div class="flex align-items-center justify-content-center">
+          <i class="pi pi-circle-fill mt-2 ml-1" style="color:#D8DBE4"></i>
+        </div>
+
+        <label class="col-9 mb-0 flex align-items-center justify-content-left" for="income">
+          Mă oblig să aduc la cunoștința autorităților, în scris și în termenul prevăzut de lege, orice modificare a
+          situațiilor mai sus menționate.
+        </label>
+        <p-checkbox class="col-2 align-content-center align-items-center flex-wrap" name="groupname1"
+                    [binary]="true"></p-checkbox>
+      </div>
     </div>
   </div>
 </p-card>
+
+
+<div class="grid mt-4 mx-2">
+  <p-card>
+    <div class="col-12">
+      <div class="field grid flex justify-content-center flex-wrap mb-0">
+        <p-checkbox class="col-2 align-content-center align-items-center flex-wrap" name="groupname1"
+                    [binary]="true">
+        </p-checkbox>
+        <label class="col-9 mb-0 flex align-items-center justify-content-left" for="income">
+          Sunt de acord cu prelucrarea datelor cu caracter personal în scopul acordării venitului minim de incluziune,
+          precum și a altor drepturi complementare acestuia, ori de natură socială, precum și prelucrarea în scop
+          statistic a acestora.
+        </label>
+      </div>
+    </div>
+  </p-card>
+</div>
+
+<div class="grid mt-4 mx-2">
+  <p-card>
+    <div class="col-12">
+      <div class="field grid flex justify-content-center flex-wrap mb-0">
+        <p-checkbox class="col-2 align-content-center align-items-center flex-wrap" name="groupname1"
+                    [binary]="true">
+
+        </p-checkbox>
+        <label class="col-9 mb-0 flex align-items-center justify-content-left" for="income">
+          Sunt de acord cu preluarea de date și informații cu privire la persoana mea și/sau a membrilor familiei pe care o reprezint, pentru acordarea venitului minim de incluziune.
+        </label>
+      </div>
+    </div>
+  </p-card>
+</div>
+
+
