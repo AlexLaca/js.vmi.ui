@@ -11,6 +11,7 @@ import {StepsModule} from 'primeng/steps';
 import {MessageService} from 'primeng/api';
 import { StatementsComponent } from './statements/statements.component';
 import { AddressesComponent } from './addresses/addresses.component';
+import { SummaryComponent } from './summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { AddressesComponent } from './addresses/addresses.component';
     VmiDetailComponent,
     StatementsComponent,
     AddressesComponent,
+    SummaryComponent,
   ],
   imports: [
     SharedModule,

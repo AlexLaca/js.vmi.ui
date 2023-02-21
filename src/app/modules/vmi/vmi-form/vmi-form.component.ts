@@ -53,6 +53,10 @@ export class VmiFormComponent implements OnInit {
         this.navigateTo(VmiFormSteps.STATEMENT_STEP, VmiFormPaths.STATEMENT_PATH);
         break;
       }
+      case VmiFormSteps.STATEMENT_STEP : {
+        this.navigateTo(VmiFormSteps.SUMMARY_STEP, VmiFormPaths.SUMMARY_PATH);
+        break;
+      }
     }
   }
 
@@ -75,6 +79,10 @@ export class VmiFormComponent implements OnInit {
       }
       case VmiFormSteps.STATEMENT_STEP : {
         this.navigateTo(VmiFormSteps.HOUSEHOLD_STEP, VmiFormPaths.HOUSEHOLD_PATH);
+        break;
+      }
+      case VmiFormSteps.SUMMARY_STEP : {
+        this.navigateTo(VmiFormSteps.STATEMENT_STEP, VmiFormPaths.STATEMENT_PATH);
         break;
       }
     }
@@ -115,6 +123,10 @@ export class VmiFormComponent implements OnInit {
             this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.STATEMENT_STEP);
             break;
           }
+          case VmiFormPaths.SUMMARY_PATH : {
+            this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.SUMMARY_STEP);
+            break;
+          }
         }
         this.dataStoreService.refreshDataOnAllObservers();
       }
@@ -152,10 +164,17 @@ export class VmiFormComponent implements OnInit {
         }
       },
       {
-        id: VmiFormSteps.HOUSEHOLD_STEP.toString(),
+        id: VmiFormSteps.STATEMENT_STEP.toString(),
         label: 'Declaratie',
         command: () => {
           this.navigateTo(VmiFormSteps.STATEMENT_STEP, VmiFormPaths.STATEMENT_PATH);
+        }
+      },
+      {
+        id: VmiFormSteps.SUMMARY_STEP.toString(),
+        label: 'Rezumat',
+        command: () => {
+          this.navigateTo(VmiFormSteps.SUMMARY_STEP, VmiFormPaths.SUMMARY_PATH);
         }
       }
     ];

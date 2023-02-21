@@ -8,6 +8,7 @@ import {PersonDetailComponent} from '../../@shared/components/person-detail/pers
 import {HouseholdComponent} from './household/household.component';
 import {AddressesComponent} from './addresses/addresses.component';
 import {StatementsComponent} from './statements/statements.component';
+import {SummaryComponent} from './summary/summary.component';
 
 const routes: Routes = [
   {
@@ -21,7 +22,8 @@ const routes: Routes = [
           {path: 'applicant', component: PersonDetailComponent},
           {path: 'address', component: AddressesComponent},
           {path: 'household', component: HouseholdComponent},
-          {path: 'statement', component: StatementsComponent}
+          {path: 'statement', component: StatementsComponent},
+          {path: 'summary', component: SummaryComponent}
         ]
       },
       {path: 'list', component: VmiListComponent},

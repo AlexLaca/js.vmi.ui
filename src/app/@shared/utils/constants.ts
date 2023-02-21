@@ -13,11 +13,13 @@ export enum VmiFormSteps {
   ADDRESS_INFO_STEP = 2,
   HOUSEHOLD_STEP = 3,
   STATEMENT_STEP = 4,
+  SUMMARY_STEP = 5,
 }
 export enum VmiFormPaths {
   REQUEST_PATH = '/request',
   APPLICANT_PATH = '/request/applicant',
   ADDRESS_PATH = '/request/address',
   HOUSEHOLD_PATH = '/request/household',
-  STATEMENT_PATH = '/request/statement'
+  STATEMENT_PATH = '/request/statement',
+  SUMMARY_PATH = '/request/summary'
 }
