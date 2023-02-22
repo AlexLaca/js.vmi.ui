@@ -1,5 +1,4 @@
 export class AddressModel {
-  country: string;
   county: string;
   city: string;
   village: string;
@@ -9,7 +8,9 @@ export class AddressModel {
   stairs: string;
   floor: string;
   apartment: string;
-  sector: Number;
-  phoneNumber: Number;
-  email: string;
+  section: Number;
+  siruta:string;
+
+  isCurrentResidence: boolean;
+  iseCurrentDomicile: boolean;
 }

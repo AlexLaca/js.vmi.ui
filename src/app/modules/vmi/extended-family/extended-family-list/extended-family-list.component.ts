@@ -16,13 +16,16 @@ export class ExtendedFamilyListComponent implements OnInit {
   public persons: Array<BasePersonModel> = [];
 
   ngOnInit(): void {
-    this.personObservable.asObservable().subscribe(value => {
+    if (this.personObservable) {
+      this.personObservable.asObservable().subscribe(value => {
 
-      if (value) {
-        this.persons.push(value);
-      }
+        if (value) {
+          this.persons.push(value);
+        }
 
-    });
+      });
+    }
+
   }
 
   onRemovePerson(index: number) {

@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {DemandModel} from '../../../@shared/models/demand.model';
+import {VmiRequestModel} from '../../../@shared/models/vmi-request.model';
 import {Router} from '@angular/router';
 
 @Component({
@@ -10,20 +10,20 @@ import {Router} from '@angular/router';
 })
 export class VmiListComponent implements OnInit {
 
-  demands: Array<DemandModel> = [];
+  demands: Array<VmiRequestModel> = [];
 
   constructor(
     private router: Router) {
   }
 
   ngOnInit(): void {
-    this.demands.push(new DemandModel(1, '124522', 'CREATA', '190030522789', 'Vrancea', '11/02/2023'));
-    this.demands.push(new DemandModel(2, '345343', 'DRAFT', '190030522789', 'Vrancea', '11/02/2023'));
-    this.demands.push(new DemandModel(3, '123424', 'CREATA', '190030522789', 'Vrancea', '11/02/2023'));
-    this.demands.push(new DemandModel(4, '124522', 'CREATA', '190030522789', 'Vrancea', '11/02/2023'));
-    this.demands.push(new DemandModel(5, '124342', 'DRAFT', '190030522789', 'Vrancea', '11/02/2023'));
-    this.demands.push(new DemandModel(6, '124522', 'CREATA', '190030522789', 'Vrancea', '11/02/2023'));
-    this.demands.push(new DemandModel(7, '465554', 'DRAFT', '190030522789', 'Vrancea', '11/02/2023'));
+    this.demands.push(new VmiRequestModel(1, '124522', 'CREATA', '190030522789', 'Vrancea', '11/02/2023'));
+    this.demands.push(new VmiRequestModel(2, '345343', 'DRAFT', '190030522789', 'Vrancea', '11/02/2023'));
+    this.demands.push(new VmiRequestModel(3, '123424', 'CREATA', '190030522789', 'Vrancea', '11/02/2023'));
+    this.demands.push(new VmiRequestModel(4, '124522', 'CREATA', '190030522789', 'Vrancea', '11/02/2023'));
+    this.demands.push(new VmiRequestModel(5, '124342', 'DRAFT', '190030522789', 'Vrancea', '11/02/2023'));
+    this.demands.push(new VmiRequestModel(6, '124522', 'CREATA', '190030522789', 'Vrancea', '11/02/2023'));
+    this.demands.push(new VmiRequestModel(7, '465554', 'DRAFT', '190030522789', 'Vrancea', '11/02/2023'));
   }
 
   public onView(serial: string) {
