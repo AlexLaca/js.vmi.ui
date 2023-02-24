@@ -2,6 +2,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {DialogService, DynamicDialogConfig, DynamicDialogRef} from 'primeng/dynamicdialog';
 import {FormControl, FormGroup} from '@angular/forms';
 import {BasePersonModel} from '../../../../@shared/models/base-person.model';
+import {IdentityDocumentModel} from '../../../../@shared/models/identity-document.model';
 
 @Component({
   selector: 'vmi-extended-family-form',
@@ -13,6 +14,7 @@ export class FamilyMemberFormComponent implements OnInit {
 
   public personFormGroup: FormGroup;
   public familyMember: BasePersonModel;
+  public identityDocument: IdentityDocumentModel;
 
   constructor(
     public dialogService: DialogService,
@@ -42,12 +44,12 @@ export class FamilyMemberFormComponent implements OnInit {
     this.familyMember.lastName = this.personFormGroup.controls['lastName'].value;
     this.familyMember.firstName = this.personFormGroup.controls['firstName'].value;
     this.familyMember.pnc = this.personFormGroup.controls['pnc'].value;
-    this.familyMember.identityDocumentType = this.personFormGroup.controls['identityDocumentType'].value;
-    this.familyMember.documentSerial = this.personFormGroup.controls['documentSerial'].value;
-    this.familyMember.documentNumber = this.personFormGroup.controls['documentNumber'].value;
-    this.familyMember.validUntil = this.personFormGroup.controls['validUntil'].value;
-    this.familyMember.issuedBy = this.personFormGroup.controls['issuedBy'].value;
-    this.familyMember.issuedDate = this.personFormGroup.controls['issuedDate'].value;
+    this.identityDocument.documentType.id = this.personFormGroup.controls['identityDocumentType'].value;
+    this.identityDocument.serial = this.personFormGroup.controls['documentSerial'].value;
+    this.identityDocument.serialNr = this.personFormGroup.controls['documentNumber'].value;
+    this.identityDocument.validUntil = this.personFormGroup.controls['validUntil'].value;
+    this.identityDocument.issuedBy = this.personFormGroup.controls['issuedBy'].value;
+    this.identityDocument.issueDate = this.personFormGroup.controls['issuedDate'].value;
 
     this.dialogRef.close(this.familyMember);
   }

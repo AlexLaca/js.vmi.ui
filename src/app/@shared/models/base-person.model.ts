@@ -5,13 +5,10 @@ export class BasePersonModel {
   firstName: string;
   pnc: string ;
 
-
-
   constructor(lastName?: string,
               firstName?: string,
               pnc?: string,
-              identityDocumentType?: IdentityDocumentModel,
-             ) {
+              identityDocumentType?: IdentityDocumentModel) {
 
   }
 }
