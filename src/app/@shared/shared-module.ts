@@ -13,6 +13,7 @@ import {CheckboxModule} from 'primeng/checkbox';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {MessagesModule} from 'primeng/messages';
 import {ToastModule} from 'primeng/toast';
+import {SearchService} from './services/search-service';
 
 @NgModule({
   declarations: [
@@ -49,8 +50,9 @@ import {ToastModule} from 'primeng/toast';
     PersonDetailComponent,
 
     ToastModule,
-    MessagesModule
+    MessagesModule,
   ],
+  providers: [SearchService]
 })
 export class SharedModule {
   constructor(private translateService: TranslateService) {

@@ -20,7 +20,11 @@
           <b>Adresa de corespondenta</b>
         </div>
       </p-divider>
-      <vmi-address></vmi-address>
+      <vmi-address
+        [readonly]="isReadonly"
+        [formGroupModel]="addressFormGroup">
+
+      </vmi-address>
     </div>
 
     <div *ngIf="!homeAddressCheckbox" class="col-12">

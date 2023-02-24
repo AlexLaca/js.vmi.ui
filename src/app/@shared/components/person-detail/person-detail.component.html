@@ -1,121 +1,131 @@
-<div class="field grid mb-0">
+<form (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+  <div class="field grid mb-0">
+    <div class="col-4">
+      <p-divider layout="horizontal" class="md:p-0 md:m-0">
+        <div class="inline-flex align-items-center">
+          <i class="pi pi-user mr-2"></i>
+          <b>Solicitant</b>
+        </div>
+      </p-divider>
 
-  <div class="col-4">
-    <p-divider layout="horizontal" class="md:p-0 md:m-0">
-      <div class="inline-flex align-items-center">
-        <i class="pi pi-user mr-2"></i>
-        <b>Solicitant</b>
-      </div>
-    </p-divider>
-
-    <p-card>
-      <div class="field grid mb-0">
-        <label class="md:col-6" for="lastName">Nume </label>
-        <div class="md:col-6">
-          <input pInputText
-                 id="lastName"
-                 type="text"
-                 class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid border-round-xs
+      <p-card>
+        <div class="field grid mb-0">
+          <label class="md:col-6" for="lastName">Nume </label>
+          <div class="md:col-6">
+            <input pInputText [readOnly]="readonly"
+                   formControlName="lastName"
+                   id="lastName"
+                   type="text"
+                   class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid border-round-xs
                         border-bluegray-200 a outline-none focus:border-primary w-full">
-        </div>
+          </div>
 
-        <label class="md:col-6 md:mb-0" for="firstName">Prenume </label>
-        <div class="md:col-6">
-          <input pInputText
-                 id="firstName"
-                 type="text"
-                 class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+          <label class="md:col-6 md:mb-0" for="firstName">Prenume </label>
+          <div class="md:col-6">
+            <input pInputText [readOnly]="readonly"
+                   formControlName="firstName"
+                   id="firstName"
+                   type="text"
+                   class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
                         border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-        </div>
+          </div>
 
-        <label class="md:col-6 md:mb-0" for="pnc">CNP </label>
-        <div class="md:col-6">
-          <input pInputText
-                 id="pnc"
-                 type="text"
-                 class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+          <label class="md:col-6 md:mb-0" for="pnc">CNP </label>
+          <div class="md:col-6">
+            <input pInputText [readOnly]="readonly"
+                   formControlName="pnc"
+                   id="pnc"
+                   type="text"
+                   class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
                           border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+          </div>
         </div>
-      </div>
-    </p-card>
-  </div>
+      </p-card>
+    </div>
 
-  <div class="col-8">
+    <div class="col-8">
 
-    <p-divider layout="horizontal" class="md:p-0 md:m-0 ">
-      <div class="inline-flex align-items-center">
-        <i class="pi pi-credit-card mr-2"></i>
-        <b>Document</b>
-      </div>
-    </p-divider>
+      <p-divider layout="horizontal" class="md:p-0 md:m-0 ">
+        <div class="inline-flex align-items-center">
+          <i class="pi pi-credit-card mr-2"></i>
+          <b>Document</b>
+        </div>
+      </p-divider>
 
-    <p-card>
-      <div class="field grid mb-0">
+      <p-card>
+        <div class="field grid mb-0">
 
-        <div class="col-6">
-          <div class="field grid mb-0">
+          <div class="col-6">
+            <div class="field grid mb-0">
 
-            <label class="md:col-6 md:mb-0" for="identityDocument">Act identitate </label>
-            <div class="md:col-6">
-              <input pInputText
-                     id="identityDocument"
-                     type="text"
-                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+              <label class="md:col-6 md:mb-0" for="documentType">Act identitate </label>
+              <div class="md:col-6">
+                <input pInputText [readOnly]="readonly"
+                       formControlName="documentType"
+                       id="documentType"
+                       type="text"
+                       class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
                                 border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+              </div>
+
+              <label class="md:col-6 md:mb-0" for="serial">Seria </label>
+              <div class="md:col-6">
+                <input pInputText [readOnly]="readonly"
+                       formControlName="serial"
+                       id="serial"
+                       type="text"
+                       class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+              </div>
+
+              <label class="md:col-6 md:mb-0" for="serialNr">Nr </label>
+              <div class="md:col-6">
+                <input pInputText [readOnly]="readonly"
+                       formControlName="serialNr"
+                       id="serialNr"
+                       type="text"
+                       class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+              </div>
             </div>
+          </div>
 
-            <label class="md:col-6 md:mb-0" for="serial">Seria </label>
-            <div class="md:col-6">
-              <input pInputText
-                     id="serial"
-                     type="text"
-                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-            </div>
+          <div class="col-6">
+            <div class="field grid mb-0">
 
-            <label class="md:col-6 md:mb-0" for="nr">Nr </label>
-            <div class="md:col-6">
-              <input pInputText
-                     id="nr"
-                     type="text"
-                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+              <label class="md:col-6 md:mb-0" for="validUntil">Valabil pana la </label>
+              <div class="md:col-6">
+                <input pInputText [readOnly]="readonly"
+                       formControlName="validUntil"
+                       id="validUntil"
+                       type="text"
+                       class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
                                 border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+              </div>
+
+              <label class="md:col-6 md:mb-0" for="issuedBy">Eliberat de </label>
+              <div class="md:col-6">
+                <input pInputText [readOnly]="readonly"
+                       formControlName="issuedBy"
+                       id="issuedBy"
+                       type="text"
+                       class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+              </div>
+
+              <label class="md:col-6 md:mb-0" for="issueDate">La data </label>
+              <div class="md:col-6">
+                <input pInputText [readOnly]="readonly"
+                       formControlName="issueDate"
+                       id="issueDate"
+                       type="text"
+                       class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+              </div>
             </div>
           </div>
         </div>
-
-        <div class="col-6">
-          <div class="field grid mb-0">
-
-            <label class="md:col-6 md:mb-0" for="validity">Valabil pana la </label>
-            <div class="md:col-6">
-              <input pInputText
-                     id="validity"
-                     type="text"
-                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-            </div>
-
-            <label class="md:col-6 md:mb-0" for="issuedBy">Eliberat de </label>
-            <div class="md:col-6">
-              <input pInputText
-                     id="issuedBy"
-                     type="text"
-                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-            </div>
-
-            <label class="md:col-6 md:mb-0" for="issueDate">La data </label>
-            <div class="md:col-6">
-              <input pInputText
-                     id="issueDate"
-                     type="text"
-                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
-                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
-            </div>
-          </div>
-        </div>
-      </div>
-    </p-card>
+      </p-card>
+    </div>
   </div>
-</div>
+</form>

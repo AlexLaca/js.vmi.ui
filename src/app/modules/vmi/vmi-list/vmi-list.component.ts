@@ -17,13 +17,7 @@ export class VmiListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.demands.push(new VmiRequestModel(1, '124522', 'CREATA', '190030522789', 'Vrancea', '11/02/2023'));
-    this.demands.push(new VmiRequestModel(2, '345343', 'DRAFT', '190030522789', 'Vrancea', '11/02/2023'));
-    this.demands.push(new VmiRequestModel(3, '123424', 'CREATA', '190030522789', 'Vrancea', '11/02/2023'));
-    this.demands.push(new VmiRequestModel(4, '124522', 'CREATA', '190030522789', 'Vrancea', '11/02/2023'));
-    this.demands.push(new VmiRequestModel(5, '124342', 'DRAFT', '190030522789', 'Vrancea', '11/02/2023'));
-    this.demands.push(new VmiRequestModel(6, '124522', 'CREATA', '190030522789', 'Vrancea', '11/02/2023'));
-    this.demands.push(new VmiRequestModel(7, '465554', 'DRAFT', '190030522789', 'Vrancea', '11/02/2023'));
+
   }
 
   public onView(serial: string) {

@@ -8,13 +8,13 @@ export class DpabdResponseModel {
   metadata: PersonMetadataModel;
   person: BasePersonModel;
   identityDocument: IdentityDocumentModel;
-  address: AddressModel;
+  addresses: Array<AddressModel>;
 
   constructor(
     metadata?: PersonMetadataModel,
     person?: BasePersonModel,
     identityDocument?: IdentityDocumentModel,
-    address?: AddressModel) {
+    addresses?: Array<AddressModel>) {
 
     if (!Util.isNullOrUndefined(metadata)) {
       this.metadata = metadata;
@@ -25,8 +25,8 @@ export class DpabdResponseModel {
     if (!Util.isNullOrUndefined(identityDocument)) {
       this.identityDocument = identityDocument;
     }
-    if (!Util.isNullOrUndefined(address)) {
-      this.address = address;
+    if (!Util.isNullOrUndefined(addresses)) {
+      this.addresses = addresses;
     }
   }
 }

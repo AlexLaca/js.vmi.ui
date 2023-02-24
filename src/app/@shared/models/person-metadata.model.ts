@@ -1,8 +1,8 @@
 import {Util} from '../utils/util.function';
 
 export class PersonMetadataModel {
-  isValid: boolean;
-  deathDate: Date;
+  public isValid: boolean;
+  public deathDate: Date;
 
   constructor(isValid?: boolean, deathDate?: Date) {
     if (!Util.isNullOrUndefined(isValid)) {
