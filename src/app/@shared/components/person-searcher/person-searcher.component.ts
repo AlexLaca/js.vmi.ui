@@ -1,7 +1,8 @@
-import {Component, EventEmitter, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {pncValidatorFn} from '../../validators/input-validator.function';
 import {SearchService} from '../../services/search-service';
+import {DataStoreService} from '../../../@core/data-store.service';
 
 @Component({
   selector: 'vmi-person-searcher',
@@ -15,8 +16,8 @@ export class PersonSearcherComponent implements OnInit {
 
   public searchEventEmitter: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private searchService: SearchService) {
-
+  constructor(private searchService: SearchService,
+              private dataStoreService: DataStoreService) {
   }
 
   ngOnInit(): void {
@@ -27,7 +28,9 @@ export class PersonSearcherComponent implements OnInit {
 
   public onSubmit() {
     this.searchService.searchPerson('1900305330228').subscribe(result => {
-      this.searchEventEmitter.emit(result);
+      if (result) {
+        this.searchEventEmitter.emit(result);
+      }
     });
   }
 }

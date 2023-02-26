@@ -12,6 +12,7 @@ import {VmiDataFormUi} from '../../../@shared/models/ui/vmi-data-form.ui';
 import {Event as NavigationEvent} from "@angular/router";
 import {filter} from 'rxjs/operators';
 import {VmiRequestModel} from '../../../@shared/models/vmi-request.model';
+import {FamilyMemberFormComponent} from '../extended-family/extended-family-form/family-member-form.component';
 
 @Component({
   selector: 'vmi-form',
@@ -102,17 +103,19 @@ export class VmiFormComponent implements OnInit {
 
   public subscribeToStepEmitter(componentRef: any) {
     if (componentRef instanceof PersonSearcherComponent) {
-      componentRef.searchEventEmitter.subscribe(response => {
-        let data = response as DpabdResponseModel;
+      if (this.activeStepIndex === VmiFormSteps.SEARCH_APPLICANT_STEP) {
+        componentRef.searchEventEmitter.subscribe(response => {
+          let data = response as DpabdResponseModel;
 
-        this.stepperForm.data = data;
-        this.stepperForm.firstStep = new VmiDataFormUi(VmiFormSteps.SEARCH_APPLICANT_STEP, 'Initializare cerere', true, true, data.person.pnc);
-        this.stepperForm.secondStep = new VmiDataFormUi(VmiFormSteps.APPLICANT_INFO_STEP, 'Solicitant', false, true, new PersonModel(data.person, data.identityDocument));
-        this.stepperForm.thirdStep = new VmiDataFormUi(VmiFormSteps.ADDRESS_INFO_STEP, 'Adresa', false, true, data.addresses);
+          this.stepperForm.data = data;
+          this.stepperForm.firstStep = new VmiDataFormUi(VmiFormSteps.SEARCH_APPLICANT_STEP, 'Initializare cerere', true, true, data.person.pnc);
+          this.stepperForm.secondStep = new VmiDataFormUi(VmiFormSteps.APPLICANT_INFO_STEP, 'Solicitant', false, true, new PersonModel(data.person, data.identityDocument));
+          this.stepperForm.thirdStep = new VmiDataFormUi(VmiFormSteps.ADDRESS_INFO_STEP, 'Adresa', false, true, data.addresses);
 
-        this.dataStoreService.setData(DataStoreObjects.VMI_REQUEST_FORM_DATA, this.stepperForm);
-        this.navigateTo(VmiFormSteps.APPLICANT_INFO_STEP, VmiFormPaths.APPLICANT_PATH);
-      });
+          this.dataStoreService.setData(DataStoreObjects.VMI_REQUEST_FORM_DATA, this.stepperForm);
+          this.navigateTo(VmiFormSteps.APPLICANT_INFO_STEP, VmiFormPaths.APPLICANT_PATH);
+        });
+      }
     }
   }
 

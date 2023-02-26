@@ -4,7 +4,6 @@ import {PersonModel} from '../../../@shared/models/person.model';
 import {BehaviorSubject} from 'rxjs';
 import {FormGroup} from '@angular/forms';
 import {FamilyMemberFormComponent} from '../extended-family/extended-family-form/family-member-form.component';
-import {BasePersonModel} from '../../../@shared/models/base-person.model';
 
 @Component({
   selector: 'vmi-household',
@@ -24,7 +23,7 @@ export class HouseholdComponent implements OnInit {
   public homeAddressCheckbox: boolean = true;
   public applicantStatusValue: string = this.APPLICANT_STATUS_VALUE_SINGLE;
 
-  public personObservable: BehaviorSubject<BasePersonModel | null> = new BehaviorSubject<BasePersonModel | null>(null);
+  public personObservable: BehaviorSubject<PersonModel | null> = new BehaviorSubject<PersonModel | null>(null);
 
   constructor( public dialogService: DialogService,
                public dialogRef: DynamicDialogRef) {
@@ -47,7 +46,7 @@ export class HouseholdComponent implements OnInit {
 
     });
 
-    this.dialogRef.onClose.subscribe((familyMember: BasePersonModel) => {
+    this.dialogRef.onClose.subscribe((familyMember: PersonModel) => {
       if (familyMember) {
         console.log("FAMILY-MEMBER-BEFORE", familyMember);
         this.personObservable.next(familyMember);

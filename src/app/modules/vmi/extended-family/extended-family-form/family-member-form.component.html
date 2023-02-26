@@ -1,27 +1,180 @@
 <div class="mt-3">
 
-    <div class="col-12">
-      <vmi-person-searcher></vmi-person-searcher>
-    </div>
-
-
-  <form (ngSubmit)="onSubmit()" [formGroup]="personFormGroup">
-    <div class="col-12">
-      <vmi-person-detail></vmi-person-detail>
-    </div>
-
-    <div class="col-12">
-      <div class="flex justify-content-center flex-wrap card-container">
-        <div class="flex align-items-center justify-content-center  font-bold text-gray-900 border-round m-2">
-          <button pButton type="button" label="Renunta" (click)="onQuit()"  class="p-button-sm p-button-secondary h-2rem"></button>
+  <div class="col-12">
+    <p-card>
+      <form (ngSubmit)="onSearch()" [formGroup]="pncFromGroup">
+        <div class="field grid flex justify-content-center mb-0">
+          <div class="flex align-items-center justify-content-center">
+            <label for="pnc" class="col-2">CNP</label>
+            <div class="p-inputgroup col-10 h-2rem">
+              <input pInputText
+                     formControlName="pnc"
+                     id="pnc"
+                     type="text"
+                     class="p-inputtext-sm
+                 text-base text-color surface-overlay border-1 border-solid
+                 border-round-xs border-bluegray-200 a outline-none focus:border-primary">
+              <button pButton type="submit" label="Cauta" class="p-button-sm flex align-items-center justify-content-center"
+                      icon="pi pi-search">
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="flex align-items-center justify-content-center font-bold text-gray-900 border-round m-2">
-          <button pButton type="submit" label="Adauga" class="p-button-sm p-button-primiry h-2rem"></button>
+      </form>
+    </p-card>
+
+  </div>
+
+
+  <div class="col-12">
+    <form (ngSubmit)="onSubmit()" [formGroup]="personFormGroup">
+      <div class="field grid mb-0">
+        <div class="col-4">
+          <p-divider layout="horizontal" class="md:p-0 md:m-0">
+            <div class="inline-flex align-items-center">
+              <i class="pi pi-user mr-2"></i>
+              <b>Solicitant</b>
+            </div>
+          </p-divider>
+
+          <p-card>
+            <div class="field grid mb-0">
+              <label class="md:col-6" for="lastName">Nume </label>
+              <div class="md:col-6">
+                <input pInputText [readOnly]="readonly"
+                       formControlName="lastName"
+                       id="lastName"
+                       type="text"
+                       class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid border-round-xs
+                        border-bluegray-200 a outline-none focus:border-primary w-full">
+              </div>
+
+              <label class="md:col-6 md:mb-0" for="firstName">Prenume </label>
+              <div class="md:col-6">
+                <input pInputText [readOnly]="readonly"
+                       formControlName="firstName"
+                       id="firstName"
+                       type="text"
+                       class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                        border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+              </div>
+
+              <label class="md:col-6 md:mb-0" for="personPnc">CNP </label>
+              <div class="md:col-6">
+                <input pInputText [readOnly]="readonly"
+                       formControlName="personPnc"
+                       id="personPnc"
+                       type="text"
+                       class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                          border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+              </div>
+            </div>
+          </p-card>
+        </div>
+
+        <div class="col-8">
+
+          <p-divider layout="horizontal" class="md:p-0 md:m-0 ">
+            <div class="inline-flex align-items-center">
+              <i class="pi pi-credit-card mr-2"></i>
+              <b>Document</b>
+            </div>
+          </p-divider>
+
+          <p-card>
+            <div class="field grid mb-0">
+
+              <div class="col-6">
+                <div class="field grid mb-0">
+
+                  <label class="md:col-6 md:mb-0" for="documentType">Act identitate </label>
+                  <div class="md:col-6">
+                    <input pInputText [readOnly]="readonly"
+                           formControlName="documentType"
+                           id="documentType"
+                           type="text"
+                           class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+                  </div>
+
+                  <label class="md:col-6 md:mb-0" for="serial">Seria </label>
+                  <div class="md:col-6">
+                    <input pInputText [readOnly]="readonly"
+                           formControlName="serial"
+                           id="serial"
+                           type="text"
+                           class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+                  </div>
+
+                  <label class="md:col-6 md:mb-0" for="serialNr">Nr </label>
+                  <div class="md:col-6">
+                    <input pInputText [readOnly]="readonly"
+                           formControlName="serialNr"
+                           id="serialNr"
+                           type="text"
+                           class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="field grid mb-0">
+
+                  <label class="md:col-6 md:mb-0" for="validUntil">Valabil pana la </label>
+                  <div class="md:col-6">
+                    <input pInputText [readOnly]="readonly"
+                           formControlName="validUntil"
+                           id="validUntil"
+                           type="text"
+                           class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+                  </div>
+
+                  <label class="md:col-6 md:mb-0" for="issuedBy">Eliberat de </label>
+                  <div class="md:col-6">
+                    <input pInputText [readOnly]="readonly"
+                           formControlName="issuedBy"
+                           id="issuedBy"
+                           type="text"
+                           class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+                  </div>
+
+                  <label class="md:col-6 md:mb-0" for="issueDate">La data </label>
+                  <div class="md:col-6">
+                    <input pInputText [readOnly]="readonly"
+                           formControlName="issueDate"
+                           id="issueDate"
+                           type="text"
+                           class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </p-card>
         </div>
       </div>
-    </div>
-  </form>
+    </form>
 
+  </div>
+
+  <div class="col-12">
+    <div class="flex justify-content-center flex-wrap card-container">
+      <div class="flex align-items-center justify-content-center  font-bold text-gray-900 border-round m-2">
+        <button pButton type="button" label="Renunta" (click)="onQuit()"
+                class="p-button-sm p-button-secondary h-2rem">
+        </button>
+      </div>
+      <div class="flex align-items-center justify-content-center font-bold text-gray-900 border-round m-2">
+        <button pButton type="submit" label="Adauga" (click)="onSubmit()"
+                class="p-button-sm p-button-primiry h-2rem">
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 
 

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {BasePersonModel} from '../../../../@shared/models/base-person.model';
 import {BehaviorSubject} from 'rxjs';
+import {PersonModel} from '../../../../@shared/models/person.model';
 
 
 @Component({
@@ -11,24 +11,23 @@ import {BehaviorSubject} from 'rxjs';
 })
 export class ExtendedFamilyListComponent implements OnInit {
 
-  @Input() public personObservable: BehaviorSubject<BasePersonModel | null>;
+  @Input() public personObservable: BehaviorSubject<PersonModel | null>;
 
-  public persons: Array<BasePersonModel> = [];
+  public values: Array<PersonModel> = [];
 
   ngOnInit(): void {
     if (this.personObservable) {
       this.personObservable.asObservable().subscribe(value => {
 
         if (value) {
-          this.persons.push(value);
+          this.values.push(value);
         }
-
       });
     }
 
   }
 
   onRemovePerson(index: number) {
-    this.persons.splice(index, 1);
+    this.values.splice(index, 1);
   }
 }

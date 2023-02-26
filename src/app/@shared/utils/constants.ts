@@ -1,12 +1,16 @@
 export enum DataStoreObjects {
   ACTIVE_WORKFLOW_INDEX = 'active_workflow_index',
   VMI_ACTIVE_FORM_INDEX = 'active_form_index',
-  VMI_REQUEST_FORM_DATA = 'request_form_data'
+  VMI_REQUEST_FORM_DATA = 'request_form_data',
 }
 export enum ActiveWorkflowIndex {
   VMI_LANDING_PAGE = 0,
   VMI_REQUEST_FORM = 1,
   VMI_REQUEST_LIST = 2
+}
+export enum VmiEvents {
+  VMI_FORM_APPLICANT_SEARCHED = 0,
+  VMI_FORM_MEMBER_SEARCHED = 1
 }
 export enum VmiFormSteps {
   SEARCH_APPLICANT_STEP = 0,

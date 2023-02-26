@@ -1,8 +1,14 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, Inject, LOCALE_ID, OnInit, ViewEncapsulation} from '@angular/core';
 import {DialogService, DynamicDialogConfig, DynamicDialogRef} from 'primeng/dynamicdialog';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {BasePersonModel} from '../../../../@shared/models/base-person.model';
 import {IdentityDocumentModel} from '../../../../@shared/models/identity-document.model';
+import {pncValidatorFn} from '../../../../@shared/validators/input-validator.function';
+import {SearchService} from '../../../../@shared/services/search-service';
+import {DpabdResponseModel} from '../../../../@shared/models/dpabd-response.model';
+import {PersonModel} from '../../../../@shared/models/person.model';
+import {DictionaryModel} from '../../../../@shared/models/dictionary.model';
+import {formatDate} from '@angular/common';
 
 @Component({
   selector: 'vmi-extended-family-form',
@@ -12,46 +18,78 @@ import {IdentityDocumentModel} from '../../../../@shared/models/identity-documen
 })
 export class FamilyMemberFormComponent implements OnInit {
 
+  public readonly: boolean = true;
+
+  public pncFromGroup: FormGroup;
   public personFormGroup: FormGroup;
-  public familyMember: BasePersonModel;
+
+  public familyMember: PersonModel;
   public identityDocument: IdentityDocumentModel;
 
   constructor(
     public dialogService: DialogService,
     public dialogRef: DynamicDialogRef,
-    public dialogConfig: DynamicDialogConfig) {
+    public dialogConfig: DynamicDialogConfig,
+    private searchService: SearchService,
+    @Inject(LOCALE_ID) private locale: string) {
   }
 
   ngOnInit(): void {
 
+    this.pncFromGroup = new FormGroup({
+      pnc: new FormControl('', [pncValidatorFn()]),
+    });
+
     this.personFormGroup = new FormGroup({
-      lastName: new FormControl('', []),
-      firstName: new FormControl('', []),
-      pnc: new FormControl('', []),
-      identityDocumentType: new FormControl('', []),
-      documentSerial: new FormControl('', []),
-      documentNumber: new FormControl('', []),
-      validUntil: new FormControl('', []),
-      issuedBy: new FormControl('', []),
-      issuedDate: new FormControl('', []),
-      citizenship: new FormControl('', []),
+      personPnc: new FormControl('', [Validators.required]),
+      lastName: new FormControl(''),
+      firstName: new FormControl(''),
+      serial: new FormControl(''),
+      serialNr: new FormControl(''),
+      issuedBy: new FormControl(''),
+      documentType: new FormControl(''),
+      validUntil: new FormControl(''),
+      issueDate: new FormControl(''),
+    });
+  }
+
+  public onSearch() {
+    this.searchService.searchPerson(this.pncFromGroup.controls['pnc'].value).subscribe(response => {
+      if (response) {
+        let data = response as DpabdResponseModel;
+        this.personFormGroup.controls['personPnc'].setValue(data.person.pnc);
+        this.personFormGroup.controls['lastName'].setValue(data.person.lastName);
+        this.personFormGroup.controls['firstName'].setValue(data.person.firstName);
+        this.personFormGroup.controls['serial'].setValue(data.identityDocument.serial);
+        this.personFormGroup.controls['serialNr'].setValue(data.identityDocument.serialNr);
+        this.personFormGroup.controls['issuedBy'].setValue(data.identityDocument.issuedBy);
+        this.personFormGroup.controls['documentType'].setValue(data.identityDocument.documentType.value);
+        this.personFormGroup.controls['validUntil'].setValue(data.identityDocument.validUntil);
+        this.personFormGroup.controls['issueDate'].setValue(data.identityDocument.issueDate);
+      }
     });
   }
 
   public onSubmit() {
-    this.familyMember = new BasePersonModel();
+    if (this.personFormGroup.valid) {
+      let controls = this.personFormGroup.controls;
 
-    this.familyMember.lastName = this.personFormGroup.controls['lastName'].value;
-    this.familyMember.firstName = this.personFormGroup.controls['firstName'].value;
-    this.familyMember.pnc = this.personFormGroup.controls['pnc'].value;
-    this.identityDocument.documentType.id = this.personFormGroup.controls['identityDocumentType'].value;
-    this.identityDocument.serial = this.personFormGroup.controls['documentSerial'].value;
-    this.identityDocument.serialNr = this.personFormGroup.controls['documentNumber'].value;
-    this.identityDocument.validUntil = this.personFormGroup.controls['validUntil'].value;
-    this.identityDocument.issuedBy = this.personFormGroup.controls['issuedBy'].value;
-    this.identityDocument.issueDate = this.personFormGroup.controls['issuedDate'].value;
+      this.familyMember = new PersonModel(
+        new BasePersonModel(
+          controls['lastName'].value,
+          controls['firstName'].value,
+          controls['personPnc'].value),
 
-    this.dialogRef.close(this.familyMember);
+        new IdentityDocumentModel(
+          new DictionaryModel(1, controls['lastName'].value),
+          controls['serial'].value,
+          controls['serialNr'].value,
+          controls['issuedBy'].value,
+          controls['issueDate'].value,
+          controls['validUntil'].value)
+      );
+      this.dialogRef.close(this.familyMember);
+    }
   }
 
   public onQuit() {

@@ -1,5 +1,5 @@
 <div class="col-12">
-  <p-table [value]="persons"
+  <p-table [value]="values"
            responsiveLayout="stack"
            [responsive]="true">
     <ng-template pTemplate="header">
@@ -13,14 +13,14 @@
         <th></th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-person let-rowIndex="rowIndex">
+    <ng-template pTemplate="body" let-value let-rowIndex="rowIndex">
       <tr>
-        <td>{{person.lastName}}</td>
-        <td>{{person.firstName}}</td>
-        <td>{{person.pnc}}</td>
-        <td>{{person.identityDocumentType}}</td>
-        <td>{{person.documentSerial}}</td>
-        <td>{{person.documentNumber}}</td>
+        <td>{{value.person.lastName}}</td>
+        <td>{{value.person.firstName}}</td>
+        <td>{{value.person.pnc}}</td>
+        <td>{{value.identityDocument.documentType.value}}</td>
+        <td>{{value.identityDocument.serial}}</td>
+        <td>{{value.identityDocument.serialNr}}</td>
         <td (click)="onRemovePerson(rowIndex)">
           <div>
             <i class="pi pi-minus" style="font-size: 1rem; color:red"></i>

@@ -22,7 +22,7 @@ export class AddressesComponent implements OnInit {
   public homeAddressCheckbox: boolean = true;
   public residenceAddressCheckbox: boolean = true;
 
-  constructor( private dataStoreService: DataStoreService) {
+  constructor(private dataStoreService: DataStoreService) {
   }
 
   ngOnInit(): void {
