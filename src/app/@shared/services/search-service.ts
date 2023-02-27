@@ -30,7 +30,7 @@ export class SearchService {
     let url = 'http://localhost:5000/api/Persons/getpersonbycnp/';
     let paramUrl = url + pnc;
 
-    return this.httpClient.get<DpabdResponseModel>(paramUrl);
+    return this.httpClient.get<DpabdResponseModel>(paramUrl, this.httpClientOptions);
 
     // let metadata: PersonMetadataModel = new PersonMetadataModel(true, new Date());
     //
