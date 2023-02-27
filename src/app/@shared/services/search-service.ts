@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {DpabdResponseModel} from '../models/dpabd-response.model';
 import {Observable} from 'rxjs';
 import {of} from 'rxjs';
@@ -27,9 +27,12 @@ export class SearchService {
 
   public searchPerson(pnc: string): Observable<DpabdResponseModel> {
 
-    let url = 'http://localhost:5000/api/Persons/getpersonbycnp?CNP=';
-    let paramurl= url + pnc;
-    return this.httpClient.get<DpabdResponseModel>(paramurl, this.httpClientOptions);
+    let url = 'http://localhost:5000/api/Persons/getpersonbycnp';
+
+    let queryParams = new HttpParams();
+    queryParams.append('CNP', pnc);
+
+    return this.httpClient.get<DpabdResponseModel>(url, {params: queryParams});
 
     // let metadata: PersonMetadataModel = new PersonMetadataModel(true, new Date());
     //
