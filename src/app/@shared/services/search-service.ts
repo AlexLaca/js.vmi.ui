@@ -27,7 +27,7 @@ export class SearchService {
 
   public searchPerson(pnc: string): Observable<DpabdResponseModel> {
 
-    let url = 'http://localhost:5000/api/Persons/getpersonbycnp';
+    let url = 'http://vmi.edumax.ro/api/Persons/getpersonbycnp';
 
     let queryParams = new HttpParams().set("CNP", pnc);
     console.log('QUERY_PARAMS', queryParams);
