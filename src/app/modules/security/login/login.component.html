@@ -1,0 +1,36 @@
+<p-toast></p-toast>
+
+<form (ngSubmit)="onConnect()" [formGroup]="formGroup">
+  <div class="flex flex-wrap align-items-center justify-content-center card-container blue-container">
+    <div class="border-round bg-blue-100 w-auto h-full p-3 m-3 " >
+      <p-card>
+        <div class="px-8 py-3">
+          <div class="field">
+            <h4 class="mb-2">Utilizator</h4>
+            <input
+              formControlName="user"
+              id="user"
+              type="text"
+              pInputText
+              class="p-inputtext-sm w-full">
+          </div>
+
+          <div class="field">
+            <h4 class="mb-2">Parola</h4>
+            <p-password formControlName="password"
+              inputId="password" [(ngModel)]="value1" [feedback]="false" [toggleMask]="true"
+                        class="p-inputtext-sm">
+            </p-password>
+          </div>
+        </div>
+
+        <div class="field mt-3">
+          <button pButton type="submit" label="Conectare" class="p-button-sm flex mx-auto ">
+          </button>
+        </div>
+      </p-card>
+    </div>
+  </div>
+</form>
+
+

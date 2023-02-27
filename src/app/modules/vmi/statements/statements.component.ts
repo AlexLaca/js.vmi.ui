@@ -1,4 +1,5 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'vmi-statements',
@@ -6,6 +7,18 @@ import {Component, ViewEncapsulation} from '@angular/core';
   styleUrls: ['./statements.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class StatementsComponent {
+export class StatementsComponent implements OnInit {
+  public formGroup:FormGroup;
+
+  constructor() {
+  }
+
+  ngOnInit(): void {
+
+  }
+
+  public onSubmit() {
+
+  }
 
 }

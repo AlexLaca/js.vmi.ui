@@ -12,7 +12,6 @@ import {VmiDataFormUi} from '../../../@shared/models/ui/vmi-data-form.ui';
 import {Event as NavigationEvent} from "@angular/router";
 import {filter} from 'rxjs/operators';
 import {VmiRequestModel} from '../../../@shared/models/vmi-request.model';
-import {FamilyMemberFormComponent} from '../extended-family/extended-family-form/family-member-form.component';
 
 @Component({
   selector: 'vmi-form',

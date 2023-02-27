@@ -13,6 +13,8 @@ import {SharedModule} from './@shared/shared-module';
 import {VmiDemandModule} from './modules/vmi/vmi-demand.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { HouseholdComponent } from './modules/vmi/household/household.component';
+import {SecurityModule} from './modules/security/security.module';
+import {SecurityRoutingModule} from './modules/security/security-routing.module';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -35,8 +37,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     }),
     CoreModule,
     SharedModule,
-    VmiRoutingModule,
     VmiDemandModule,
+    SecurityModule,
+
     MenubarModule,
     InputTextModule,
     ButtonModule

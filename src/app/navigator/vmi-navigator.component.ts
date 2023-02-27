@@ -5,6 +5,9 @@ import {ActiveWorkflowIndex, DataStoreObjects} from '../@shared/utils/constants'
 import {DataStoreService} from '../@core/data-store.service';
 import {Router} from '@angular/router';
 
+import {filter, map} from 'rxjs/operators';
+import {fromEvent} from 'rxjs';
+
 @Component({
   selector: 'vmi-navigator',
   templateUrl: './vmi-navigator.component.html',
@@ -13,11 +16,28 @@ import {Router} from '@angular/router';
 export class VmiNavigatorComponent implements OnInit {
 
   items: MenuItem[] = [];
+  public showNavigator: boolean = false;
 
   constructor(
     private router: Router,
     private dataStoreService: DataStoreService,
     private translateService: TranslateService) {
+
+    var observable = fromEvent<StorageEvent>(window, 'localStorage').pipe(
+      // filter(event => event.storageArea === localStorage),
+      // filter(event => event.key === 'user'),
+      map(event => event.newValue));
+
+
+
+    observable.subscribe(value => {
+      console.log('SUBSCRIBE FROM EVENT STORAGE', value);
+    })
+
+    if (localStorage.getItem('user')) {
+      console.log(' STORAGE', localStorage.getItem('user'));
+    }
+
   }
 
   ngOnInit(): void {
@@ -38,7 +58,7 @@ export class VmiNavigatorComponent implements OnInit {
           icon: PrimeIcons.FILE,
           command: () => {
             /*this.dataStoreService.setData(DataStoreObjects.ACTIVE_WORKFLOW_INDEX, ActiveWorkflowIndex.VMI_REQUEST_FORM);*/
-            this.router.navigateByUrl('vmi/request');
+            this.router.navigateByUrl('/request');
           }
         },
         {
@@ -47,7 +67,7 @@ export class VmiNavigatorComponent implements OnInit {
           icon: PrimeIcons.BOOK,
           command: () => {
             this.dataStoreService.setData(DataStoreObjects.ACTIVE_WORKFLOW_INDEX, ActiveWorkflowIndex.VMI_REQUEST_LIST);
-            this.router.navigateByUrl('vmi/list');
+            this.router.navigateByUrl('/list');
           },
         }
       ];

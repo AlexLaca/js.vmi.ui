@@ -2,6 +2,7 @@ export enum DataStoreObjects {
   ACTIVE_WORKFLOW_INDEX = 'active_workflow_index',
   VMI_ACTIVE_FORM_INDEX = 'active_form_index',
   VMI_REQUEST_FORM_DATA = 'request_form_data',
+  VMI_USER = 'vmi_user',
 }
 export enum ActiveWorkflowIndex {
   VMI_LANDING_PAGE = 0,
