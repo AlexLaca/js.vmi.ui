@@ -17,16 +17,25 @@ export class VmiComponent implements OnInit {
     private router: Router,
     private dataStoreService: DataStoreService) {
 
+
     this.dataStoreService.getObservableForDataChange().subscribe(value => {
       if (this.dataStoreService.getDataDirectly(DataStoreObjects.VMI_USER)) {
         this.showNavigator = true;
       }
     });
+
   }
 
   ngOnInit(): void {
     console.log("INIT APP", window.sessionStorage.getItem('vmiApp'));
-    if(window.sessionStorage.getItem('vmiApp') === null) {
+    console.log("SHOW_NAVIGATOR", this.showNavigator);
+    if (this.dataStoreService.getDataDirectly(DataStoreObjects.VMI_USER)) {
+      this.showNavigator = true;
+    }
+    if (window.sessionStorage.getItem('vmiApp') !== null) {
+      this.showNavigator = true;
+    }
+    if (window.sessionStorage.getItem('vmiApp') === null) {
       this.router.navigateByUrl('/login');
     }
   }
