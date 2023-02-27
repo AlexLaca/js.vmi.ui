@@ -28,9 +28,8 @@ export class SearchService {
   public searchPerson(pnc: string): Observable<DpabdResponseModel> {
 
     let url = 'http://localhost:5000/api/Persons/getpersonbycnp?CNP=';
-    let paramurl= url + pnc
-
-    return this.httpClient.post<DpabdResponseModel>(paramurl, pnc, this.httpClientOptions);
+    let paramurl= url + pnc;
+    return this.httpClient.get<DpabdResponseModel>(paramurl, this.httpClientOptions);
 
     // let metadata: PersonMetadataModel = new PersonMetadataModel(true, new Date());
     //
