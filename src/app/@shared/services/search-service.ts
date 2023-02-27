@@ -29,8 +29,8 @@ export class SearchService {
 
     let url = 'http://localhost:5000/api/Persons/getpersonbycnp';
 
-    let queryParams = new HttpParams();
-    queryParams.append('CNP', pnc);
+    let queryParams = new HttpParams().set("CNP", pnc);
+    console.log('QUERY_PARAMS', queryParams);
 
     return this.httpClient.get<DpabdResponseModel>(url, {params: queryParams});
 
