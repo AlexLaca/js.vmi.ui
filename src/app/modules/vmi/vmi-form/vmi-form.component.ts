@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges, ViewEncapsulation} from '@angular/core';
 import {MenuItem} from 'primeng/api';
 import {ActivatedRoute, NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {ActiveWorkflowIndex, DataStoreObjects, VmiFormPaths, VmiFormSteps} from '../../../@shared/utils/constants';
@@ -19,12 +19,14 @@ import {VmiRequestModel} from '../../../@shared/models/vmi-request.model';
   styleUrls: ['./vmi-form.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class VmiFormComponent implements OnInit {
+export class VmiFormComponent implements OnInit, OnChanges {
 
   public steps: MenuItem[];
   public activeStepIndex = 0;
   public vmiRequest: VmiRequestModel;
   public stepperForm: VmiStepperFormUi;
+
+  public showSubmitButton: boolean = false;
 
   public subscriptionDS: Subscription = new Subscription();
 
@@ -35,12 +37,18 @@ export class VmiFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.initRoute();
     this.initSteps();
     this.subscribeToRouterEvents();
     this.subscribeToDataStoreService();
 
     this.stepperForm = new VmiStepperFormUi();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log("ON CHANGE", changes);
+
   }
 
   public onSubmit() {
@@ -51,7 +59,7 @@ export class VmiFormComponent implements OnInit {
     switch (this.activeStepIndex) {
       case VmiFormSteps.SEARCH_APPLICANT_STEP : {
         this.navigateTo(VmiFormSteps.APPLICANT_INFO_STEP, VmiFormPaths.APPLICANT_PATH);
-        break
+        break;
       }
       case VmiFormSteps.APPLICANT_INFO_STEP : {
         this.navigateTo(VmiFormSteps.ADDRESS_INFO_STEP, VmiFormPaths.ADDRESS_PATH);
@@ -62,6 +70,7 @@ export class VmiFormComponent implements OnInit {
         break;
       }
       case VmiFormSteps.HOUSEHOLD_STEP : {
+        this.showSubmitButton = true;
         this.navigateTo(VmiFormSteps.STATEMENT_STEP, VmiFormPaths.STATEMENT_PATH);
         break;
       }
@@ -125,6 +134,9 @@ export class VmiFormComponent implements OnInit {
       }
       if (dataStoreObject.hasOwnProperty(DataStoreObjects.VMI_ACTIVE_FORM_INDEX)) {
         this.activeStepIndex = dataStoreObject[DataStoreObjects.VMI_ACTIVE_FORM_INDEX];
+      }
+      if (this.activeStepIndex === VmiFormSteps.HOUSEHOLD_STEP) {
+        this.showSubmitButton = true;
       }
     });
   }
@@ -224,9 +236,10 @@ export class VmiFormComponent implements OnInit {
   }
 
   private navigateTo(index: number, url: string): void {
-    this.router.navigate([url]).then(() => {
-      this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, index);
-      this.dataStoreService.refreshDataOnAllObservers();
-    });
+    this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, index);
+    this.dataStoreService.refreshDataOnAllObservers();
+    this.router.navigateByUrl(url);
   }
+
+
 }

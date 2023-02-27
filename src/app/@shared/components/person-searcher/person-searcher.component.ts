@@ -28,6 +28,7 @@ export class PersonSearcherComponent implements OnInit {
 
   public onSubmit() {
     this.searchService.searchPerson('1900305330228').subscribe(result => {
+      console.log('RESPONSE FROM SERVER', result);
       if (result) {
         this.searchEventEmitter.emit(result);
       }

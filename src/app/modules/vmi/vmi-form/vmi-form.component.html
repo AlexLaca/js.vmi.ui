@@ -26,6 +26,16 @@
           </button>
         </div>
 
+        <div *ngIf="showSubmitButton"
+          class="flex align-items-center justify-content-center font-bold text-gray-900 border-round">
+          <button
+            pButton type="button"
+            label="Salveaza"
+            class="p-button-sm p-button-info h-2rem"
+            (click)="onSubmit()">
+          </button>
+        </div>
+
         <div class="flex align-items-center justify-content-center font-bold text-gray-900 border-round">
           <button
                   pButton type="button"
