@@ -1,0 +1,30 @@
+<vmi-person [showCitizenship]="true"></vmi-person>
+
+<div class="col-12 p-0 mb-0">
+  <p-divider layout="horizontal">
+    <div class="inline-flex align-items-center">
+      <i class="pi pi-home mr-1" style="color:#64748B"></i>
+      <b>Domiciliu/Date de contact</b>
+      <label class="ml-5 mr-4">Adresa de resedinta </label>
+      <p-checkbox name="groupname1"
+                  [(ngModel)]="residenceAddressCheckbox"
+                  [binary]="true">
+      </p-checkbox>
+    </div>
+  </p-divider>
+  <vmi-address></vmi-address>
+</div>
+
+<div  class="col-12 p-0 mb-0" *ngIf="!residenceAddressCheckbox">
+  <p-divider layout="horizontal">
+    <div class="inline-flex align-items-center">
+      <i class="pi pi-info-circle mr-1" style="color:#64748B"></i>
+      <b>Resedinta</b>
+    </div>
+  </p-divider>
+  <vmi-address></vmi-address>
+</div>
+
+
+
+

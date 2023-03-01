@@ -1,10 +1,11 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="formGroupModel">
 <p-card>
-  <form (ngSubmit)="onSubmit()" [formGroup]="formGroupModel">
-    <div class="grid">
-      <div class="col-4 mb-0">
+
+    <div class="field grid mb-0">
+      <div class="col-4">
         <div class="field grid mb-0">
-          <label class="col-6 " for="county">Judet </label>
-          <div class="col-6">
+          <label class="col-6 mb-2" for="county">Judet </label>
+          <div class="col-6 mb-2">
             <input pInputText
                    formControlName="county"
                    id="county"
@@ -14,10 +15,10 @@
           </div>
         </div>
       </div>
-      <div class="col-4 mb-0">
+      <div class="col-4 ">
         <div class="field grid mb-0">
-          <label class="col-6 mb-0" for="city">Oras/Comuna </label>
-          <div class="col-6">
+          <label class="col-6 mb-2" for="city">Oras/Comuna </label>
+          <div class="col-6 mb-2m">
             <input pInputText
                    formControlName="city"
                    id="city"
@@ -28,10 +29,10 @@
         </div>
       </div>
 
-      <div class="col-4 mb-0">
+      <div class="col-4">
         <div class="field grid mb-0">
-          <label class="col-6" for="village">Sat </label>
-          <div class="col-6">
+          <label class="col-6 mb-2" for="village">Sat </label>
+          <div class="col-6 ">
             <input pInputText
                    formControlName="village"
                    id="village"
@@ -42,10 +43,10 @@
         </div>
       </div>
 
-      <div class="col-4 mb-0">
+      <div class="col-4 ">
         <div class="field grid mb-0">
-          <label class="col-6" for="street">Strada </label>
-          <div class="col-6">
+          <label class="col-6 mb-2" for="street">Strada </label>
+          <div class="col-6 mb-2">
             <input pInputText
                    formControlName="street"
                    id="street"
@@ -56,10 +57,10 @@
         </div>
       </div>
 
-      <div class="col-4 mb-0">
+      <div class="col-4 ">
         <div class="field grid mb-0">
-          <label class="col-6" for="streetNr">Nr </label>
-          <div class="col-6">
+          <label class="col-6 mb-2" for="streetNr">Nr </label>
+          <div class="col-6 mb-2">
             <input pInputText
                    formControlName="streetNr"
                    id="streetNr"
@@ -70,12 +71,12 @@
         </div>
       </div>
 
-      <div class="col-4 mb-0">
+      <div class="col-4 ">
         <div class="field grid mb-0">
-          <div class="col-6  mb-0">
+          <div class="col-6">
             <div class="field grid mb-0">
-              <label class="col-6" for="block">Bl. </label>
-              <div class="col-6">
+              <label class="col-6 mb-2" for="block">Bl. </label>
+              <div class="col-6 mb-2">
                 <input pInputText
                        formControlName="block"
                        id="block"
@@ -86,10 +87,10 @@
             </div>
           </div>
 
-          <div class="col-6 mb-0">
+          <div class="col-6">
             <div class="field grid mb-0">
-              <label class="col-6" for="stairs">Sc. </label>
-              <div class="col-6">
+              <label class="col-6 mb-2" for="stairs">Sc. </label>
+              <div class="col-6 mb-2">
                 <input pInputText
                        formControlName="stairs"
                        id="stairs"
@@ -102,12 +103,12 @@
         </div>
       </div>
 
-      <div class="col-4 mb-0">
+      <div class="col-4">
         <div class="field grid mb-0">
-          <div class="col-6 mb-0">
+          <div class="col-6">
             <div class="field grid mb-0">
-              <label class="col-6" for="floor">Et. </label>
-              <div class="col-6">
+              <label class="col-6 mb-0" for="floor">Et. </label>
+              <div class="col-6 mb-0">
                 <input pInputText
                        formControlName="floor"
                        id="floor"
@@ -120,8 +121,8 @@
 
           <div class="col-6 mb-0">
             <div class="field grid mb-0">
-              <label class="col-6" for="apartment">Ap. </label>
-              <div class="col-6">
+              <label class="col-6 mb-0" for="apartment">Ap. </label>
+              <div class="col-6 mb-0">
                 <input pInputText
                        formControlName="apartment"
                        id="apartment"
@@ -134,10 +135,10 @@
         </div>
       </div>
 
-      <div class="col-4 mb-0">
+      <div class="col-4">
         <div class="field grid mb-0">
-          <label class="col-6" for="sector">Sector</label>
-          <div class="col-6">
+          <label class="col-6 mb-0" for="sector">Sector</label>
+          <div class="col-6 mb-0">
             <input pInputText
                    formControlName="sector"
                    id="sector"
@@ -148,10 +149,10 @@
         </div>
       </div>
 
-      <div class="col-4 mb-0">
+      <div class="col-4">
         <div class="field grid mb-0">
-          <label class="col-6" for="siruta">Siruta</label>
-          <div class="col-6">
+          <label class="col-6 mb-0" for="siruta">Siruta</label>
+          <div class="col-6 mb-0">
             <input pInputText
                    formControlName="siruta"
                    id="siruta"
@@ -162,7 +163,8 @@
         </div>
       </div>
     </div>
-  </form>
+
 </p-card>
+</form>
 
 

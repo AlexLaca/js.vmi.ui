@@ -23,8 +23,8 @@ export enum VmiFormSteps {
 }
 export enum VmiFormPaths {
   REQUEST_PATH = '/request',
-  APPLICANT_PATH = '/request/applicant',
-  ADDRESS_PATH = '/request/address',
+  APPLICANT_PATH = '/request/chapter-1',
+  ADDRESS_PATH = '/request/chapter-2',
   HOUSEHOLD_PATH = '/request/household',
   STATEMENT_PATH = '/request/statement',
   SUMMARY_PATH = '/request/summary'

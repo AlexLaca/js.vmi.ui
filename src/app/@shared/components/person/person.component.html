@@ -1,7 +1,7 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="formGroup">
   <div class="field grid mb-0">
     <div class="col-4">
-      <p-divider layout="horizontal" class="md:p-0 md:m-0">
+      <p-divider layout="horizontal">
         <div class="inline-flex align-items-center">
           <i class="pi pi-user mr-2"></i>
           <b>Solicitant</b>
@@ -10,9 +10,10 @@
 
       <p-card>
         <div class="field grid mb-0">
-          <label class="md:col-6" for="lastName">Nume </label>
-          <div class="md:col-6">
-            <input pInputText [readOnly]="readonly"
+          <label class="col-6 mb-2" for="lastName">Nume </label>
+          <div class="col-6 mb-2">
+            <input pInputText
+                   [readOnly]="readonly"
                    formControlName="lastName"
                    id="lastName"
                    type="text"
@@ -20,9 +21,10 @@
                         border-bluegray-200 a outline-none focus:border-primary w-full">
           </div>
 
-          <label class="md:col-6 md:mb-0" for="firstName">Prenume </label>
-          <div class="md:col-6">
-            <input pInputText [readOnly]="readonly"
+          <label class="col-6 mb-2" for="firstName">Prenume </label>
+          <div class="col-6 mb-2">
+            <input pInputText
+                   [readOnly]="readonly"
                    formControlName="firstName"
                    id="firstName"
                    type="text"
@@ -30,9 +32,10 @@
                         border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
           </div>
 
-          <label class="md:col-6 md:mb-0" for="pnc">CNP </label>
-          <div class="md:col-6">
-            <input pInputText [readOnly]="readonly"
+          <label class="col-6 mb-0" for="pnc">CNP </label>
+          <div class="col-6 mb-0">
+            <input pInputText
+                   [readOnly]="readonly"
                    formControlName="pnc"
                    id="pnc"
                    type="text"
@@ -45,7 +48,7 @@
 
     <div class="col-8">
 
-      <p-divider layout="horizontal" class="md:p-0 md:m-0 ">
+      <p-divider layout="horizontal">
         <div class="inline-flex align-items-center">
           <i class="pi pi-credit-card mr-2"></i>
           <b>Document</b>
@@ -55,12 +58,13 @@
       <p-card>
         <div class="field grid mb-0">
 
-          <div class="col-6">
+          <div class="col-6 mb-0">
             <div class="field grid mb-0">
 
-              <label class="md:col-6 md:mb-0" for="documentType">Act identitate </label>
-              <div class="md:col-6">
-                <input pInputText [readOnly]="readonly"
+              <label class="col-6 mb-2" for="documentType">Act identitate </label>
+              <div class="col-6 mb-2">
+                <input pInputText
+                       [readOnly]="readonly"
                        formControlName="documentType"
                        id="documentType"
                        type="text"
@@ -68,9 +72,10 @@
                                 border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
               </div>
 
-              <label class="md:col-6 md:mb-0" for="serial">Seria </label>
-              <div class="md:col-6">
-                <input pInputText [readOnly]="readonly"
+              <label class="col-6 mb-2" for="serial">Seria </label>
+              <div class="col-6 mb-2">
+                <input pInputText
+                       [readOnly]="readonly"
                        formControlName="serial"
                        id="serial"
                        type="text"
@@ -78,9 +83,10 @@
                                 border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
               </div>
 
-              <label class="md:col-6 md:mb-0" for="serialNr">Nr </label>
-              <div class="md:col-6">
-                <input pInputText [readOnly]="readonly"
+              <label class="col-6 mb-0" for="serialNr">Nr </label>
+              <div class="col-6 mb-0">
+                <input pInputText
+                       [readOnly]="readonly"
                        formControlName="serialNr"
                        id="serialNr"
                        type="text"
@@ -90,12 +96,13 @@
             </div>
           </div>
 
-          <div class="col-6">
+          <div class="col-6 mb-0">
             <div class="field grid mb-0">
 
-              <label class="md:col-6 md:mb-0" for="validUntil">Valabil pana la </label>
-              <div class="md:col-6">
-                <input pInputText [readOnly]="readonly"
+              <label class="col-6 mb-2" for="validUntil">Valabil pana la </label>
+              <div class="col-6 mb-2">
+                <input pInputText
+                       [readOnly]="readonly"
                        formControlName="validUntil"
                        id="validUntil"
                        type="text"
@@ -103,9 +110,10 @@
                                 border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
               </div>
 
-              <label class="md:col-6 md:mb-0" for="issuedBy">Eliberat de </label>
-              <div class="md:col-6">
-                <input pInputText [readOnly]="readonly"
+              <label class="col-6 mb-2" for="issuedBy">Eliberat de </label>
+              <div class="col-6 mb-2">
+                <input pInputText
+                       [readOnly]="readonly"
                        formControlName="issuedBy"
                        id="issuedBy"
                        type="text"
@@ -113,11 +121,68 @@
                                 border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
               </div>
 
-              <label class="md:col-6 md:mb-0" for="issueDate">La data </label>
-              <div class="md:col-6">
-                <input pInputText [readOnly]="readonly"
+              <label class="col-6 mb-0" for="issueDate">La data </label>
+              <div class="col-6 mb-0">
+                <input pInputText
+                       [readOnly]="readonly"
                        formControlName="issueDate"
                        id="issueDate"
+                       type="text"
+                       class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                                border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+              </div>
+            </div>
+          </div>
+        </div>
+      </p-card>
+    </div>
+
+    <div *ngIf="showCitizenship" class="col-12">
+      <p-divider layout="horizontal">
+        <div class="inline-flex align-items-center">
+          <i class="pi pi-flag mr-2"></i>
+          <b>Cetatenie</b>
+        </div>
+      </p-divider>
+
+      <p-card>
+        <div class="field grid mb-0">
+          <div class="col-4 mb-0 py-1 flex justify-content-between flex-wrap">
+            <p-radioButton class="lex align-items-center justify-content-center"
+              formControlName="citizenship"
+              name="citizenship"
+              label="Romana"
+              value="ro"
+              inputId="romanian"
+              class="mr-4">
+            </p-radioButton>
+
+            <p-radioButton class="lex align-items-center justify-content-center"
+              formControlName="citizenship"
+              name="citizenship"
+              label="UE"
+              value="ue"
+              inputId="romanian"
+              class="mr-5">
+            </p-radioButton>
+
+            <p-radioButton class="lex align-items-center justify-content-center"
+              formControlName="citizenship"
+              name="citizenship"
+              label="Non-UE"
+              value="noue"
+              inputId="romanian"
+              class="mr-4">
+            </p-radioButton>
+          </div>
+
+          <div class="col-4 mb-0 ml-1 px-2" *ngIf="showCountryName">
+            <div class="field grid mb-0">
+              <label class="col-6 mb-0" for="countryName">Tara </label>
+              <div class="col-6">
+                <input pInputText
+                       formControlName="countryName"
+                       id="countryName"
                        type="text"
                        class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
                                 border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">

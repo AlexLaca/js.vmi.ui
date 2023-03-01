@@ -12,6 +12,8 @@ import {MessageService} from 'primeng/api';
 import { StatementsComponent } from './statements/statements.component';
 import { AddressesComponent } from './addresses/addresses.component';
 import { SummaryComponent } from './summary/summary.component';
+import { FirstChapterComponent } from './chapter-1/first-chapter/first-chapter.component';
+import { SecondChapterComponent } from './chapter-2/second-chapter/second-chapter.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { SummaryComponent } from './summary/summary.component';
     StatementsComponent,
     AddressesComponent,
     SummaryComponent,
+    FirstChapterComponent,
+    SecondChapterComponent,
   ],
   imports: [
     SharedModule,

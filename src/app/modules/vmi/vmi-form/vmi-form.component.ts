@@ -201,7 +201,7 @@ export class VmiFormComponent implements OnInit, OnChanges {
       },
       {
         id: VmiFormSteps.ADDRESS_INFO_STEP.toString(),
-        label: 'Adresa',
+        label: 'Beneficiar',
         command: () => {
           this.navigateTo(VmiFormSteps.ADDRESS_INFO_STEP, VmiFormPaths.ADDRESS_PATH);
         }
