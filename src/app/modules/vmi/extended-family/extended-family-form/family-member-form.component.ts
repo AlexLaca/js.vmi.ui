@@ -1,4 +1,4 @@
-import {Component, Inject, LOCALE_ID, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, Inject, LOCALE_ID, OnInit, ViewEncapsulation} from '@angular/core';
 import {DialogService, DynamicDialogConfig, DynamicDialogRef} from 'primeng/dynamicdialog';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {BasePersonModel} from '../../../../@shared/models/base-person.model';
@@ -31,6 +31,7 @@ export class FamilyMemberFormComponent implements OnInit {
     public dialogRef: DynamicDialogRef,
     public dialogConfig: DynamicDialogConfig,
     private searchService: SearchService,
+    private elementRef: ElementRef,
     @Inject(LOCALE_ID) private locale: string) {
   }
 
@@ -72,6 +73,7 @@ export class FamilyMemberFormComponent implements OnInit {
 
   public onSubmit() {
     if (this.personFormGroup.valid) {
+      console.log('PARENT_ELEMENT', this.elementRef.nativeElement.parentElement);
       let controls = this.personFormGroup.controls;
 
       this.familyMember = new PersonModel(

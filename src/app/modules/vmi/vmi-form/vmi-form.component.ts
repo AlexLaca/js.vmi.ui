@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit, SimpleChanges, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, OnChanges, OnInit, SimpleChanges, ViewEncapsulation} from '@angular/core';
 import {MenuItem} from 'primeng/api';
 import {ActivatedRoute, NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {ActiveWorkflowIndex, DataStoreObjects, VmiFormPaths, VmiFormSteps} from '../../../@shared/utils/constants';
@@ -33,6 +33,7 @@ export class VmiFormComponent implements OnInit, OnChanges {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
+    private elementRef: ElementRef,
     private dataStoreService: DataStoreService) {
   }
 
@@ -111,6 +112,7 @@ export class VmiFormComponent implements OnInit, OnChanges {
 
   public subscribeToStepEmitter(componentRef: any) {
     if (componentRef instanceof PersonSearcherComponent) {
+
       if (this.activeStepIndex === VmiFormSteps.SEARCH_APPLICANT_STEP) {
         componentRef.searchEventEmitter.subscribe(response => {
           let data = response as DpabdResponseModel;
