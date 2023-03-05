@@ -30,9 +30,6 @@ export class VmiNavigatorComponent implements OnInit {
 
 
 
-    observable.subscribe(value => {
-      console.log('SUBSCRIBE FROM EVENT STORAGE', value);
-    })
 
     if (localStorage.getItem('user')) {
       console.log(' STORAGE', localStorage.getItem('user'));
@@ -58,7 +55,7 @@ export class VmiNavigatorComponent implements OnInit {
           icon: PrimeIcons.FILE,
           command: () => {
             /*this.dataStoreService.setData(DataStoreObjects.ACTIVE_WORKFLOW_INDEX, ActiveWorkflowIndex.VMI_REQUEST_FORM);*/
-            this.router.navigateByUrl('/request');
+            this.router.navigateByUrl('/init');
           }
         },
         {

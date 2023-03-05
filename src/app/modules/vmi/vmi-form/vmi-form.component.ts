@@ -1,7 +1,21 @@
-import {Component, ElementRef, OnChanges, OnInit, SimpleChanges, ViewEncapsulation} from '@angular/core';
+import {
+  AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef,
+  Component,
+  ElementRef,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ViewEncapsulation
+} from '@angular/core';
 import {MenuItem} from 'primeng/api';
-import {ActivatedRoute, NavigationEnd, NavigationStart, Router} from '@angular/router';
-import {ActiveWorkflowIndex, DataStoreObjects, VmiFormPaths, VmiFormSteps} from '../../../@shared/utils/constants';
+import {ActivatedRoute, NavigationEnd, NavigationStart, Router, RouterOutlet} from '@angular/router';
+import {
+  ActiveWorkflowIndex,
+  DataStoreObjects,
+  VmiFormNavigationEvent,
+  VmiFormPaths,
+  VmiFormSteps
+} from '../../../@shared/utils/constants';
 import {DataStoreService} from '../../../@core/data-store.service';
 import {Subscription} from 'rxjs';
 import {PersonSearcherComponent} from '../../../@shared/components/person-searcher/person-searcher.component';
@@ -12,21 +26,26 @@ import {VmiDataFormUi} from '../../../@shared/models/ui/vmi-data-form.ui';
 import {Event as NavigationEvent} from "@angular/router";
 import {filter} from 'rxjs/operators';
 import {VmiRequestModel} from '../../../@shared/models/vmi-request.model';
+import {VmiFormService} from './vmi-form.service';
+import {FirstChapterComponent} from '../chapter-1/first-chapter/first-chapter.component';
+import {SecondChapterComponent} from '../chapter-2/second-chapter/second-chapter.component';
+
 
 @Component({
   selector: 'vmi-form',
   templateUrl: './vmi-form.component.html',
   styleUrls: ['./vmi-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class VmiFormComponent implements OnInit, OnChanges {
+export class VmiFormComponent implements OnInit, AfterViewChecked {
+
+  public activeStepIndex: number = 0;
+  public showSubmitButton: boolean = false;
 
   public steps: MenuItem[];
-  public activeStepIndex = 0;
   public vmiRequest: VmiRequestModel;
   public stepperForm: VmiStepperFormUi;
-
-  public showSubmitButton: boolean = false;
 
   public subscriptionDS: Subscription = new Subscription();
 
@@ -34,111 +53,128 @@ export class VmiFormComponent implements OnInit, OnChanges {
     private router: Router,
     private route: ActivatedRoute,
     private elementRef: ElementRef,
-    private dataStoreService: DataStoreService) {
-  }
+    private cdRef: ChangeDetectorRef,
+    private dataStoreService: DataStoreService,
+    private vmiFormService: VmiFormService) {
 
-  ngOnInit(): void {
-
-    this.initRoute();
-    this.initSteps();
     this.subscribeToRouterEvents();
     this.subscribeToDataStoreService();
+  }
 
+
+  ngOnInit(): void {
+    this.initSteps();
     this.stepperForm = new VmiStepperFormUi();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log("ON CHANGE", changes);
-
+  ngAfterViewChecked(): void {
+    this.cdRef.detectChanges();
   }
 
   public onSubmit() {
 
   }
 
-  public nextStep() {
-    switch (this.activeStepIndex) {
-      case VmiFormSteps.SEARCH_APPLICANT_STEP : {
-        this.navigateTo(VmiFormSteps.APPLICANT_INFO_STEP, VmiFormPaths.APPLICANT_PATH);
-        break;
-      }
-      case VmiFormSteps.APPLICANT_INFO_STEP : {
-        this.navigateTo(VmiFormSteps.ADDRESS_INFO_STEP, VmiFormPaths.ADDRESS_PATH);
-        break;
-      }
-      case VmiFormSteps.ADDRESS_INFO_STEP : {
-        this.navigateTo(VmiFormSteps.HOUSEHOLD_STEP, VmiFormPaths.HOUSEHOLD_PATH);
-        break;
-      }
-      case VmiFormSteps.HOUSEHOLD_STEP : {
-        this.showSubmitButton = true;
-        this.navigateTo(VmiFormSteps.STATEMENT_STEP, VmiFormPaths.STATEMENT_PATH);
-        break;
-      }
-      case VmiFormSteps.STATEMENT_STEP : {
-        this.navigateTo(VmiFormSteps.SUMMARY_STEP, VmiFormPaths.SUMMARY_PATH);
-        break;
-      }
-    }
-  }
-
-  public prevStep() {
-    switch (this.activeStepIndex) {
-      case VmiFormSteps.SEARCH_APPLICANT_STEP : {
-        break
-      }
-      case VmiFormSteps.APPLICANT_INFO_STEP : {
-        this.navigateTo(VmiFormSteps.SEARCH_APPLICANT_STEP, VmiFormPaths.REQUEST_PATH);
-        break;
-      }
-      case VmiFormSteps.ADDRESS_INFO_STEP : {
-        this.navigateTo(VmiFormSteps.APPLICANT_INFO_STEP, VmiFormPaths.APPLICANT_PATH);
-        break;
-      }
-      case VmiFormSteps.HOUSEHOLD_STEP : {
-        this.navigateTo(VmiFormSteps.ADDRESS_INFO_STEP, VmiFormPaths.ADDRESS_PATH);
-        break;
-      }
-      case VmiFormSteps.STATEMENT_STEP : {
-        this.navigateTo(VmiFormSteps.HOUSEHOLD_STEP, VmiFormPaths.HOUSEHOLD_PATH);
-        break;
-      }
-      case VmiFormSteps.SUMMARY_STEP : {
-        this.navigateTo(VmiFormSteps.STATEMENT_STEP, VmiFormPaths.STATEMENT_PATH);
-        break;
-      }
-    }
-  }
-
   public subscribeToStepEmitter(componentRef: any) {
-    if (componentRef instanceof PersonSearcherComponent) {
-
-      if (this.activeStepIndex === VmiFormSteps.SEARCH_APPLICANT_STEP) {
-        componentRef.searchEventEmitter.subscribe(response => {
-          let data = response as DpabdResponseModel;
-
-          this.stepperForm.data = data;
-          this.stepperForm.firstStep = new VmiDataFormUi(VmiFormSteps.SEARCH_APPLICANT_STEP, 'Initializare cerere', true, true, data.person.pnc);
-          this.stepperForm.secondStep = new VmiDataFormUi(VmiFormSteps.APPLICANT_INFO_STEP, 'Solicitant', false, true, new PersonModel(data.person, data.identityDocument));
-          this.stepperForm.thirdStep = new VmiDataFormUi(VmiFormSteps.ADDRESS_INFO_STEP, 'Adresa', false, true, data.addresses);
-
-          this.dataStoreService.setData(DataStoreObjects.VMI_REQUEST_FORM_DATA, this.stepperForm);
-          this.navigateTo(VmiFormSteps.APPLICANT_INFO_STEP, VmiFormPaths.APPLICANT_PATH);
-        });
-      }
+    if (componentRef instanceof FirstChapterComponent) {
+      componentRef.activeStepIndexChanged.subscribe(eventType => {
+        switch (eventType) {
+          case VmiFormNavigationEvent.NEXT:
+            this.activeStepIndex = VmiFormSteps.CHAPTER_2_STEP;
+            this.router.navigateByUrl(VmiFormPaths.CHAPTER_2_PATH);
+            break
+          case VmiFormNavigationEvent.CANCEL:
+            this.router.navigateByUrl("/");
+            break;
+        }
+      });
     }
+
+    else if (componentRef instanceof SecondChapterComponent) {
+      componentRef.activeStepIndexChanged.subscribe(eventType => {
+        switch (eventType) {
+          case VmiFormNavigationEvent.NEXT:
+            this.activeStepIndex = VmiFormSteps.HOUSEHOLD_STEP;
+            this.router.navigateByUrl(VmiFormPaths.HOUSEHOLD_PATH);
+            break;
+          case VmiFormNavigationEvent.PREV:
+            this.activeStepIndex = VmiFormSteps.CHAPTER_1_STEP;
+            this.router.navigateByUrl(VmiFormPaths.CHAPTER_1_PATH);
+            break;
+        }
+      });
+    }
+    // if (componentRef instanceof PersonSearcherComponent) {
+    //
+    //   if (this.activeStepIndex === VmiFormSteps.SEARCH_APPLICANT_STEP) {
+    //     componentRef.searchEventEmitter.subscribe(response => {
+    //       let data = response as DpabdResponseModel;
+    //
+    //       this.stepperForm.data = data;
+    //       this.stepperForm.firstStep = new VmiDataFormUi(VmiFormSteps.SEARCH_APPLICANT_STEP, 'Initializare cerere', true, true, data.person.pnc);
+    //       this.stepperForm.secondStep = new VmiDataFormUi(VmiFormSteps.APPLICANT_INFO_STEP, 'Solicitant', false, true, new PersonModel(data.person, data.identityDocument));
+    //       this.stepperForm.thirdStep = new VmiDataFormUi(VmiFormSteps.BENEFICIARY_INFO_STEP, 'Adresa', false, true, data.addresses);
+    //
+    //       this.dataStoreService.setData(DataStoreObjects.VMI_REQUEST_FORM_DATA, this.stepperForm);
+    //       this.vmiFormService.navigateTo(VmiFormSteps.APPLICANT_INFO_STEP, VmiFormPaths.APPLICANT_PATH);
+    //     });
+    //   }
+    // }
   }
+
+  // public nextStep() {
+  //   switch (this.activeStepIndex) {
+  //     case VmiFormSteps.APPLICANT_INFO_STEP : {
+  //       this.vmiFormService.navigateTo(VmiFormSteps.BENEFICIARY_INFO_STEP, VmiFormPaths.BENEFICIARY_PATH);
+  //       break;
+  //     }
+  //     case VmiFormSteps.BENEFICIARY_INFO_STEP : {
+  //       this.vmiFormService.navigateTo(VmiFormSteps.HOUSEHOLD_STEP, VmiFormPaths.HOUSEHOLD_PATH);
+  //       break;
+  //     }
+  //     case VmiFormSteps.HOUSEHOLD_STEP : {
+  //       this.showSubmitButton = true;
+  //       this.vmiFormService.navigateTo(VmiFormSteps.STATEMENT_STEP, VmiFormPaths.STATEMENT_PATH);
+  //       break;
+  //     }
+  //     case VmiFormSteps.STATEMENT_STEP : {
+  //       this.vmiFormService.navigateTo(VmiFormSteps.SUMMARY_STEP, VmiFormPaths.SUMMARY_PATH);
+  //       break;
+  //     }
+  //   }
+  // }
+
+  // public prevStep() {
+  //   switch (this.activeStepIndex) {
+  //     case VmiFormSteps.APPLICANT_INFO_STEP : {
+  //       this.vmiFormService.navigateTo(VmiFormSteps.SEARCH_APPLICANT_STEP, VmiFormPaths.REQUEST_PATH);
+  //       break;
+  //     }
+  //     case VmiFormSteps.BENEFICIARY_INFO_STEP : {
+  //       this.vmiFormService.navigateTo(VmiFormSteps.APPLICANT_INFO_STEP, VmiFormPaths.APPLICANT_PATH);
+  //       break;
+  //     }
+  //     case VmiFormSteps.HOUSEHOLD_STEP : {
+  //       this.vmiFormService.navigateTo(VmiFormSteps.BENEFICIARY_INFO_STEP, VmiFormPaths.BENEFICIARY_PATH);
+  //       break;
+  //     }
+  //     case VmiFormSteps.STATEMENT_STEP : {
+  //       this.vmiFormService.navigateTo(VmiFormSteps.HOUSEHOLD_STEP, VmiFormPaths.HOUSEHOLD_PATH);
+  //       break;
+  //     }
+  //     case VmiFormSteps.SUMMARY_STEP : {
+  //       this.vmiFormService.navigateTo(VmiFormSteps.STATEMENT_STEP, VmiFormPaths.STATEMENT_PATH);
+  //       break;
+  //     }
+  //   }
+  // }
+
+
 
   private subscribeToDataStoreService(): void {
     this.subscriptionDS = this.dataStoreService.getObservableForDataChange().subscribe((dataStoreObject: any) => {
       if (!dataStoreObject.hasOwnProperty(DataStoreObjects.ACTIVE_WORKFLOW_INDEX)) {
         this.dataStoreService.setData(DataStoreObjects.ACTIVE_WORKFLOW_INDEX, ActiveWorkflowIndex.VMI_REQUEST_FORM);
-      }
-      if (dataStoreObject.hasOwnProperty(DataStoreObjects.VMI_ACTIVE_FORM_INDEX)) {
-        this.activeStepIndex = dataStoreObject[DataStoreObjects.VMI_ACTIVE_FORM_INDEX];
-      }
-      if (this.activeStepIndex === VmiFormSteps.HOUSEHOLD_STEP) {
-        this.showSubmitButton = true;
       }
     });
   }
@@ -153,16 +189,13 @@ export class VmiFormComponent implements OnInit, OnChanges {
       ).subscribe((eventRouter) => {
       if (eventRouter instanceof NavigationStart && eventRouter.restoredState) {
         switch (eventRouter.url) {
-          case VmiFormPaths.REQUEST_PATH : {
-            this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.SEARCH_APPLICANT_STEP);
+          case VmiFormPaths.CHAPTER_1_PATH : {
+            this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.CHAPTER_1_STEP);
             break;
           }
-          case VmiFormPaths.APPLICANT_PATH : {
-            this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.APPLICANT_INFO_STEP);
-            break;
-          }
-          case VmiFormPaths.ADDRESS_PATH : {
-            this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.ADDRESS_INFO_STEP);
+          case VmiFormPaths.CHAPTER_2_PATH : {
+            this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.CHAPTER_2_STEP);
+            console.log("CASE");
             break;
           }
           case VmiFormPaths.HOUSEHOLD_PATH : {
@@ -186,61 +219,41 @@ export class VmiFormComponent implements OnInit, OnChanges {
   private initSteps(): void {
     this.steps = [
       {
-        id: VmiFormSteps.SEARCH_APPLICANT_STEP.toString(),
-        label: 'Initializare crere',
-        command: () => {
-          this.navigateTo(VmiFormSteps.SEARCH_APPLICANT_STEP, VmiFormPaths.REQUEST_PATH);
-        }
-      },
-      {
-        id: VmiFormSteps.APPLICANT_INFO_STEP.toString(),
+        id: VmiFormSteps.CHAPTER_1_STEP.toString(),
         label: 'Solicitant',
         command: () => {
-          this.navigateTo(VmiFormSteps.APPLICANT_INFO_STEP, VmiFormPaths.APPLICANT_PATH);
+          this.vmiFormService.navigateTo(VmiFormSteps.CHAPTER_1_STEP, VmiFormPaths.CHAPTER_1_PATH);
         }
       },
       {
-        id: VmiFormSteps.ADDRESS_INFO_STEP.toString(),
+        id: VmiFormSteps.CHAPTER_2_STEP.toString(),
         label: 'Beneficiar',
         command: () => {
-          this.navigateTo(VmiFormSteps.ADDRESS_INFO_STEP, VmiFormPaths.ADDRESS_PATH);
+          this.vmiFormService.navigateTo(VmiFormSteps.CHAPTER_2_STEP, VmiFormPaths.CHAPTER_2_PATH);
         }
       },
       {
         id: VmiFormSteps.HOUSEHOLD_STEP.toString(),
         label: 'Membrii',
         command: () => {
-          this.navigateTo(VmiFormSteps.HOUSEHOLD_STEP, VmiFormPaths.HOUSEHOLD_PATH);
+          this.vmiFormService.navigateTo(VmiFormSteps.HOUSEHOLD_STEP, VmiFormPaths.HOUSEHOLD_PATH);
         }
       },
       {
         id: VmiFormSteps.STATEMENT_STEP.toString(),
         label: 'Declaratie',
         command: () => {
-          this.navigateTo(VmiFormSteps.STATEMENT_STEP, VmiFormPaths.STATEMENT_PATH);
+          this.vmiFormService.navigateTo(VmiFormSteps.STATEMENT_STEP, VmiFormPaths.STATEMENT_PATH);
         }
       },
       {
         id: VmiFormSteps.SUMMARY_STEP.toString(),
         label: 'Rezumat',
         command: () => {
-          this.navigateTo(VmiFormSteps.SUMMARY_STEP, VmiFormPaths.SUMMARY_PATH);
+          this.vmiFormService.navigateTo(VmiFormSteps.SUMMARY_STEP, VmiFormPaths.SUMMARY_PATH);
         }
       }
     ];
-  }
-
-  private initRoute(): void {
-    if (this.activeStepIndex === VmiFormSteps.SEARCH_APPLICANT_STEP &&
-      this.dataStoreService.getDataDirectly(DataStoreObjects.VMI_ACTIVE_FORM_INDEX) !== VmiFormSteps.SEARCH_APPLICANT_STEP) {
-      this.router.navigateByUrl(VmiFormPaths.REQUEST_PATH);
-    }
-  }
-
-  private navigateTo(index: number, url: string): void {
-    this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, index);
-    this.dataStoreService.refreshDataOnAllObservers();
-    this.router.navigateByUrl(url);
   }
 
 

@@ -14,7 +14,7 @@ export class PersonSearcherComponent implements OnInit {
   public pnc: string = '';
   public pncFromGroup: FormGroup;
 
-  public searchEventEmitter: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public searchEventEmitter: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private searchService: SearchService,
               private dataStoreService: DataStoreService) {

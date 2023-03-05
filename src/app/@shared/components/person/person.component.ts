@@ -17,7 +17,7 @@ import {VmiDataFormUi} from '../../models/ui/vmi-data-form.ui';
 })
 export class PersonComponent implements OnInit {
 
-  @Input() showCitizenship: boolean;
+  @Input() public showCitizenship: boolean;
 
   public dataModel: VmiDataFormUi;
   public formGroup: FormGroup;
@@ -48,20 +48,16 @@ export class PersonComponent implements OnInit {
   ngOnInit(): void {
 
 
-    let stepperFormUi: VmiStepperFormUi = this.dataStoreService.getDataDirectly(DataStoreObjects.VMI_REQUEST_FORM_DATA);
-
-    this.dataModel = stepperFormUi.secondStep;
-
     this.formGroup = new FormGroup({
-      pnc: new FormControl(this.dataModel.data.person.pnc, [Validators.required]),
-      lastName: new FormControl(this.dataModel.data.person.lastName),
-      firstName: new FormControl(this.dataModel.data.person.firstName),
-      serial: new FormControl(this.dataModel.data.identityDocument.serial),
-      serialNr: new FormControl(this.dataModel.data.identityDocument.serialNr),
-      issuedBy: new FormControl(this.dataModel.data.identityDocument.issuedBy),
-      documentType: new FormControl(this.dataModel.data.identityDocument.documentType.value),
-      validUntil: new FormControl(formatDate(this.dataModel.data.identityDocument.validUntil, 'dd-MM-yy', this.locale)),
-      issueDate: new FormControl(formatDate(this.dataModel.data.identityDocument.issueDate, 'dd-MM-yy', this.locale)),
+      pnc: new FormControl(''),
+      lastName: new FormControl(''),
+      firstName: new FormControl(''),
+      serial: new FormControl(''),
+      serialNr: new FormControl(''),
+      issuedBy: new FormControl(''),
+      documentType: new FormControl(''),
+      validUntil: new FormControl(''),
+      issueDate: new FormControl(''),
 
       citizenship: new FormControl('ro'),
       countryName: new FormControl(''),
@@ -78,7 +74,7 @@ export class PersonComponent implements OnInit {
 
 
   }
-
+  // formatDate(this.dataModel.data.identityDocument.validUntil, 'dd-MM-yy', this.locale)
   public onSubmit() {
 
   }

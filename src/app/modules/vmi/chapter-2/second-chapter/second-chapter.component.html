@@ -1,5 +1,5 @@
 <div class="col-12 p-0 mb-0">
-  <vmi-person [showCitizenship]="false"></vmi-person>
+  <vmi-person [showCitizenship]="true"></vmi-person>
 </div>
 
 
@@ -11,4 +11,29 @@
     </div>
   </p-divider>
   <vmi-address></vmi-address>
+</div>
+
+<div class="col-12 mt-2 p-0">
+  <p-card>
+    <div class="flex justify-content-between flex-wrap">
+
+      <div class="flex align-items-center justify-content-center  font-bold text-gray-900 border-round">
+        <button
+          pButton type="button"
+          class="p-button-sm p-button-secondary h-2rem"
+          icon="pi pi-angle-left"
+          (click)="prevStep()">
+        </button>
+      </div>
+
+      <div class="flex align-items-center justify-content-center font-bold text-gray-900 border-round">
+        <button
+          pButton type="button"
+          class="p-button-sm p-button-secondary h-2rem"
+          icon="pi pi-angle-right"
+          (click)="nextStep()">
+        </button>
+      </div>
+    </div>
+  </p-card>
 </div>

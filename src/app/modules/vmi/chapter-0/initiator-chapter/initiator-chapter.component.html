@@ -1,0 +1,105 @@
+<form [formGroup]="formGroup">
+  <p-card>
+    <div>
+      <p-divider layout="horizontal">
+        <div class="inline-flex align-items-center">
+          <i class="pi pi-cog mr-2"></i>
+          <b>Tip solicitant</b>
+        </div>
+      </p-divider>
+      <p-card>
+
+        <div class="field grid mb-0">
+          <div class="col-12 mb-0 py-1 flex justify-content-between flex-wrap">
+            <p-radioButton class="lex align-items-center justify-content-center"
+                           formControlName="applicantType"
+                           name="applicantType"
+                           label="In nume propriu"
+                           value="1"
+                           inputId="romanian"
+                           class="mr-4">
+            </p-radioButton>
+
+            <p-radioButton class="lex align-items-center justify-content-center"
+                           formControlName="applicantType"
+                           name="applicantType"
+                           label="In calitate de reprezentant"
+                           value="2"
+                           inputId="romanian"
+                           class="mr-5">
+            </p-radioButton>
+
+            <p-radioButton class="lex align-items-center justify-content-center"
+                           formControlName="applicantType"
+                           name="applicantType"
+                           label="In numele persoanei indreptatite"
+                           value="3"
+                           inputId="romanian"
+                           class="mr-4">
+            </p-radioButton>
+          </div>
+        </div>
+      </p-card>
+    </div>
+
+    <div class="mt-2">
+      <p-divider layout="horizontal">
+        <div class="inline-flex align-items-center">
+          <i class="pi pi-cog mr-2"></i>
+          <b>Tip cerere</b>
+        </div>
+      </p-divider>
+      <p-card>
+        <div class="field grid mb-0">
+          <div class="col-12 mb-0 py-1 flex justify-content-between flex-wrap">
+            <p-checkbox class="lex align-items-center justify-content-center"
+                        formControlName="requestType"
+                        name="requestType"
+                        label="Ajutor social"
+                        value="1"
+                        inputId="romanian"
+                        class="mr-4">
+            </p-checkbox>
+
+            <p-checkbox class="lex align-items-center justify-content-center"
+                        formControlName="requestType"
+                        name="requestType"
+                        label="Alocatie pentru sustinerea familiei"
+                        value="2"
+                        inputId="romanian"
+                        class="mr-5">
+            </p-checkbox>
+
+            <p-checkbox class="lex align-items-center justify-content-center"
+                        formControlName="requestType"
+                        name="requestType"
+                        label="Ajutor pentru incalzire"
+                        value="3"
+                        inputId="romanian"
+                        class="mr-4">
+            </p-checkbox>
+            <p-checkbox class="lex align-items-center justify-content-center"
+                        formControlName="requestType"
+                        name="requestType"
+                        label="Supliment pentru energie"
+                        value="3"
+                        inputId="romanian"
+                        class="mr-4">
+            </p-checkbox>
+          </div>
+        </div>
+      </p-card>
+    </div>
+
+    <div class="col-12 p-0 mt-4">
+      <p-divider layout="horizontal">
+        <div class="inline-flex align-items-center">
+          <i class="pi pi-search mr-2"></i>
+          <b>Solicitant</b>
+        </div>
+      </p-divider>
+      <vmi-person-searcher (searchEventEmitter)="onSearchEvent($event)"></vmi-person-searcher>
+    </div>
+  </p-card>
+</form>
+

@@ -1,15 +1,15 @@
-<p-card>
-  <div class="col-12 p-0">
-    <p-card>
-      <p-steps
-        [model]="steps"
-        [readonly]="false"
-        [activeIndex]="activeStepIndex">
-      </p-steps>
-    </p-card>
-  </div>
+<div class="col-12 p-0 mb-2">
+  <p-card>
+    <p-steps
+      [model]="steps"
+      [readonly]="false"
+      [activeIndex]="activeStepIndex">
+    </p-steps>
+  </p-card>
+</div>
 
-  <div *ngIf="activeStepIndex === 2" class="col-12 mt-2 p-0">
+<p-card>
+  <div *ngIf="activeStepIndex === 1" class="col-12 mt-2 p-0">
     <vmi-person-searcher></vmi-person-searcher>
   </div>
 
@@ -18,30 +18,30 @@
     <router-outlet (activate)="subscribeToStepEmitter($event)"></router-outlet>
   </div>
 
-  <div *ngIf="activeStepIndex > 0" class="col-12 mt-2 p-0">
-    <p-card>
-      <div class="flex justify-content-between flex-wrap">
 
-        <div class="flex align-items-center justify-content-center  font-bold text-gray-900 border-round">
-          <button
-            pButton type="button"
-            class="p-button-sm p-button-secondary h-2rem"
-            icon="pi pi-angle-left"
-            (click)="prevStep()">
-          </button>
-        </div>
-
-
-        <div class="flex align-items-center justify-content-center font-bold text-gray-900 border-round">
-          <button
-            pButton type="button"
-            class="p-button-sm p-button-secondary h-2rem"
-            icon="pi pi-angle-right"
-            (click)="nextStep()">
-          </button>
-        </div>
-      </div>
-    </p-card>
-  </div>
 </p-card>
 
+<!--<div class="col-12 mt-2 p-0">
+  <p-card>
+    <div class="flex justify-content-between flex-wrap">
+
+      <div class="flex align-items-center justify-content-center  font-bold text-gray-900 border-round">
+        <button
+          pButton type="button"
+          class="p-button-sm p-button-secondary h-2rem"
+          icon="pi pi-angle-left"
+          (click)="prevStep()">
+        </button>
+      </div>
+
+      <div class="flex align-items-center justify-content-center font-bold text-gray-900 border-round">
+        <button
+          pButton type="button"
+          class="p-button-sm p-button-secondary h-2rem"
+          icon="pi pi-angle-right"
+          (click)="nextStep()">
+        </button>
+      </div>
+    </div>
+  </p-card>
+</div>-->
