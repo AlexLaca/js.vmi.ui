@@ -18,6 +18,7 @@ import {ScrollPanelModule} from 'primeng/scrollpanel';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { InitiatorChapterComponent } from './chapter-0/initiator-chapter/initiator-chapter.component';
 import {VmiFormService} from './vmi-form/vmi-form.service';
+import { ThirdChapterComponent } from './chapter-3/third-chapter/third-chapter.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {VmiFormService} from './vmi-form/vmi-form.service';
     FirstChapterComponent,
     SecondChapterComponent,
     InitiatorChapterComponent,
+    ThirdChapterComponent,
   ],
   imports: [
     SharedModule,

@@ -14,10 +14,10 @@ export enum VmiEvents {
   VMI_FORM_MEMBER_SEARCHED = 1
 }
 export enum VmiFormSteps {
-  SEARCH_APPLICANT_STEP = -1,
+  CHAPTER_0_STEP = -1,
   CHAPTER_1_STEP = 0,
   CHAPTER_2_STEP = 1,
-  HOUSEHOLD_STEP = 2,
+  CHAPTER_3_STEP = 2,
   STATEMENT_STEP = 3,
   SUMMARY_STEP = 4,
 }
@@ -25,7 +25,7 @@ export enum VmiFormPaths {
   REQUEST_PATH = '/init',
   CHAPTER_1_PATH = '/request/chapter-1',
   CHAPTER_2_PATH = '/request/chapter-2',
-  HOUSEHOLD_PATH = '/request/household',
+  HOUSEHOLD_PATH = '/request/chapter-3',
   STATEMENT_PATH = '/request/statement',
   SUMMARY_PATH = '/request/summary'
 }

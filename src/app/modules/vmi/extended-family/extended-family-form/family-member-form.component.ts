@@ -8,7 +8,6 @@ import {SearchService} from '../../../../@shared/services/search-service';
 import {DpabdResponseModel} from '../../../../@shared/models/dpabd-response.model';
 import {PersonModel} from '../../../../@shared/models/person.model';
 import {DictionaryModel} from '../../../../@shared/models/dictionary.model';
-import {formatDate} from '@angular/common';
 
 @Component({
   selector: 'vmi-extended-family-form',

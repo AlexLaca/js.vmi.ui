@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HouseholdComponent } from './household.component';
+import { ThirdChapterComponent } from './third-chapter.component';
 
-describe('HouseholdComponent', () => {
-  let component: HouseholdComponent;
-  let fixture: ComponentFixture<HouseholdComponent>;
+describe('ThirdChapterComponent', () => {
+  let component: ThirdChapterComponent;
+  let fixture: ComponentFixture<ThirdChapterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HouseholdComponent ]
+      declarations: [ ThirdChapterComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HouseholdComponent);
+    fixture = TestBed.createComponent(ThirdChapterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

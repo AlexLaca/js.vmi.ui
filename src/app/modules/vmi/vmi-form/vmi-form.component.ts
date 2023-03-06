@@ -29,6 +29,7 @@ import {VmiRequestModel} from '../../../@shared/models/vmi-request.model';
 import {VmiFormService} from './vmi-form.service';
 import {FirstChapterComponent} from '../chapter-1/first-chapter/first-chapter.component';
 import {SecondChapterComponent} from '../chapter-2/second-chapter/second-chapter.component';
+import {ThirdChapterComponent} from '../chapter-3/third-chapter/third-chapter.component';
 
 
 @Component({
@@ -88,13 +89,11 @@ export class VmiFormComponent implements OnInit, AfterViewChecked {
             break;
         }
       });
-    }
-
-    else if (componentRef instanceof SecondChapterComponent) {
+    } else if (componentRef instanceof SecondChapterComponent) {
       componentRef.activeStepIndexChanged.subscribe(eventType => {
         switch (eventType) {
           case VmiFormNavigationEvent.NEXT:
-            this.activeStepIndex = VmiFormSteps.HOUSEHOLD_STEP;
+            this.activeStepIndex = VmiFormSteps.CHAPTER_3_STEP;
             this.router.navigateByUrl(VmiFormPaths.HOUSEHOLD_PATH);
             break;
           case VmiFormNavigationEvent.PREV:
@@ -103,7 +102,22 @@ export class VmiFormComponent implements OnInit, AfterViewChecked {
             break;
         }
       });
+    } else if (componentRef instanceof ThirdChapterComponent) {
+      componentRef.activeStepIndexChanged.subscribe(eventType => {
+        switch (eventType) {
+          case VmiFormNavigationEvent.NEXT:
+            this.activeStepIndex = VmiFormSteps.STATEMENT_STEP;
+            this.router.navigateByUrl(VmiFormPaths.STATEMENT_PATH);
+            break;
+          case VmiFormNavigationEvent.PREV:
+            this.activeStepIndex = VmiFormSteps.CHAPTER_2_STEP;
+            this.router.navigateByUrl(VmiFormPaths.CHAPTER_2_PATH);
+            break;
+        }
+      });
     }
+
+
     // if (componentRef instanceof PersonSearcherComponent) {
     //
     //   if (this.activeStepIndex === VmiFormSteps.SEARCH_APPLICANT_STEP) {
@@ -170,7 +184,6 @@ export class VmiFormComponent implements OnInit, AfterViewChecked {
   // }
 
 
-
   private subscribeToDataStoreService(): void {
     this.subscriptionDS = this.dataStoreService.getObservableForDataChange().subscribe((dataStoreObject: any) => {
       if (!dataStoreObject.hasOwnProperty(DataStoreObjects.ACTIVE_WORKFLOW_INDEX)) {
@@ -199,7 +212,7 @@ export class VmiFormComponent implements OnInit, AfterViewChecked {
             break;
           }
           case VmiFormPaths.HOUSEHOLD_PATH : {
-            this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.HOUSEHOLD_STEP);
+            this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.CHAPTER_3_STEP);
             break;
           }
           case VmiFormPaths.STATEMENT_PATH : {
@@ -233,10 +246,10 @@ export class VmiFormComponent implements OnInit, AfterViewChecked {
         }
       },
       {
-        id: VmiFormSteps.HOUSEHOLD_STEP.toString(),
+        id: VmiFormSteps.CHAPTER_3_STEP.toString(),
         label: 'Membrii',
         command: () => {
-          this.vmiFormService.navigateTo(VmiFormSteps.HOUSEHOLD_STEP, VmiFormPaths.HOUSEHOLD_PATH);
+          this.vmiFormService.navigateTo(VmiFormSteps.CHAPTER_3_STEP, VmiFormPaths.HOUSEHOLD_PATH);
         }
       },
       {

@@ -1,6 +1,5 @@
 <p-card>
   <div class="field grid mb-0">
-
     <div class="col-4">
       <div class="field grid mb-0 p-2">
         <label class="col-8 mb-0 mr-2">Persoana singura</label>
@@ -24,12 +23,41 @@
                 icon="pi pi-plus" class="p-button-rounded  h-2rem w-2rem"></button>
       </div>
     </div>
+  </div>
+</p-card>
 
-    <div class="col-12" *ngIf="applicantStatusValue == APPLICANT_STATUS_VALUE_REPRESENTATIVE">
-
+<div class="mt-2">
+  <p-card *ngIf="applicantStatusValue == APPLICANT_STATUS_VALUE_REPRESENTATIVE" class="mb-2">
+    <div class="col-12 p-0">
       <vmi-extended-family-list [personObservable]=personObservable
                                 class="flex align-items-center justify-content-center ">
       </vmi-extended-family-list>
     </div>
-  </div>
-</p-card>
+  </p-card>
+</div>
+
+
+<div class="col-12 mt-2 p-0">
+  <p-card>
+    <div class="flex justify-content-between flex-wrap">
+
+      <div class="flex align-items-center justify-content-center  font-bold text-gray-900 border-round">
+        <button
+          pButton type="button"
+          class="p-button-sm p-button-secondary h-2rem"
+          icon="pi pi-angle-left"
+          (click)="prevStep()">
+        </button>
+      </div>
+
+      <div class="flex align-items-center justify-content-center font-bold text-gray-900 border-round">
+        <button
+          pButton type="button"
+          class="p-button-sm p-button-secondary h-2rem"
+          icon="pi pi-angle-right"
+          (click)="nextStep()">
+        </button>
+      </div>
+    </div>
+  </p-card>
+</div>

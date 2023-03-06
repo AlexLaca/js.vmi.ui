@@ -22,7 +22,7 @@ export class InitiatorChapterComponent implements OnInit {
     private vmiFormService: VmiFormService,
     private dataStoreService: DataStoreService) {
 
-    this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.SEARCH_APPLICANT_STEP);
+    this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.CHAPTER_0_STEP);
   }
 
   ngOnInit(): void {
