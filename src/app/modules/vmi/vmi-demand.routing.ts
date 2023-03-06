@@ -15,7 +15,6 @@ const routes: Routes = [
     path: '',
     children: [
       {path: 'init', component: InitiatorChapterComponent},
-
       {
         path: 'request',
         component: VmiFormComponent,

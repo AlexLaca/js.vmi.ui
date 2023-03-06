@@ -15,12 +15,14 @@ import {MessagesModule} from 'primeng/messages';
 import {ToastModule} from 'primeng/toast';
 import {SearchService} from './services/search-service';
 import {PersonComponent} from './components/person/person.component';
+import {PersonDetailComponent} from './components/person-detail/person-detail.component';
 
 @NgModule({
   declarations: [
     AddressComponent,
     PersonSearcherComponent,
     PersonComponent,
+    PersonDetailComponent,
   ],
   imports: [
     CommonModule,
@@ -48,6 +50,7 @@ import {PersonComponent} from './components/person/person.component';
 
     AddressComponent,
     PersonSearcherComponent,
+    PersonDetailComponent,
     PersonComponent,
 
     ToastModule,

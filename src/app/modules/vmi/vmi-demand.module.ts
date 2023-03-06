@@ -10,7 +10,6 @@ import {VmiDetailComponent} from './vmi-detail/vmi-detail.component';
 import {StepsModule} from 'primeng/steps';
 import {MessageService} from 'primeng/api';
 import { StatementsComponent } from './statements/statements.component';
-import { AddressesComponent } from './addresses/addresses.component';
 import { SummaryComponent } from './summary/summary.component';
 import { FirstChapterComponent } from './chapter-1/first-chapter/first-chapter.component';
 import { SecondChapterComponent } from './chapter-2/second-chapter/second-chapter.component';
@@ -28,7 +27,6 @@ import { ThirdChapterComponent } from './chapter-3/third-chapter/third-chapter.c
     ExtendedFamilyListComponent,
     VmiDetailComponent,
     StatementsComponent,
-    AddressesComponent,
     SummaryComponent,
     FirstChapterComponent,
     SecondChapterComponent,
@@ -41,7 +39,7 @@ import { ThirdChapterComponent } from './chapter-3/third-chapter/third-chapter.c
     DynamicDialogModule,
     StepsModule,
     BrowserAnimationsModule,
-    ScrollPanelModule
+    ScrollPanelModule,
   ],
   providers: [
     MessageService,

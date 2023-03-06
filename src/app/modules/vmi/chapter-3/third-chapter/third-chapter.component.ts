@@ -20,7 +20,7 @@ export class ThirdChapterComponent implements OnInit {
   public APPLICANT_STATUS_VALUE_SINGLE: string = 'single';
   public APPLICANT_STATUS_VALUE_REPRESENTATIVE: string = 'representative';
 
-  public applicantStatusValue: string = 'single';
+  public applicantStatusValue: string = this.APPLICANT_STATUS_VALUE_SINGLE;
 
   public personObservable: BehaviorSubject<PersonModel | null> = new BehaviorSubject<PersonModel | null>(null);
 

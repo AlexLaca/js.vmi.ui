@@ -9,9 +9,10 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpClient} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {SharedModule} from './@shared/shared-module';
-import {VmiDemandModule} from './modules/vmi/vmi-demand.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import {SecurityModule} from './modules/security/security.module';
+import {MessageService} from 'primeng/api';
+import {VmiDemandModule} from './modules/vmi/vmi-demand.module';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -32,15 +33,15 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
       }
     }),
     CoreModule,
-    SharedModule,
     VmiDemandModule,
     SecurityModule,
-
     MenubarModule,
     InputTextModule,
     ButtonModule
   ],
-  providers: [],
+  providers: [MessageService],
+  exports: [
+  ],
   bootstrap: [VmiComponent]
 })
 export class VmiModule {
