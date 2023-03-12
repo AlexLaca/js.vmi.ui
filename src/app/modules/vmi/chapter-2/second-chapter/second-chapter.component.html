@@ -14,7 +14,13 @@
 </div>
 
 <div class="col-12 p-0 mb-0">
-  <vmi-person-detail></vmi-person-detail>
+  <p-divider layout="horizontal">
+    <div class="inline-flex align-items-center">
+      <i class="pi pi-info-circle mr-2"></i>
+      <b>Detalii</b>
+    </div>
+  </p-divider>
+  <vmi-person-detail [viewConfig]="personViewConfig"></vmi-person-detail>
 </div>
 
 <div class="col-12 mt-2 p-0">

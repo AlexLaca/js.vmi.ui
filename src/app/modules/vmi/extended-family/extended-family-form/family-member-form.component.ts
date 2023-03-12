@@ -8,6 +8,8 @@ import {SearchService} from '../../../../@shared/services/search-service';
 import {DpabdResponseModel} from '../../../../@shared/models/dpabd-response.model';
 import {PersonModel} from '../../../../@shared/models/person.model';
 import {DictionaryModel} from '../../../../@shared/models/dictionary.model';
+import {DataStoreObjects, KinshipDegreeIndex, VmiFormPaths} from '../../../../@shared/utils/constants';
+import {PersonDetailConfig} from '../../../../@shared/components/person-detail/person-detail.config';
 
 @Component({
   selector: 'vmi-extended-family-form',
@@ -19,11 +21,15 @@ export class FamilyMemberFormComponent implements OnInit {
 
   public readonly: boolean = true;
 
+  public personViewConfig: PersonDetailConfig = new PersonDetailConfig();
+
   public pncFromGroup: FormGroup;
   public personFormGroup: FormGroup;
 
   public familyMember: PersonModel;
   public identityDocument: IdentityDocumentModel;
+
+  public kinshipDegreeIndex: number;
 
   constructor(
     public dialogService: DialogService,
@@ -35,6 +41,11 @@ export class FamilyMemberFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.kinshipDegreeIndex = this.dialogConfig.data.index;
+    this.initPersonConfig();
+
+    console.log("INDEX", this.kinshipDegreeIndex);
 
     this.pncFromGroup = new FormGroup({
       pnc: new FormControl('', [pncValidatorFn()]),
@@ -51,6 +62,40 @@ export class FamilyMemberFormComponent implements OnInit {
       validUntil: new FormControl(''),
       issueDate: new FormControl(''),
     });
+  }
+
+  public initPersonConfig(): void {
+    switch (this.kinshipDegreeIndex) {
+      case KinshipDegreeIndex.PARTNER:
+
+        this.personViewConfig.showTotalIncome = true;
+        this.personViewConfig.showSchoolStatus = true;
+        this.personViewConfig.showProfessionalStatus = true;
+        this.personViewConfig.showDegreeOfDisability = true;
+        this.personViewConfig.showMaritalStatus = false;
+        this.personViewConfig.showBeneficiaryOfRights = false;
+        this.personViewConfig.showKinshipRelationship = false;
+        break;
+      case KinshipDegreeIndex.CHILD:
+        this.personViewConfig.showSchoolStatus = true;
+        this.personViewConfig.showDegreeOfDisability = true;
+        this.personViewConfig.showKinshipRelationship = true;
+        this.personViewConfig.showTotalIncome = false;
+        this.personViewConfig.showMaritalStatus = false;
+        this.personViewConfig.showProfessionalStatus = false;
+        this.personViewConfig.showBeneficiaryOfRights = false;
+        break;
+      case KinshipDegreeIndex.OTHER:
+        this.personViewConfig.showSchoolStatus = true;
+        this.personViewConfig.showTotalIncome = true;
+        this.personViewConfig.showProfessionalStatus = true;
+        this.personViewConfig.showDegreeOfDisability = true;
+        this.personViewConfig.showKinshipRelationship = false;
+        this.personViewConfig.showMaritalStatus = false;
+        this.personViewConfig.showBeneficiaryOfRights = false;
+        break;
+    }
+
   }
 
   public onSearch() {
@@ -95,6 +140,11 @@ export class FamilyMemberFormComponent implements OnInit {
 
   public onQuit() {
     this.dialogRef.close(null);
+  }
+
+  public onSearchEvent(data: DpabdResponseModel) {
+
+
   }
 }
 

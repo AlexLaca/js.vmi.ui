@@ -7,6 +7,7 @@ import {
 } from '../../../../@shared/utils/constants';
 import {Router} from '@angular/router';
 import {DataStoreService} from '../../../../@core/data-store.service';
+import {PersonDetailConfig} from '../../../../@shared/components/person-detail/person-detail.config';
 
 @Component({
   selector: 'vmi-second-chapter',
@@ -15,9 +16,12 @@ import {DataStoreService} from '../../../../@core/data-store.service';
   encapsulation: ViewEncapsulation.None
 })
 export class SecondChapterComponent implements OnInit {
-  public residenceAddressCheckbox: boolean = true;
+
 
   @Output() public activeStepIndexChanged: EventEmitter<number> = new EventEmitter<number>();
+
+  public residenceAddressCheckbox: boolean = true;
+  public personViewConfig: PersonDetailConfig;
 
   constructor(
     private router: Router,
@@ -30,11 +34,12 @@ export class SecondChapterComponent implements OnInit {
     console.log(
       'SecondChapterComponent_onInit_VMI_ACTIVE_FORM_INDEX',
       this.dataStoreService.getDataDirectly(DataStoreObjects.VMI_ACTIVE_FORM_INDEX));
+
+    this.personViewConfig = new PersonDetailConfig(false,true, true, true, true, true, true);
   }
 
   public nextStep() {
     this.activeStepIndexChanged.emit(VmiFormNavigationEvent.NEXT);
-
   }
 
   public prevStep() {

@@ -1,12 +1,402 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="formGroup">
   <div class="field grid mb-0">
-    <div class="col-12">
-      <p-divider layout="horizontal">
-        <div class="inline-flex align-items-center">
-          <i class="pi pi-user mr-2"></i>
-          <b>Solicitant</b>
+
+    <div *ngIf="viewConfig.showKinshipRelationship" class="col-12 mb-2">
+      <p-card>
+        <div class="field grid mb-0">
+          <label class="col-2 mb-0" for="kinshipRelationship">Relatiea de rudenie</label>
+          <div class="col-2 mb-0">
+            <input pInputText
+                   id="kinshipRelationship"
+                   type="text"
+                   class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                        border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+            <!--             [readOnly]="readonly"-->
+            <!--             formControlName="firstName"-->
+
+          </div>
         </div>
-      </p-divider>
+      </p-card>
     </div>
+
+    <div *ngIf="viewConfig.showMaritalStatus" class="col-12 mb-2">
+      <p-card>
+        <div class="field grid mb-0">
+          <label class="col-2 mb-0" for="maritalStatus">Stare civila </label>
+          <div class="col-2 mb-0">
+            <input pInputText
+                   id="maritalStatus"
+                   type="text"
+                   class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                        border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+            <!--             [readOnly]="readonly"-->
+            <!--             formControlName="firstName"-->
+
+          </div>
+        </div>
+      </p-card>
+    </div>
+
+    <div *ngIf="viewConfig.showSchoolStatus" class="col-12 mb-2">
+      <p-card>
+          <div class="field grid flex align-items-center flex-wrap mb-0">
+            <div class="col-4 mb-0">
+              <div class="field grid mb-0">
+                <label  class="col-6  mb-0" for="schoolSituation">Situatie scolara </label>
+                <div class="col-6 mb-0 ">
+                  <input pInputText
+                         id="schoolSituation"
+                         type="text"
+                         class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                        border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+                  <!--             [readOnly]="readonly"-->
+                  <!--             formControlName="firstName"-->
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-0">
+              <div class="field grid mb-2 ml-1">
+                <p-radioButton class="lex align-items-center justify-content-center"
+                               formControlName="schoolGrade"
+                               name="schoolGrade"
+                               label="elev cls. I-VIII"
+                               value="firstGrade"
+                               inputId="romanian"
+                               class="mr-8">
+                </p-radioButton>
+                <p-radioButton class="lex align-items-center justify-content-center"
+                               formControlName="schoolGrade"
+                               name="schoolGrade"
+                               label="elev cls. IX-XII"
+                               value="secondGrade"
+                               inputId="romanian">
+                </p-radioButton>
+              </div>
+              <div class="field grid mb-2">
+
+                <label class="col-4 mb-0" for="schoolName">Scoala nr. </label>
+                <div class="col-4 mb-0 ">
+                  <input pInputText
+                         id="schoolName"
+                         type="text"
+                         class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                        border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+                  <!--             [readOnly]="readonly"-->
+                  <!--             formControlName="firstName"-->
+
+                </div>
+              </div>
+              <div class="field grid mb-0">
+                <label class="col-4 mb-0" for="schoolLocation">Loc. </label>
+                <div class="col-4 mb-0 ">
+                  <input pInputText
+                         id="schoolLocation"
+                         type="text"
+                         class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                        border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+                  <!--             [readOnly]="readonly"-->
+                  <!--             formControlName="firstName"-->
+
+                </div>
+              </div>
+            </div>
+          </div>
+      </p-card>
+    </div>
+
+    <div *ngIf="viewConfig.showProfessionalStatus" class="col-12 mb-2">
+      <p-card>
+        <div class="field grid flex align-items-center flex-wrap mb-0">
+          <div class="col-2 p-0">
+            <label class="col-4 mb-0">Situatie profesionala </label>
+          </div>
+          <div class="col-8">
+            <div class="field grid mb-1">
+              <div class="col-3 mb-0">
+                <p-checkbox
+                  name="professionalSituation"
+                  label="salariat"
+                  value="salariat"
+                  inputId="professionalSituation"
+                  class="mr-5">
+                </p-checkbox>
+              </div>
+
+              <div class="col-3 mb-0">
+                <p-checkbox
+                  name="professionalSituation"
+                  label="pensionar"
+                  value="pensionar"
+                  inputId="professionalSituation"
+                  class="mr-5">
+                </p-checkbox>
+              </div>
+
+              <div class="col-3 mb-0">
+                <p-checkbox
+                  name="professionalSituation"
+                  label="somer"
+                  value="somer"
+                  inputId="professionalSituation"
+                  class="mr-5">
+                </p-checkbox>
+              </div>
+
+              <div class="col-3 mb-0">
+                <p-checkbox
+                  name="professionalSituation"
+                  label="student"
+                  value="student"
+                  inputId="professionalSituation"
+                  class="mr-5">
+                </p-checkbox>
+
+              </div>
+            </div>
+
+            <div class="field grid mb-1">
+              <div class="col-3 mb-0">
+                <p-checkbox
+                  name="professionalSituation"
+                  label="independent"
+                  value="independent"
+                  inputId="professionalSituation"
+                  class="mr-5">
+                </p-checkbox>
+              </div>
+
+              <div class="col-3 mb-0">
+                <p-checkbox
+                  name="professionalSituation"
+                  label="lucrator agricol"
+                  value="lucrator_agricol"
+                  inputId="professionalSituation"
+                  class="mr-5">
+                </p-checkbox>
+              </div>
+
+              <div class="col-3 mb-0">
+                <p-checkbox
+                  name="professionalSituation"
+                  label="lucrator ocazional"
+                  value="lucrator_ocazional"
+                  inputId="professionalSituation"
+                  class="mr-5">
+                </p-checkbox>
+              </div>
+
+              <div class="col-3 mb-0">
+                <p-checkbox
+                  name="professionalSituation"
+                  label="elev"
+                  value="elev"
+                  inputId="professionalSituation"
+                  class="mr-5">
+                </p-checkbox>
+              </div>
+            </div>
+
+            <div class="field grid mb-0">
+              <div class="col-3 mb-0">
+                <p-checkbox
+                  name="professionalSituation"
+                  label="Altele"
+                  value="Altele"
+                  inputId="professionalSituation"
+                  class="mr-5">
+                </p-checkbox>
+              </div>
+
+              <div class="col-3 mb-0">
+                <input pInputText
+                       id="a"
+                       type="text"
+                       class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                                        border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+                <!--             [readOnly]="readonly"-->
+                <!--             formControlName="firstName"-->
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </p-card>
+    </div>
+
+    <div *ngIf="viewConfig.showTotalIncome" class="col-12 mb-2">
+      <p-card>
+        <div class="field grid mb-0">
+          <div class="col-2 flex align-items-center flex-wrap mb-0">
+            <label class="mb-0">Venituri totale realizate in luna anterioara depunerii cererii</label>
+          </div>
+
+          <div class="col-4 flex align-items-center flex-wrap  mb-0">
+            <div class="field grid mb-0">
+
+              <div class="col-10 mb-0">
+                <input pInputText
+                       id="c"
+                       type="text"
+                       class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                                        border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+                <!--             [readOnly]="readonly"-->
+                <!--             formControlName="firstName"-->
+
+
+              </div>
+              <div class="col-2 mb-0  flex align-items-center flex-wrap">
+                <label>lei</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </p-card>
+    </div>
+
+    <div *ngIf="viewConfig.showDegreeOfDisability" class="col-12 mb-2">
+      <p-card>
+        <div class="field grid mb-0">
+          <div class="col-2 flex align-items-center flex-wrap mb-0">
+            <label class="mb-0">Grad de dizabilitate </label>
+          </div>
+          <div class="col-8">
+            <div class="field grid mb-0">
+              <div class="col-3 mb-0">
+                <p-radioButton class="lex align-items-center justify-content-center"
+                               formControlName="disability"
+                               name="disability"
+                               label="Nu"
+                               value="nu"
+                               inputId="romanian"
+                               class="mr-5">
+                </p-radioButton>
+              </div>
+              <div class="col-3 mb-0">
+                <p-radioButton class="lex align-items-center justify-content-center"
+                               formControlName="disability"
+                               name="disability"
+                               label="Da"
+                               value="da"
+                               inputId="romanian"
+                               class="mr-5">
+                </p-radioButton>
+              </div>
+            </div>
+          </div>
+        </div>
+      </p-card>
+    </div>
+
+
+    <div *ngIf="viewConfig.showBeneficiaryOfRights" class="col-12 mb-0">
+      <p-card>
+        <div class="field grid mb-0">
+          <div class="col-2 flex align-items-center flex-wrap mb-0">
+            <label class="mb-0">Beneficiaza/A beneficiat de drepturi de asistenta sociala </label>
+          </div>
+
+          <div class="col-8">
+            <div class="field grid mb-1">
+              <div class="col-3 mb-0">
+                <p-radioButton class="lex align-items-center justify-content-center"
+                               formControlName="benefitedSocialRights"
+                               name="benefitedSocialRights"
+                               label="Nu"
+                               value="nu"
+                               inputId="romanian"
+                               class="mr-5">
+                </p-radioButton>
+              </div>
+              <div class="col-3 mb-0">
+                <p-radioButton class="lex align-items-center justify-content-center"
+                               formControlName="benefitedSocialRights"
+                               name="benefitedSocialRights"
+                               label="Da"
+                               value="da"
+                               inputId="romanian"
+                               class="mr-5">
+                </p-radioButton>
+              </div>
+            </div>
+
+            <div class="field grid mb-1">
+              <div class="col-3 mb-0">
+                <p-checkbox class="lex align-items-center justify-content-center"
+                            formControlName="benefitedSocialRights"
+                            name="benefitedSocialRights"
+                            label="Venit minim de incluziune"
+                            value="vmi"
+                            class="mr-5">
+                </p-checkbox>
+              </div>
+
+              <div class="col-3 mb-0">
+                <p-checkbox class="lex align-items-center justify-content-center"
+                            formControlName="benefitedSocialRights"
+                            name="benefitedSocialRights"
+                            label="Supliment pentru energie"
+                            value="energySupply"
+                            class="mr-5">
+                </p-checkbox>
+              </div>
+
+              <div class="col-6 mb-0">
+                <p-checkbox class="lex align-items-center justify-content-center"
+                            formControlName="benefitedSocialRights"
+                            name="benefitedSocialRights"
+                            label="Ajutorul pentru incalzirea locuintei (pentru sezonul anterior)"
+                            value="previousEnergySupply"
+                            class="mr-5">
+                </p-checkbox>
+              </div>
+            </div>
+
+            <div class="field grid mb-0">
+              <div class="col-3 mb-0">
+                <p-checkbox class="lex align-items-center justify-content-center"
+                            formControlName="benefitedSocialRights"
+                            name="benefitedSocialRights"
+                            label="Energie termica"
+                            value="vmi"
+                            class="mr-5">
+                </p-checkbox>
+              </div>
+
+              <div class="col-3 mb-0">
+                <p-checkbox class="lex align-items-center justify-content-center"
+                            formControlName="benefitedSocialRights"
+                            name="benefitedSocialRights"
+                            label="Gaze naturale"
+                            value="energySupply"
+                            class="mr-5">
+                </p-checkbox>
+              </div>
+
+              <div class="col-3 mb-0">
+                <p-checkbox class="lex align-items-center justify-content-center"
+                            formControlName="benefitedSocialRights"
+                            name="benefitedSocialRights"
+                            label="Energie electrica"
+                            value="previousEnergySupply"
+                            class="mr-5">
+                </p-checkbox>
+              </div>
+              <div class="col-3 mb-0">
+                <p-checkbox class="lex align-items-center justify-content-center"
+                            formControlName="benefitedSocialRights"
+                            name="benefitedSocialRights"
+                            label="Lemene, carbuni"
+                            value="previousEnergySupply"
+                            class="mr-5">
+                </p-checkbox>
+              </div>
+            </div>
+          </div>
+        </div>
+      </p-card>
+    </div>
+
   </div>
 </form>

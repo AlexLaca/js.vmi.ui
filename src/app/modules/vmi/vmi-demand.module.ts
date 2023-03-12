@@ -18,7 +18,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { InitiatorChapterComponent } from './chapter-0/initiator-chapter/initiator-chapter.component';
 import {VmiFormService} from './vmi-form/vmi-form.service';
 import { ThirdChapterComponent } from './chapter-3/third-chapter/third-chapter.component';
-
+import {SpeedDialModule} from 'primeng/speeddial';
+import {FaIconLibrary, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import { faChildReaching } from '@fortawesome/free-solid-svg-icons';
 @NgModule({
   declarations: [
     VmiFormComponent,
@@ -40,6 +42,8 @@ import { ThirdChapterComponent } from './chapter-3/third-chapter/third-chapter.c
     StepsModule,
     BrowserAnimationsModule,
     ScrollPanelModule,
+    SpeedDialModule,
+    FontAwesomeModule
   ],
   providers: [
     MessageService,
@@ -53,4 +57,7 @@ import { ThirdChapterComponent } from './chapter-3/third-chapter/third-chapter.c
   ]
 })
 export class VmiDemandModule {
+  constructor(library: FaIconLibrary) {
+    library.addIcons(faChildReaching);
+  }
 }

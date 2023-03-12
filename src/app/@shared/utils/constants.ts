@@ -34,3 +34,8 @@ export enum VmiFormNavigationEvent {
   PREV = 1,
   CANCEL = 2
 }
+export enum KinshipDegreeIndex {
+  PARTNER = 0,
+  CHILD = 1,
+  OTHER = 2
+}

@@ -3,8 +3,14 @@ import {DialogService, DynamicDialogConfig, DynamicDialogRef} from 'primeng/dyna
 import {FamilyMemberFormComponent} from '../../extended-family/extended-family-form/family-member-form.component';
 import {PersonModel} from '../../../../@shared/models/person.model';
 import {BehaviorSubject} from 'rxjs';
-import {DataStoreObjects, VmiFormNavigationEvent, VmiFormSteps} from '../../../../@shared/utils/constants';
+import {
+  DataStoreObjects,
+  KinshipDegreeIndex,
+  VmiFormNavigationEvent,
+  VmiFormSteps
+} from '../../../../@shared/utils/constants';
 import {DataStoreService} from '../../../../@core/data-store.service';
+import {MenuItem, MessageService} from 'primeng/api';
 
 @Component({
   selector: 'vmi-third-chapter',
@@ -20,6 +26,7 @@ export class ThirdChapterComponent implements OnInit {
   public APPLICANT_STATUS_VALUE_SINGLE: string = 'single';
   public APPLICANT_STATUS_VALUE_REPRESENTATIVE: string = 'representative';
 
+  public items: MenuItem[];
   public applicantStatusValue: string = this.APPLICANT_STATUS_VALUE_SINGLE;
 
   public personObservable: BehaviorSubject<PersonModel | null> = new BehaviorSubject<PersonModel | null>(null);
@@ -27,12 +34,14 @@ export class ThirdChapterComponent implements OnInit {
   constructor(
     public dialogRef: DynamicDialogRef,
     public dialogService: DialogService,
+    private messageService: MessageService,
     private dataStoreService: DataStoreService) {
 
     this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.CHAPTER_3_STEP);
   }
 
   ngOnInit(): void {
+    this.initSpeedDial();
   }
 
   public nextStep() {
@@ -43,11 +52,37 @@ export class ThirdChapterComponent implements OnInit {
     this.activeStepIndexChanged.emit(VmiFormNavigationEvent.PREV);
   }
 
-  public onOpenFamilyMemberDialog() {
+  private initSpeedDial(): void {
+    this.items = [
+      {
+        icon: 'pi pi-heart',
+        command: () => {
+          this.onOpenFamilyMemberDialog(KinshipDegreeIndex.PARTNER);
+        }
+      },
+      {
+        icon: 'pi pi-user',
+        command: () => {
+          this.onOpenFamilyMemberDialog(KinshipDegreeIndex.CHILD);
+        }
+      },
+      {
+        icon: 'pi pi-users',
+        command: () => {
+          this.onOpenFamilyMemberDialog(KinshipDegreeIndex.OTHER);
+        }
+      },
+    ];
+  }
+
+  private onOpenFamilyMemberDialog(familyMemberType: KinshipDegreeIndex) {
     this.dialogRef = this.dialogService.open(FamilyMemberFormComponent, {
+      data: {
+        index: familyMemberType
+      },
       position: 'center',
       width: '90%',
-      height: '480px',
+      height: '90%',
       header: 'Membru familie',
       showHeader: true,
       closeOnEscape: true,
@@ -60,4 +95,6 @@ export class ThirdChapterComponent implements OnInit {
       }
     });
   }
+
+
 }
