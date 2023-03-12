@@ -1,0 +1,220 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+  <div class="col-12 p-0 mb-2">
+    <p-divider layout="horizontal">
+      <div class="inline-flex align-items-center">
+        <i class="pi pi-home mr-1" style="color:#64748B"></i>
+        <b>Detalii locuinta</b>
+      </div>
+    </p-divider>
+    <p-card>
+      <div class="field grid mb-0">
+        <label class="col-2 mb-0" for="schoolLocation">
+          Familia/persoana singura indreptatita locuieste:
+        </label>
+        <div class="col-2 mb-0">
+          <input pInputText
+                 id="schoolLocation"
+                 type="text"
+                 class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                        border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+          <!--             [readOnly]="readonly"-->
+          <!--             formControlName="firstName"-->
+        </div>
+      </div>
+    </p-card>
+  </div>
+
+  <div class="col-12 p-0 mb-2">
+    <p-card>
+      <div class="field grid mb-2">
+        <div class="col-4">
+          <div class="field grid mb-0">
+            <label class="col-6 mb-0" for="houseModel">
+              Model locuinta:
+            </label>
+            <div class="col-6 mb-0">
+              <input pInputText
+                     id="houseModel"
+                     type="text"
+                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                        border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+              <!--             [readOnly]="readonly"-->
+              <!--             formControlName="firstName"-->
+            </div>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="field grid mb-0">
+            <label class="col-6 mb-0" for="rooms">Camere</label>
+            <div class="col-6 mb-0">
+              <input pInputText
+                     id="rooms"
+                     type="text"
+                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                        border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+              <!--             [readOnly]="readonly"-->
+              <!--             formControlName="firstName"-->
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="field grid mb-2">
+        <div class="col-4">
+          <div class="field grid mb-0">
+            <label class="col-6 mb-0" for="legalRegime">
+              Regim juridic
+            </label>
+            <div class="col-6 mb-0">
+              <input pInputText
+                     id="legalRegime"
+                     type="text"
+                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                        border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+              <!--             [readOnly]="readonly"-->
+              <!--             formControlName="firstName"-->
+            </div>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="field grid mb-0">
+            <label class="col-6 mb-0" for="acquisition">
+              Mod dobandire locuinta
+            </label>
+            <div class="col-6 mb-0">
+              <input pInputText
+                     id="acquisition"
+                     type="text"
+                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                        border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+              <!--             [readOnly]="readonly"-->
+              <!--             formControlName="firstName"-->
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="field grid mb-0">
+
+        <div class="col-4">
+          <div class="field grid mb-0">
+            <label class="col-6 mb-0" for="acquisition">
+              Altele
+            </label>
+            <div class="col-6 mb-0">
+              <input pInputText
+                     id="otherAcquisition"
+                     type="text"
+                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                        border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+              <!--             [readOnly]="readonly"-->
+              <!--             formControlName="firstName"-->
+            </div>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="field grid mb-0">
+            <label class="col-6 mb-0" for="otherRegalRegime">
+              Altele
+            </label>
+            <div class="col-6 mb-0">
+              <input pInputText
+                     id="otherRegalRegime"
+                     type="text"
+                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                        border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+              <!--             [readOnly]="readonly"-->
+              <!--             formControlName="firstName"-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </p-card>
+  </div>
+
+  <div class="col-12 p-0 mb-2">
+    <p-card>
+      <div class="field grid flex align-items-center flex-wrap mb-0">
+        <div class="col-4">
+          <div class="field grid mb-0">
+            <label class="col-6 mb-0" for="houseType">
+              Tipul locuintei
+            </label>
+            <div class="col-6 mb-0">
+              <input pInputText
+                     id="houseType"
+                     type="text"
+                     class="p-inputtext-sm text-base text-color surface-overlay p-1 border-1 border-solid
+                        border-round-xs border-bluegray-200 a outline-none focus:border-primary w-full">
+              <!--             [readOnly]="readonly"-->
+              <!--             formControlName="firstName"-->
+            </div>
+          </div>
+        </div>
+
+        <div class="col-8">
+          <div class="field grid mb-0">
+            <label class="col-12 mb-0" for="houseType">
+              <!--              <b>-->
+              constructia cu structura de rezistenta din beton armat, metal, lemn, piatra, caramida arsa sau din orice
+              alte materiale
+              <!--              </b>-->
+            </label>
+          </div>
+
+          <div class="field grid mb-0">
+            <label class="col-12 mb-0" for="houseType">
+              <!--              <b>-->
+              constructie cu pereti exteriori din caramida nearsa sau din orice alte materiale nesupuse unui tratament
+              termic si/sau chimic
+              <!--              </b>-->
+            </label>
+          </div>
+        </div>
+      </div>
+    </p-card>
+  </div>
+
+  <div class="col-12 p-0">
+    <p-divider layout="horizontal">
+      <div class="inline-flex align-items-center">
+        <i class="pi pi-verified mr-1" style="color:#64748B"></i>
+        <b>Polita de asigurare a locuintei</b>
+      </div>
+    </p-divider>
+    <p-card>
+      <div class="field grid flex align-items-center flex-wrap mb-0">
+        
+      </div>
+    </p-card>
+  </div>
+
+  <div class="col-12 mt-2 p-0">
+    <p-card>
+      <div class="flex justify-content-between flex-wrap">
+
+        <div class="flex align-items-center justify-content-center  font-bold text-gray-900 border-round">
+          <button
+            pButton type="button"
+            class="p-button-sm p-button-secondary h-2rem"
+            icon="pi pi-angle-left"
+            (click)="prevStep()">
+          </button>
+        </div>
+
+        <div class="flex align-items-center justify-content-center font-bold text-gray-900 border-round">
+          <button
+            pButton type="button"
+            class="p-button-sm p-button-secondary h-2rem"
+            icon="pi pi-angle-right"
+            (click)="nextStep()">
+          </button>
+        </div>
+      </div>
+    </p-card>
+  </div>
+</form>

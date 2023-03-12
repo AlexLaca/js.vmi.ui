@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SummaryComponent } from './summary.component';
+import { FourthChapterComponent } from './fourth-chapter.component';
 
-describe('SummaryComponent', () => {
-  let component: SummaryComponent;
-  let fixture: ComponentFixture<SummaryComponent>;
+describe('FourthChapterComponent', () => {
+  let component: FourthChapterComponent;
+  let fixture: ComponentFixture<FourthChapterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SummaryComponent ]
+      declarations: [ FourthChapterComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SummaryComponent);
+    fixture = TestBed.createComponent(FourthChapterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,14 +1,12 @@
 import {
-  AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef,
+  AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef,
   Component,
   ElementRef,
-  OnChanges,
   OnInit,
-  SimpleChanges,
   ViewEncapsulation
 } from '@angular/core';
 import {MenuItem} from 'primeng/api';
-import {ActivatedRoute, NavigationEnd, NavigationStart, Router, RouterOutlet} from '@angular/router';
+import {ActivatedRoute, NavigationStart, Router} from '@angular/router';
 import {
   ActiveWorkflowIndex,
   DataStoreObjects,
@@ -18,11 +16,7 @@ import {
 } from '../../../@shared/utils/constants';
 import {DataStoreService} from '../../../@core/data-store.service';
 import {Subscription} from 'rxjs';
-import {PersonSearcherComponent} from '../../../@shared/components/person-searcher/person-searcher.component';
 import {VmiStepperFormUi} from '../../../@shared/models/ui/vmi-stepper-form.ui';
-import {DpabdResponseModel} from '../../../@shared/models/dpabd-response.model';
-import {PersonModel} from '../../../@shared/models/person.model';
-import {VmiDataFormUi} from '../../../@shared/models/ui/vmi-data-form.ui';
 import {Event as NavigationEvent} from "@angular/router";
 import {filter} from 'rxjs/operators';
 import {VmiRequestModel} from '../../../@shared/models/vmi-request.model';
@@ -30,6 +24,7 @@ import {VmiFormService} from './vmi-form.service';
 import {FirstChapterComponent} from '../chapter-1/first-chapter/first-chapter.component';
 import {SecondChapterComponent} from '../chapter-2/second-chapter/second-chapter.component';
 import {ThirdChapterComponent} from '../chapter-3/third-chapter/third-chapter.component';
+import {FourthChapterComponent} from '../chapter-4/fourth-chapter/fourth-chapter.component';
 
 
 @Component({
@@ -94,7 +89,7 @@ export class VmiFormComponent implements OnInit, AfterViewChecked {
         switch (eventType) {
           case VmiFormNavigationEvent.NEXT:
             this.activeStepIndex = VmiFormSteps.CHAPTER_3_STEP;
-            this.router.navigateByUrl(VmiFormPaths.HOUSEHOLD_PATH);
+            this.router.navigateByUrl(VmiFormPaths.CHAPTER_3_PATH);
             break;
           case VmiFormNavigationEvent.PREV:
             this.activeStepIndex = VmiFormSteps.CHAPTER_1_STEP;
@@ -106,12 +101,25 @@ export class VmiFormComponent implements OnInit, AfterViewChecked {
       componentRef.activeStepIndexChanged.subscribe(eventType => {
         switch (eventType) {
           case VmiFormNavigationEvent.NEXT:
-            this.activeStepIndex = VmiFormSteps.STATEMENT_STEP;
-            this.router.navigateByUrl(VmiFormPaths.STATEMENT_PATH);
+            this.activeStepIndex = VmiFormSteps.CHAPTER_4_STEP;
+            this.router.navigateByUrl(VmiFormPaths.CHAPTER_4_PATH);
             break;
           case VmiFormNavigationEvent.PREV:
             this.activeStepIndex = VmiFormSteps.CHAPTER_2_STEP;
             this.router.navigateByUrl(VmiFormPaths.CHAPTER_2_PATH);
+            break;
+        }
+      });
+    } else if (componentRef instanceof FourthChapterComponent) {
+      componentRef.activeStepIndexChanged.subscribe(eventType => {
+        switch (eventType) {
+          case VmiFormNavigationEvent.NEXT:
+            this.activeStepIndex = VmiFormSteps.SUMMARY_STEP;
+            this.router.navigateByUrl(VmiFormPaths.SUMMARY_PATH);
+            break;
+          case VmiFormNavigationEvent.PREV:
+            this.activeStepIndex = VmiFormSteps.CHAPTER_3_STEP;
+            this.router.navigateByUrl(VmiFormPaths.CHAPTER_3_PATH);
             break;
         }
       });
@@ -211,12 +219,12 @@ export class VmiFormComponent implements OnInit, AfterViewChecked {
             console.log("CASE");
             break;
           }
-          case VmiFormPaths.HOUSEHOLD_PATH : {
+          case VmiFormPaths.CHAPTER_3_PATH : {
             this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.CHAPTER_3_STEP);
             break;
           }
-          case VmiFormPaths.STATEMENT_PATH : {
-            this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.STATEMENT_STEP);
+          case VmiFormPaths.CHAPTER_4_PATH : {
+            this.dataStoreService.setData(DataStoreObjects.VMI_ACTIVE_FORM_INDEX, VmiFormSteps.CHAPTER_4_STEP);
             break;
           }
           case VmiFormPaths.SUMMARY_PATH : {
@@ -249,14 +257,14 @@ export class VmiFormComponent implements OnInit, AfterViewChecked {
         id: VmiFormSteps.CHAPTER_3_STEP.toString(),
         label: 'Membrii',
         command: () => {
-          this.vmiFormService.navigateTo(VmiFormSteps.CHAPTER_3_STEP, VmiFormPaths.HOUSEHOLD_PATH);
+          this.vmiFormService.navigateTo(VmiFormSteps.CHAPTER_3_STEP, VmiFormPaths.CHAPTER_3_PATH);
         }
       },
       {
-        id: VmiFormSteps.STATEMENT_STEP.toString(),
-        label: 'Declaratie',
+        id: VmiFormSteps.CHAPTER_4_STEP.toString(),
+        label: 'Locuinta',
         command: () => {
-          this.vmiFormService.navigateTo(VmiFormSteps.STATEMENT_STEP, VmiFormPaths.STATEMENT_PATH);
+          this.vmiFormService.navigateTo(VmiFormSteps.CHAPTER_4_STEP, VmiFormPaths.CHAPTER_4_PATH);
         }
       },
       {

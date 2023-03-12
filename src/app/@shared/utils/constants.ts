@@ -18,15 +18,15 @@ export enum VmiFormSteps {
   CHAPTER_1_STEP = 0,
   CHAPTER_2_STEP = 1,
   CHAPTER_3_STEP = 2,
-  STATEMENT_STEP = 3,
+  CHAPTER_4_STEP = 3,
   SUMMARY_STEP = 4,
 }
 export enum VmiFormPaths {
   REQUEST_PATH = '/init',
   CHAPTER_1_PATH = '/request/chapter-1',
   CHAPTER_2_PATH = '/request/chapter-2',
-  HOUSEHOLD_PATH = '/request/chapter-3',
-  STATEMENT_PATH = '/request/statement',
+  CHAPTER_3_PATH = '/request/chapter-3',
+  CHAPTER_4_PATH = '/request/chapter-4',
   SUMMARY_PATH = '/request/summary'
 }
 export enum VmiFormNavigationEvent {

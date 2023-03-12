@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {DialogService, DynamicDialogConfig, DynamicDialogRef} from 'primeng/dynamicdialog';
-import {FamilyMemberFormComponent} from '../../extended-family/extended-family-form/family-member-form.component';
+import {FamilyMemberFormComponent} from '../extended-family/extended-family-form/family-member-form.component';
 import {PersonModel} from '../../../../@shared/models/person.model';
 import {BehaviorSubject} from 'rxjs';
 import {

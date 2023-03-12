@@ -1,15 +1,15 @@
 import {Component, ElementRef, Inject, LOCALE_ID, OnInit, ViewEncapsulation} from '@angular/core';
 import {DialogService, DynamicDialogConfig, DynamicDialogRef} from 'primeng/dynamicdialog';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {BasePersonModel} from '../../../../@shared/models/base-person.model';
-import {IdentityDocumentModel} from '../../../../@shared/models/identity-document.model';
-import {pncValidatorFn} from '../../../../@shared/validators/input-validator.function';
-import {SearchService} from '../../../../@shared/services/search-service';
-import {DpabdResponseModel} from '../../../../@shared/models/dpabd-response.model';
-import {PersonModel} from '../../../../@shared/models/person.model';
-import {DictionaryModel} from '../../../../@shared/models/dictionary.model';
-import {DataStoreObjects, KinshipDegreeIndex, VmiFormPaths} from '../../../../@shared/utils/constants';
-import {PersonDetailConfig} from '../../../../@shared/components/person-detail/person-detail.config';
+import {BasePersonModel} from '../../../../../@shared/models/base-person.model';
+import {IdentityDocumentModel} from '../../../../../@shared/models/identity-document.model';
+import {pncValidatorFn} from '../../../../../@shared/validators/input-validator.function';
+import {SearchService} from '../../../../../@shared/services/search-service';
+import {DpabdResponseModel} from '../../../../../@shared/models/dpabd-response.model';
+import {PersonModel} from '../../../../../@shared/models/person.model';
+import {DictionaryModel} from '../../../../../@shared/models/dictionary.model';
+import {DataStoreObjects, KinshipDegreeIndex, VmiFormPaths} from '../../../../../@shared/utils/constants';
+import {PersonDetailConfig} from '../../../../../@shared/components/person-detail/person-detail.config';
 
 @Component({
   selector: 'vmi-extended-family-form',

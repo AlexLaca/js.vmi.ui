@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
-import {PersonModel} from '../../../../@shared/models/person.model';
+import {PersonModel} from '../../../../../@shared/models/person.model';
 
 
 @Component({
